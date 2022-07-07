@@ -94,9 +94,7 @@ const tweetReducer = (state = initialState, action) => {
             };
             return { ...tweets };
         case GET_ONE:
-            const tweet = {};
-            tweet[action.tweet.id] = action.tweet;
-            return { ...tweet };
+            return action.tweet;
         case EDIT_TWEET:
             const editTweet = { ...state }
             editTweet[action.tweet.id] = action.tweet;

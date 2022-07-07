@@ -19,7 +19,7 @@ function Tweets() {
                     {tweets.map(tweet => {
                         return <div key={tweet.id}>
                             {tweet.user_id === parseInt(userId) ?
-                                <div>
+                                <div key={`btn-${tweet.id}`}>
                                     <span>
                                         <EditTweetModal tweetId={tweet.id} />
                                     </span>
@@ -28,7 +28,7 @@ function Tweets() {
                                     </span>
                                 </div>
                                 : null}
-                            <NavLink exact to={`/${userId}/tweets/${tweet.id}`}>
+                            <NavLink key={`tweet-${tweet.id}`} exact to={`/${userId}/tweets/${tweet.id}`}>
                                 <div>
                                     <li key={`tweet-${tweet.id}`}>
                                         <div>{tweet.content}</div>

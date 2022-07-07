@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { editOneTweet, getAllTweets } from '../../store/tweet';
+import { editOneTweet, getAllTweets, getOneTweet } from '../../store/tweet';
 
-function EditTweetForm({ tweetId, onClose }) {
-    const { userId } = useParams();
+function EditTweetForm({ editId, onClose }) {
+    const { userId, tweetId } = useParams();
     const dispatch = useDispatch()
     const [content, setContent] = useState('');
 
@@ -16,15 +16,19 @@ function EditTweetForm({ tweetId, onClose }) {
         const payload = {
             content
         }
-
-        const newTweet = await dispatch(editOneTweet(tweetId, payload));
-        if (newTweet) {
+        console.log('editTweet', editId)
+        const newTweet = await dispatch(editOneTweet(editId, payload));
+        if (!tweetId && newTweet) {
             const following = follow.map(per => {
                 return per.id;
             })
             onClose(false);
             setContent('');
             await dispatch(getAllTweets(userId, following));
+        } else if (tweetId && newTweet) {
+            onClose(false);
+            setContent('');
+            await dispatch(getOneTweet(tweetId))
         };
     };
 

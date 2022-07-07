@@ -1,10 +1,7 @@
 import datetime
-from tkinter.tix import Tree
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
-from app.api.user_routes import user
 from app.forms.tweet_form import TweetForm
-from app.models import db, Tweet, User
+from app.models import db, Tweet
 
 
 tweet_routes = Blueprint('tweets', __name__)

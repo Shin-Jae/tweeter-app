@@ -15,7 +15,7 @@ const EditTweetModal = ({ tweetId }) => {
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <EditTweetForm onClose={() => setShowModal(false)} showModal={showModal} tweetId={tweetId} />
+                        <EditTweetForm onClose={() => setShowModal(false)} showModal={showModal} editId={tweetId} />
                     </Modal>
                 )}
             </div>

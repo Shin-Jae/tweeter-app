@@ -15,7 +15,7 @@ const DeleteTweetModal = ({ tweetId }) => {
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <DeleteTweet onClose={() => setShowModal(false)} tweetId={tweetId} />
+                        <DeleteTweet onClose={() => setShowModal(false)} deleteId={tweetId} />
                     </Modal>
                 )}
             </div>

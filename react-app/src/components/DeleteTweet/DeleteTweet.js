@@ -1,20 +1,26 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { deleteOneTweet, getAllTweets } from "../../store/tweet";
 
-function DeleteTweet({ onClose, tweetId }) {
+function DeleteTweet({ onClose, deleteId }) {
     const dispatch = useDispatch();
-    const { userId } = useParams();
+    const history = useHistory();
+    const { userId, tweetId } = useParams();
     const follow = useSelector((state) => state.session.user.following)
 
     const handleDelete = async () => {
-        const following = follow.map(per => {
-            return per.id;
-        })
-        await dispatch(deleteOneTweet(tweetId));
-        const getAll = await dispatch(getAllTweets(userId, following))
-        if (getAll) return onClose(false);
+        if (!tweetId) {
+            const following = follow.map(per => {
+                return per.id;
+            })
+            await dispatch(deleteOneTweet(deleteId));
+            const getAll = await dispatch(getAllTweets(userId, following))
+            if (getAll) return onClose(false);
+        } else {
+            await dispatch(deleteOneTweet(tweetId));
+            history.push(`/users/${userId}`);
+        }
     }
 
     const handleClose = () => {
