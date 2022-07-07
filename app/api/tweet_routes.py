@@ -1,5 +1,5 @@
-from crypt import methods
 import datetime
+from tkinter.tix import Tree
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.api.user_routes import user
@@ -72,3 +72,12 @@ def edit_tweet(tweetId):
     db.session.flush()
     db.session.commit()
     return tweet.to_dict()
+
+
+@tweet_routes.route('/<int:tweetId>', methods = ['DELETE'])
+def delete_tweet(tweetId):
+    tweet = Tweet.query.get(tweetId)
+
+    db.session.delete(tweet)
+    db.session.commit()
+    return "ok"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
+import DeleteTweetModal from '../DeleteTweet';
 import EditTweetModal from '../EditTweet';
 
 function Tweets() {
@@ -19,7 +20,12 @@ function Tweets() {
                         return <div key={tweet.id}>
                             {tweet.user_id === parseInt(userId) ?
                                 <div>
-                                    <EditTweetModal tweetId={tweet.id} />
+                                    <span>
+                                        <EditTweetModal tweetId={tweet.id} />
+                                    </span>
+                                    <span>
+                                        <DeleteTweetModal tweetId={tweet.id} />
+                                    </span>
                                 </div>
                                 : null}
                             <NavLink exact to={`/${userId}/tweets/${tweet.id}`}>

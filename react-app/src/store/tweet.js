@@ -2,6 +2,7 @@ const ALL_TWEETS = "tweets/ALL_TWEETS";
 const GET_ONE = "tweets/GET_ONE";
 const POST_TWEET = "tweets/POST_TWEET";
 const EDIT_TWEET = "tweets/EDIT_TWEET";
+const DELETE_TWEET = "tweets/DELETE_TWEET";
 
 export const allTweets = (tweets) => ({
     type: ALL_TWEETS,
@@ -21,6 +22,10 @@ export const postTweet = (tweet) => ({
 export const editTweet = (tweet) => ({
     type: EDIT_TWEET,
     tweet
+})
+
+export const deleteTweet = () => ({
+    type: DELETE_TWEET
 })
 
 export const getAllTweets = (userId, following) => async dispatch => {
@@ -68,6 +73,15 @@ export const editOneTweet = (tweetId, payload) => async dispatch => {
         return tweet;
     };
 };
+
+export const deleteOneTweet = (tweetId) => async dispatch => {
+    const response = await fetch(`/api/tweets/${tweetId}`, {
+        method: 'DELETE'
+    });
+    if (response.ok) {
+        dispatch(deleteTweet())
+    }
+}
 
 const initialState = {};
 
