@@ -1,25 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
-import { getAllTweets } from '../../store/tweet';
-import { useDispatch } from 'react-redux';
 
 function Tweets() {
-    const dispatch = useDispatch();
     const { userId } = useParams();
 
     const allTweets = useSelector((state) => state.tweets);
-    const follow = useSelector((state) => state.session.user.following)
 
     const tweets = Object.values(allTweets);
-
-    useEffect(() => {
-        const following = follow.map(per => {
-            return per.id;
-        })
-
-        dispatch(getAllTweets(userId, following));
-    }, [userId, follow, dispatch])
 
     return (
         <div>
