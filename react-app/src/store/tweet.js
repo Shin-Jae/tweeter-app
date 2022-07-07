@@ -1,6 +1,7 @@
 const ALL_TWEETS = "tweets/ALL_TWEETS";
 const GET_ONE = "tweets/GET_ONE";
 const POST_TWEET = "tweets/POST_TWEET";
+const EDIT_TWEET = "tweets/EDIT_TWEET";
 
 export const allTweets = (tweets) => ({
     type: ALL_TWEETS,
@@ -14,6 +15,11 @@ export const oneTweet = (tweet) => ({
 
 export const postTweet = (tweet) => ({
     type: POST_TWEET,
+    tweet
+})
+
+export const editTweet = (tweet) => ({
+    type: EDIT_TWEET,
     tweet
 })
 
@@ -50,6 +56,19 @@ export const postOneTweet = (userId, content) => async dispatch => {
     };
 };
 
+export const editOneTweet = (tweetId, payload) => async dispatch => {
+    const response = await fetch(`/api/tweets/${tweetId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+    if (response.ok) {
+        const tweet = await response.json();
+        dispatch(dispatch(editTweet(tweet)));
+        return tweet;
+    };
+};
+
 const initialState = {};
 
 const tweetReducer = (state = initialState, action) => {
@@ -63,8 +82,11 @@ const tweetReducer = (state = initialState, action) => {
         case GET_ONE:
             const tweet = {};
             tweet[action.tweet.id] = action.tweet;
-
             return { ...tweet };
+        case EDIT_TWEET:
+            const editTweet = { ...state }
+            editTweet[action.tweet.id] = action.tweet;
+            return editTweet
         default:
             return state;
     };

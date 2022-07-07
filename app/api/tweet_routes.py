@@ -38,7 +38,7 @@ def tweet(tweetId):
     return tweet.to_dict()
 
 
-@tweet_routes.route('<int:userId>', methods = ['POST'])
+@tweet_routes.route('/<int:userId>', methods = ['POST'])
 def post_tweet(userId):
     form = TweetForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -56,3 +56,19 @@ def post_tweet(userId):
         return tweet.to_dict()
 
     return {'errors': validation_errors_to_error_tweets(form.errors)}, 401
+
+
+@tweet_routes.route('/<int:tweetId>', methods = ['PUT'])
+def edit_tweet(tweetId):
+    tweet = Tweet.query.get(tweetId)
+    data = request.json
+
+    content = data['content']
+    updated_at = datetime.datetime.now()
+
+    tweet.content = content
+    tweet.updated_at = updated_at
+    db.session.merge(tweet)
+    db.session.flush()
+    db.session.commit()
+    return tweet.to_dict()
