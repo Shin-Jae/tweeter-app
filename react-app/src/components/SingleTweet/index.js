@@ -6,6 +6,7 @@ import EditTweetModal from '../EditTweet';
 import DeleteTweetModal from '../DeleteTweet';
 import Replies from '../Replies';
 import { tweetReplies } from '../../store/reply';
+import ReplyForm from '../ReplyForm';
 
 function SingleTweet() {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function SingleTweet() {
         <div className='homepage'>
             <div>
                 {oneTweet.user_id === parseInt(userId) ?
-                    <div>
+                    <div className="one-tweet-edit-btns">
                         <span>
                             <EditTweetModal tweetId={tweetId} />
                         </span>
@@ -36,14 +37,25 @@ function SingleTweet() {
                         </span>
                     </div>
                     : null}
-                <div>
-                    {test?.first_name}
+                <div className='user-profile'>
+                    <img src={`${test?.profile_img}`} alt='profile-img' className='user-profile-img' />
+                    <div className='user-info'>
+                        <div className='user-fullname'>
+                            {test?.first_name} {test?.last_name}
+                        </div>
+                        <div className='user-username'>
+                            @{test?.username}
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    {oneTweet.content}
+                <div className='container-tweet-contents'>
+                    <div>
+                        {oneTweet.content}
+                    </div>
                 </div>
             </div>
             <div>
+                <ReplyForm tweetId={tweetId} />
                 <Replies />
             </div>
         </div>

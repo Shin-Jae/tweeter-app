@@ -12,7 +12,7 @@ function Tweets() {
     const allUsers = useSelector((state) => state.search);
     const users = Object.values(allUsers);
 
-    const tweets = Object.values(allTweets);
+    const tweets = Object.values(allTweets).reverse();
 
     return (
         <div>

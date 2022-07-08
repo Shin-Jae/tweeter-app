@@ -9,12 +9,11 @@ function Replies() {
     const tweetReplies = useSelector((state) => state.replies);
     const allUsers = useSelector((state) => state.search);
 
-    const replies = Object.values(tweetReplies);
+    const replies = Object.values(tweetReplies).reverse();
     const users = Object.values(allUsers);
 
     return (
         <div>
-            replies
             <ul>
                 {replies.map(reply => {
                     return <div key={reply.id} className='one-tweet-container'>

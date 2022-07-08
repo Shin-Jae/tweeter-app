@@ -113,6 +113,7 @@ class Tweet(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "content": self.content,
+            "user": self.user.to_dict(),
             "created_at": self.created_at,
         }
 

@@ -10,7 +10,7 @@ function RightColumn() {
         if (user) {
             dispatch(getAllUsers());
         }
-    }, [dispatch])
+    }, [dispatch, user])
 
     return (
         <div className="grid-container search">
