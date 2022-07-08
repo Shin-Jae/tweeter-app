@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { getAllUsers } from "../../store/search";
 
 function RightColumn() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getAllUsers());
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getAllUsers());
+    // }, [dispatch])
 
     return (
         <div className="grid-container search">
