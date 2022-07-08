@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../store/search";
 
 function RightColumn() {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.session.user)
 
     useEffect(() => {
-        dispatch(getAllUsers());
+        if (user) {
+            dispatch(getAllUsers());
+        }
     }, [dispatch])
 
     return (

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneTweet } from '../../store/tweet';
-import { useDispatch } from 'react-redux';
 import EditTweetModal from '../EditTweet';
 import DeleteTweetModal from '../DeleteTweet';
 import Replies from '../Replies';
@@ -13,6 +12,11 @@ function SingleTweet() {
     const { userId, tweetId } = useParams();
 
     const oneTweet = useSelector((state) => state.tweets);
+
+    const allUsers = useSelector((state) => state.search);
+    const users = Object.values(allUsers);
+    const user = users.filter(one => one.id === oneTweet.user_id);
+    let test = user[0]
 
     useEffect(() => {
         dispatch(getOneTweet(tweetId));
@@ -32,6 +36,9 @@ function SingleTweet() {
                         </span>
                     </div>
                     : null}
+                <div>
+                    {test?.first_name}
+                </div>
                 <div>
                     {oneTweet.content}
                 </div>
