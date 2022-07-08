@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import DeleteTweetModal from '../DeleteTweet';
 import EditTweetModal from '../EditTweet';
-import { getAllUsers } from '../../store/search';
+// import { getAllUsers } from '../../store/search';
 import './Tweets.css'
 
 function Tweets() {
     const { userId } = useParams();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getAllUsers());
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getAllUsers());
+    // }, [dispatch])
 
     const allTweets = useSelector((state) => state.tweets);
     const allUsers = useSelector((state) => state.search);
