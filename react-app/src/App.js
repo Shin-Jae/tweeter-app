@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import Homepage from './components/Homepage';
 import { authenticate } from './store/session';
 import SingleTweet from './components/SingleTweet';
+import RightColumn from './components/RightColumn';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +49,7 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
+      <RightColumn />
     </BrowserRouter>
   );
 }

@@ -22,7 +22,7 @@ def seed_users():
         email='demo@aa.io',
         birthday='2000-11-22',
         bio='',
-        profile_img='',
+        profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.3MlyY6tvMoIj3wqrC00g-wAAAA%26pid%3DApi&f=1',
         password='password',
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),

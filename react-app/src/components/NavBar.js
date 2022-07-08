@@ -7,7 +7,7 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
 
   return (
-    <nav className='grid-left'>
+    <nav className='grid-container navbar'>
       <ul>
         <li>
           {user ?

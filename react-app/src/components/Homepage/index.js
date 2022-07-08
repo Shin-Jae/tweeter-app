@@ -12,7 +12,7 @@ function Homepage() {
     const follow = useSelector((state) => state.session.user.following)
 
     useEffect(() => {
-        if (!userId) {
+        if (!userId || !follow) {
             return;
         }
         (async () => {
@@ -35,7 +35,7 @@ function Homepage() {
     }
 
     return (
-        <div>
+        <div className='grid-container homepage'>
             <div>
                 Homepage
             </div>

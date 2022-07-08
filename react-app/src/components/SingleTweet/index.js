@@ -20,7 +20,7 @@ function SingleTweet() {
     }, [tweetId, dispatch])
 
     return (
-        <div>
+        <div className='homepage'>
             <div>
                 {oneTweet.user_id === parseInt(userId) ?
                     <div>
