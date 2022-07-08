@@ -42,9 +42,6 @@ function App() {
         <ProtectedRoute path='/:userId/tweets/:tweetId' exact={true} >
           <SingleTweet />
         </ProtectedRoute>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
-        </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
