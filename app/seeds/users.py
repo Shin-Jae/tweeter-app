@@ -22,7 +22,7 @@ def seed_users():
         email='demo@aa.io',
         birthday='2000-11-22',
         bio='',
-        profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.3MlyY6tvMoIj3wqrC00g-wAAAA%26pid%3DApi&f=1',
+        profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette.wikia.nocookie.net%2Fthe-sun-vanished%2Fimages%2F5%2F5d%2FTwitter-avi-gender-balanced-figure.png%2Frevision%2Flatest%3Fcb%3D20180713020754&f=1&nofb=1',
         password='password',
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),

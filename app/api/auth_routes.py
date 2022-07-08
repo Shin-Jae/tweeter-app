@@ -70,7 +70,7 @@ def sign_up():
             email=form.data['email'],
             birthday=form.data['birthday'],
             bio='',
-            profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.3MlyY6tvMoIj3wqrC00g-wAAAA%26pid%3DApi&f=1',
+            profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette.wikia.nocookie.net%2Fthe-sun-vanished%2Fimages%2F5%2F5d%2FTwitter-avi-gender-balanced-figure.png%2Frevision%2Flatest%3Fcb%3D20180713020754&f=1&nofb=1',
             password=form.data['password'],
             created_at=datetime.datetime.now(),
             updated_at=datetime.datetime.now()
