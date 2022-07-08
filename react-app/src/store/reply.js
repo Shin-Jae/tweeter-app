@@ -1,4 +1,6 @@
 const GET_REPLIES = "replies/GET_REPIES";
+const POST_REPLY = "replies/POST_REPLY";
+const EDIT_REPLY = "replies/EDIT_REPLY";
 
 export const getReplies = (replies) => ({
     type: GET_REPLIES,
