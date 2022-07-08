@@ -12,7 +12,7 @@ function Homepage() {
     const follow = useSelector((state) => state.session.user.following)
 
     useEffect(() => {
-        if (!userId || !follow) {
+        if (!userId) {
             return;
         }
         (async () => {
@@ -22,6 +22,7 @@ function Homepage() {
         })();
 
         //getallTweets
+        if (!follow.length) return;
         const following = follow.map(per => {
             return per.id;
         })

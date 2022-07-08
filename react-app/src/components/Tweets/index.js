@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import DeleteTweetModal from '../DeleteTweet';
 import EditTweetModal from '../EditTweet';
@@ -7,6 +7,11 @@ import './Tweets.css'
 
 function Tweets() {
     const { userId } = useParams();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllUsers());
+    }, [dispatch])
 
     const allTweets = useSelector((state) => state.tweets);
     const allUsers = useSelector((state) => state.search);
