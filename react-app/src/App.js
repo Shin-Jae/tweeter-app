@@ -9,6 +9,7 @@ import Homepage from './components/Homepage';
 import { authenticate } from './store/session';
 import SingleTweet from './components/SingleTweet';
 import RightColumn from './components/RightColumn';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,6 +41,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/:userId/tweets/:tweetId' exact={true} >
           <SingleTweet />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile/:userId/:profileId' exact={true} >
+          <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>

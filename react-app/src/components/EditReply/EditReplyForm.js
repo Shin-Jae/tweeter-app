@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { editOneTweet, getAllTweets, getOneTweet } from '../../store/tweet';
+import { editOneReply, tweetReplies } from '../../store/reply';
+import { getOneTweet } from '../../store/tweet';
 
-function EditTweetForm({ editId, onClose }) {
-    const { userId, tweetId } = useParams();
+
+function EditReplyForm({ replyId, onClose }) {
+    const { tweetId } = useParams();
     const dispatch = useDispatch()
     const [content, setContent] = useState('');
 
-    const follow = useSelector((state) => state.session.user.following)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -17,18 +18,13 @@ function EditTweetForm({ editId, onClose }) {
             content
         }
 
-        const newTweet = await dispatch(editOneTweet(editId, payload));
-        if (!tweetId && newTweet) {
-            const following = follow.map(per => {
-                return per.id;
-            })
-            onClose(false);
-            setContent('');
-            await dispatch(getAllTweets(userId, following));
-        } else if (tweetId && newTweet) {
+        const newReply = await dispatch(editOneReply(replyId, payload));
+
+        if (tweetId && newReply) {
             onClose(false);
             setContent('');
             await dispatch(getOneTweet(tweetId))
+            await dispatch(tweetReplies(tweetId))
         };
     };
 
@@ -39,7 +35,7 @@ function EditTweetForm({ editId, onClose }) {
                 <textarea
                     className='tweet-text-box'
                     type='text'
-                    placeholder="What's happening?"
+                    placeholder="What's happened?"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
@@ -57,4 +53,4 @@ function EditTweetForm({ editId, onClose }) {
     )
 }
 
-export default EditTweetForm;
+export default EditReplyForm;

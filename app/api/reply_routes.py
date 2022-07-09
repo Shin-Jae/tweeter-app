@@ -40,5 +40,29 @@ def post_reply(userId, tweetId):
         db.session.commit()
 
         return {'replies': [reply.to_dict()]}
-
     return {'errors': validation_errors_to_error_tweets(form.errors)}, 401
+
+
+@reply_routes.route('/<int:replyId>', methods = ['PUT'])
+def edit_reply(replyId):
+    reply = Reply.query.get(replyId)
+    data = request.json
+
+    content = data['content']
+    updated_at = datetime.datetime.now()
+
+    reply.content = content
+    reply.updated_at = updated_at
+    db.session.merge(reply)
+    db.session.flush()
+    db.session.commit()
+    return reply.to_dict()
+
+
+@reply_routes.route('/<int:replyId>', methods = ['DELETE'])
+def delete_reply(replyId):
+    reply = Reply.query.get(replyId)
+
+    db.session.delete(reply)
+    db.session.commit()
+    return "ok"

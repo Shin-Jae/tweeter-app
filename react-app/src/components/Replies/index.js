@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-// import { useParams } from "react-router-dom";
+import DeleteReplyModal from "../DeleteReply";
+import EditReplyModal from "../EditReply";
+import { useParams } from "react-router-dom";
 
 
 function Replies() {
-    // const { tweetId } = useParams();
+    const { userId } = useParams();
 
     const tweetReplies = useSelector((state) => state.replies);
     const allUsers = useSelector((state) => state.search);
@@ -18,6 +20,16 @@ function Replies() {
                 {replies.map(reply => {
                     return <div key={reply.id} className='one-tweet-container'>
                         <div className='tweet-borders'></div>
+                        {reply.user_id === parseInt(userId) ?
+                            <div key={`btn-${reply.id}`} className="one-tweet-edit-btns">
+                                <span>
+                                    <EditReplyModal replyId={reply.id} />
+                                </span>
+                                <span>
+                                    <DeleteReplyModal replyId={reply.id} />
+                                </span>
+                            </div>
+                            : null}
                         <div>
                             {users.map(user => {
                                 return <span key={`${reply.id}-${user.id}`}>

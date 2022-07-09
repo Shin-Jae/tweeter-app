@@ -1,6 +1,7 @@
 const GET_REPLIES = "replies/GET_REPIES";
 const POST_REPLY = "replies/POST_REPLY";
 const EDIT_REPLY = "replies/EDIT_REPLY";
+const DELETE_REPLY = "replies/DELETE_REPLY";
 
 export const getReplies = (replies) => ({
     type: GET_REPLIES,
@@ -10,6 +11,15 @@ export const getReplies = (replies) => ({
 export const postReply = (reply) => ({
     type: POST_REPLY,
     reply
+})
+
+export const editReply = (reply) => ({
+    type: EDIT_REPLY,
+    reply
+})
+
+export const deleteReply = () => ({
+    type: DELETE_REPLY
 })
 
 export const tweetReplies = (tweetId) => async dispatch => {
@@ -31,7 +41,29 @@ export const postOneReply = (userId, tweetId, payload) => async dispatch => {
     if (response.ok) {
         let reply = await response.json();
         dispatch(postReply(reply));
-        return reply
+        return reply;
+    }
+}
+
+export const editOneReply = (replyId, payload) => async dispatch => {
+    const response = await fetch(`/api/replies/${replyId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+    if (response.ok) {
+        const reply = await response.json();
+        dispatch(dispatch(editReply(reply)));
+        return reply;
+    }
+}
+
+export const deleteOneReply = (replyId) => async dispatch => {
+    const response = await fetch(`/api/replies/${replyId}`, {
+        method: 'DELETE'
+    });
+    if (response.ok) {
+        dispatch(deleteReply())
     }
 }
 
@@ -46,12 +78,10 @@ const replyReducer = (state = initialState, action) => {
                 replies[reply.id] = reply;
             };
             return { ...replies };
-        // case GET_ONE:
-        //     return action.tweet;
-        // case EDIT_TWEET:
-        //     const editTweet = { ...state }
-        //     editTweet[action.tweet.id] = action.tweet;
-        //     return editTweet
+        case EDIT_REPLY:
+            const editReply = { ...state }
+            editReply[action.reply.id] = action.reply;
+            return editReply
         default:
             return state;
     };
