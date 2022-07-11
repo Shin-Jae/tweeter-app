@@ -1,7 +1,7 @@
 .one-tweet-container {
     font-size: 14.9px;
     font-family: 'Helvetica Neue', sans-serif;
-    width: 550px;
+    /* width: 600px; */
     margin-left: -24px;
     padding-bottom: 30px;
     transition: 0s;
@@ -29,7 +29,7 @@
 
 .tweet-borders {
     border-top: 1px solid rgb(239, 243, 244);
-    width: 607px;
+    width: 600px;
     margin-left: -15px;
     margin-bottom: 10px;
     z-index: .5;

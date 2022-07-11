@@ -1,0 +1,104 @@
+.profile-page-container {
+    width: 608px;
+    margin-left: 0;
+    font-size: 14.5px;
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    border-bottom: 1px solid rgb(207, 217, 222);
+    z-index: .5;
+}
+
+.fullname-header {
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid rgb(207, 217, 222);
+    height: 53px;
+}
+
+.profile-banner-img {
+    height: 199px;
+    width: 608px;
+    z-index: .5;
+}
+
+.profile-page-user-img {
+    border-radius: 50%;
+    border: 4px solid white;
+    height: 133px;
+    width: 133px;
+    margin-left: 16px;
+    margin-top: -77px;
+    z-index: 1;
+}
+
+.profile-follow-btn {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+    margin-top: -50px;
+    margin-bottom: 25px;
+}
+
+.follow-btn {
+    min-width: 36px;
+    min-height: 36px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: rgb(15, 20, 25);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 9999px;
+}
+
+.following-btn {
+    min-width: 36px;
+    min-height: 36px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid rgb(207, 217, 222);
+    box-shadow: none;
+    border-radius: 9999px;
+}
+
+.profile-page-info-container {
+    margin-left: 15px;
+}
+
+.full-name-profile-page {
+    font-weight: 770;
+    font-size: 20px;
+}
+
+.username-profile-page {
+    color:rgb(83, 100, 113);
+    padding-bottom: 20px;
+}
+
+.follow-display {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.follower-count {
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.following-count {
+    padding-right: 5px;
+    font-weight: bold;
+}
+
+.followers-text {
+    font-size: 14px;
+    color:rgb(83, 100, 113);
+}
+
+.following-text {
+    color:rgb(83, 100, 113);
+    margin-right: 30px;
+    font-size: 14px;
+}
