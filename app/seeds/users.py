@@ -4,7 +4,7 @@ import datetime
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     lebron = User(
-        first_name='Lebron',
+        first_name='LeBron',
         last_name='James',
         username='KingJames',
         email='le@bron.com',
