@@ -11,10 +11,8 @@ function ProfilePage() {
     const allUsers = useSelector((state) => state.search);
     const followers = Object.values(allUsers)
     const users = useSelector((state) => state.search[profileId])
-    console.log('followers', followers)
 
     const filter = followers.filter(user => user.id === parseInt(profileId))
-    console.log('follow', filter)
 
     return (
         <div className="profile-page-container">

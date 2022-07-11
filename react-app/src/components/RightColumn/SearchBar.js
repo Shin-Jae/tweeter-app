@@ -8,7 +8,6 @@ function SearchBar() {
     const history = useHistory();
     const [query, setQuery] = useState("")
     const [found, setFound] = useState("")
-
     const userId = useSelector((state) => state.session.user.id)
     const allUsers = useSelector((state) => state.search)
     const users = Object.values(allUsers)

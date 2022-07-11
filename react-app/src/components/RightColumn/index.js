@@ -17,7 +17,9 @@ function RightColumn() {
     return (
         <div className="grid-container search">
             <div>
-                <SearchBar />
+                {user ?
+                    <SearchBar />
+                    : null}
             </div>
             <div>
                 <WhoToFollow />
