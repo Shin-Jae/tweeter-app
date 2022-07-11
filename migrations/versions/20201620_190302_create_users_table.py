@@ -60,7 +60,6 @@ def upgrade():
     sa.Column('followed_id', sa.Integer()),
     sa.ForeignKeyConstraint(['follower_id'], ['users.id']),
     sa.ForeignKeyConstraint(['followed_id'], ['users.id']),
-    sa.PrimaryKeyConstraint('follower_id')
     )
     # ### end Alembic commands ###qqqqqqqqq
 

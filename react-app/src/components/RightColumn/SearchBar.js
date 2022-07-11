@@ -13,6 +13,7 @@ function SearchBar() {
     const users = Object.values(allUsers)
 
     const submitSearch = (profileId) => {
+        setQuery("");
         history.push(`/profile/${userId}/${profileId}`);
     }
 

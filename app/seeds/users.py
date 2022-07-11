@@ -42,9 +42,9 @@ def seed_users():
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
         )
-    demo.following.append(lebron)
-    elon.follow(lebron)
-    elon.follow(demo)
+    demo.followers.append(lebron)
+    elon.followers.append(lebron)
+    elon.followers.append(demo)
 
 
     db.session.add(lebron)

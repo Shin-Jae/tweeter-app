@@ -12,8 +12,14 @@ function ProfilePage() {
     const followers = Object.values(allUsers)
     const users = useSelector((state) => state.search[profileId])
 
-    const filter = followers.filter(user => user.id === parseInt(profileId))
-
+    let count = 0
+    followers.forEach(user => {
+        if (user.id !== parseInt(profileId)) {
+            user.following.forEach(follow => {
+                if (follow.id === parseInt(profileId)) count += 1;
+            })
+        }
+    })
     return (
         <div className="profile-page-container">
             <div className="fullname-header">
@@ -50,7 +56,7 @@ function ProfilePage() {
                     </span>
                     <span>
                         <span className="follower-count">
-                            {filter.length}
+                            {count}
                         </span>
                         <span className="followers-text">
                             Followers

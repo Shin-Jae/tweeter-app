@@ -1,4 +1,3 @@
-from operator import index
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -7,9 +6,9 @@ from flask_login import UserMixin
 follows = db.Table(
     'follows',
     db.Column('follower_id', db.Integer, db.ForeignKey(
-        'users.id'), primary_key=True),
+        'users.id')),
     db.Column('followed_id', db.Integer, db.ForeignKey(
-        'users.id'), primary_key=True)
+        'users.id'))
 )
 
 class User(db.Model, UserMixin):
@@ -32,23 +31,23 @@ class User(db.Model, UserMixin):
 
     replies = db.relationship("Reply", back_populates="user")
 
-    following = db.relationship(
+    followers = db.relationship(
         "User",
         secondary=follows,
         primaryjoin=(follows.c.follower_id == id),
         secondaryjoin=(follows.c.followed_id == id),
-        backref=db.backref("follows", lazy="dynamic"),
+        backref=db.backref("following", lazy="dynamic"),
         lazy="dynamic"
     )
 
     def follow(self, follow):
-        if follow not in self.following:
-            self.following.append(follow)
+        if follow not in self.followers:
+            self.followers.append(follow)
 
 
     def unfollow(self, follow):
-        if follow in self.following:
-            self.following.remove(follow)
+        if follow in self.followers:
+            self.followers.remove(follow)
 
     @property
     def password(self):
@@ -72,10 +71,10 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'profile_img': self.profile_img,
             'banner_img': self.banner_img,
-            'following': [follow.to_dict_following() for follow in self.following]
+            'following': [follow.to_dict_followers() for follow in self.followers]
         }
 
-    def to_dict_following(self):
+    def to_dict_followers(self):
         return {
             'id': self.id,
             'first_name': self.first_name,
@@ -87,7 +86,7 @@ class User(db.Model, UserMixin):
             'profile_img': self.profile_img,
         }
 
-    def to_dict_following(self):
+    def to_dict_followers(self):
         return {
             'id': self.id,
             'first_name': self.first_name,

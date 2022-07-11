@@ -5,10 +5,15 @@
 .input-search-bar-field {
     background-color: rgb(239, 243, 244);
     height: 50px;
-    width: 348px;
     border: none;
+    width: 348px;
     border-radius: 9999px;
     font-size: 14px;
+}
+
+.container-search-result {
+    border: 1px solid black;
+    width: 348px;
 }
 
 .who-to-follow-container {
