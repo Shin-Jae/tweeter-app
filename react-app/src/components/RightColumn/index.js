@@ -22,7 +22,9 @@ function RightColumn() {
                     : null}
             </div>
             <div>
-                <WhoToFollow />
+                {user ?
+                    <WhoToFollow />
+                    : null}
             </div>
         </div>
     )
