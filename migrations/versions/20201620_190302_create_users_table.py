@@ -26,6 +26,7 @@ def upgrade():
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('birthday', sa.Date(), nullable=False),
     sa.Column('profile_img', sa.String(length=2000)),
+    sa.Column('banner_img', sa.String(length=2000)),
     sa.Column('bio', sa.String(length=280)),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),

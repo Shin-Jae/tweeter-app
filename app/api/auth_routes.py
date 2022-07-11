@@ -71,6 +71,7 @@ def sign_up():
             birthday=form.data['birthday'],
             bio='',
             profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette.wikia.nocookie.net%2Fthe-sun-vanished%2Fimages%2F5%2F5d%2FTwitter-avi-gender-balanced-figure.png%2Frevision%2Flatest%3Fcb%3D20180713020754&f=1&nofb=1',
+            banner_img='https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.wallpapersafari.com%2F11%2F64%2FkEgxZh.png&f=1&nofb=1',
             password=form.data['password'],
             created_at=datetime.datetime.now(),
             updated_at=datetime.datetime.now()

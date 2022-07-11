@@ -24,6 +24,7 @@ class User(db.Model, UserMixin):
     birthday = db.Column(db.Date, nullable=False)
     bio = db.Column(db.String(280))
     profile_img = db.Column(db.String(2000))
+    banner_img = db.Column(db.String(2000))
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
@@ -71,6 +72,7 @@ class User(db.Model, UserMixin):
             'birthday': self.birthday,
             'bio': self.bio,
             'profile_img': self.profile_img,
+            'banner_img': self.banner_img,
             'following': [follow.to_dict_following() for follow in self.following]
         }
 
@@ -96,6 +98,7 @@ class User(db.Model, UserMixin):
             'birthday': self.birthday,
             'bio': self.bio,
             'profile_img': self.profile_img,
+            'banner_img': self.banner_img,
         }
 
 class Tweet(db.Model):

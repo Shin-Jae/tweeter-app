@@ -20,7 +20,7 @@ function ProfilePage() {
                 {users?.first_name} {users?.last_name}
             </div>
             <div className="profile-banner">
-                <img src={"https://pbs.twimg.com/profile_banners/23083404/1529843462/1500x500"} alt='banner' className="profile-banner-img" />
+                <img src={`${users?.banner_img}`} alt='banner' className="profile-banner-img" />
             </div>
             <div>
                 <img src={`${users?.profile_img}`} alt='profile-img' className='profile-page-user-img' />

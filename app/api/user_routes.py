@@ -22,7 +22,7 @@ def user(id):
 def followUser(userId, followingId):
     user = User.query.get(userId)
     following = User.query.get(followingId)
-    user.following.append(following)
+    user.follow(following)
 
     db.session.merge(user)
     db.sessionf.flush()
