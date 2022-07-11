@@ -8,9 +8,9 @@ follows = db.Table(
     'follows',
     db.Model.metadata,
     db.Column('follower_id', db.Integer, db.ForeignKey(
-        'users.id'), index=True),
+        'users.id'), primary_key=True),
     db.Column('followed_id', db.Integer, db.ForeignKey(
-        'users.id'))
+        'users.id'), primary_key=True)
 )
 
 class User(db.Model, UserMixin):
@@ -35,13 +35,16 @@ class User(db.Model, UserMixin):
     following = db.relationship(
         "User",
         secondary=follows,
-        primaryjoin=id == follows.c.follower_id,
-        secondaryjoin=id == follows.c.followed_id,
+        primaryjoin=(follows.c.follower_id == id),
+        secondaryjoin=(follows.c.followed_id == id),
+        backref=db.backref("follows", lazy="dynamic"),
+        lazy="dynamic"
     )
 
     def follow(self, follow):
         if follow not in self.following:
             self.following.append(follow)
+
 
     def unfollow(self, follow):
         if follow in self.following:
@@ -83,7 +86,7 @@ class User(db.Model, UserMixin):
             'profile_img': self.profile_img,
         }
 
-    def to_dict_followers(self):
+    def to_dict_following(self):
         return {
             'id': self.id,
             'first_name': self.first_name,

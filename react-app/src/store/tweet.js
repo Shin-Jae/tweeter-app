@@ -69,7 +69,7 @@ export const editOneTweet = (tweetId, payload) => async dispatch => {
     });
     if (response.ok) {
         const tweet = await response.json();
-        dispatch(dispatch(editTweet(tweet)));
+        dispatch(editTweet(tweet));
         return tweet;
     };
 };

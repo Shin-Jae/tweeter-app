@@ -26,7 +26,6 @@ def seed_users():
         password='password',
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
-        following=[lebron],
         )
     elon = User(
         first_name='Elon',
@@ -39,8 +38,11 @@ def seed_users():
         password='password',
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
-        following=[demo]
         )
+    demo.following.append(lebron)
+    elon.follow(lebron)
+    elon.follow(demo)
+
 
     db.session.add(lebron)
     db.session.add(demo)
