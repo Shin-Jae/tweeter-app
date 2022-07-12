@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import Follow from "../Follow";
 import './RightColumn.css';
 
 
@@ -52,17 +53,30 @@ function SearchBar() {
             />
             {query ?
                 <div className="container-search-result">
-                    <ul className="filtered-list" >
+                    <ul className="filtered-list" style={{ listStyleType: 'none' }}>
                         {query ? filteredUsers.map(user => {
                             if (user.id !== userId) {
                                 return <li key={user.id}
                                     className='search__icon--name'
                                 >
-                                    <button
-                                        className="nav-search-results"
-                                        onClick={() => submitSearch(user.id)}
-                                        type="button">{user.first_name} {user.last_name}
-                                    </button>
+                                    <NavLink to={`/profile/${userId}/${user.id}`} key={`${user.id}-search-link`} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }}>
+                                        <div key={user.id} className="user-search-container">
+                                            <span>
+                                                <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
+                                            </span>
+                                            <div className="user-fullname-username">
+                                                <div className="recommended-fullname">
+                                                    {user.first_name} {user.last_name}
+                                                </div>
+                                                <div className='recommended-username'>
+                                                    @{user.username}
+                                                </div>
+                                            </div>
+                                            <div className="recommened-follow-btn">
+                                                <Follow followingId={user.id} />
+                                            </div>
+                                        </div>
+                                    </NavLink>
                                 </li>
                             }
                         }) : null}
