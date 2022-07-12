@@ -37,8 +37,8 @@ function Homepage() {
 
     return (
         <div className='grid-container homepage'>
-            <div>
-                Homepage
+            <div className='home-text'>
+                Home
             </div>
             <div>
                 <TweetForm />

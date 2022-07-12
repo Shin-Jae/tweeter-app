@@ -1,0 +1,41 @@
+.tweet-form-container {
+    border-bottom: 1px solid rgb(239, 243, 244);
+}
+
+.tweet-form-profile-img {
+    display: inline-flex;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.tweet-text-box {
+    width: 500px;
+    height: 30px;
+    font-size: 20px;
+    margin-top: 20px;
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    border: none;
+}
+
+.tweet-submit {
+    display: flex;
+    justify-content: flex-end;
+    /* margin-right: 15px; */
+    margin-left: 78px;
+    border-top: 1px solid rgb(239, 243, 244);
+    width: 505px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.submit-tweet-btn {
+    margin-top: 10px;
+    height: 37px;
+    width: 77px;
+    border-radius: 9999px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(29, 155, 240);
+    border: 1px solid white;
+}
