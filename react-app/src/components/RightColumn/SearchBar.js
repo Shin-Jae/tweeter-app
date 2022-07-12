@@ -39,6 +39,9 @@ function SearchBar() {
 
     return (
         <div className="container-full-search">
+            <div className="search-icon">
+                <i className="fa-solid fa-magnifying-glass"></i>
+            </div>
             <input
                 className="input-search-bar-field"
                 type="text"

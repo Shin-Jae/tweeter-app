@@ -16,7 +16,6 @@ function Tweets() {
 
     return (
         <div>
-            Tweets
             <ul style={{ listStyleType: 'none' }}>
                 {tweets.map(tweet => {
                     return <div key={tweet.id} className='one-tweet-container'>
@@ -37,7 +36,7 @@ function Tweets() {
                                     tweet.user_id === user.id ?
                                         <span>
 
-                                            <div className='user-profile'>
+                                            <NavLink to={`/profile/${userId}/${user.id}`} exact={true} className='user-profile' activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} key={user.id}>
                                                 <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
                                                 <div className='user-info'>
                                                     <div className='user-fullname'>
@@ -47,7 +46,7 @@ function Tweets() {
                                                         @{user.username}
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </NavLink>
                                         </span>
                                         : null
                                 }

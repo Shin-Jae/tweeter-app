@@ -13,11 +13,11 @@ const NavBar = () => {
         <li className='side-bar-icon' >
           {user ?
             <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active' >
-              <i class="fa-brands fa-twitter fa-2xl twitter-icon"></i>
+              <i className="fa-brands fa-twitter fa-2xl twitter-icon"></i>
             </NavLink>
             :
             <NavLink to={`/login`} exact={true} activeClassName='active'>
-              <i class="fa-brands fa-twitter fa-2xl twitter-icon"></i>
+              <i className="fa-brands fa-twitter fa-2xl twitter-icon"></i>
             </NavLink>
           }
         </li >
@@ -47,27 +47,29 @@ const NavBar = () => {
         <li className='side-bar-icon'>
           {user ?
             <NavLink to={`/profile/${user.id}/${user.id}`} exact={true} activeStyle={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }} style={{ textDecoration: 'none', color: 'black' }}>
-              <i class="fa-regular fa-user fa-xl profile-icon"></i>
+              <i className="fa-regular fa-user fa-xl profile-icon"></i>
               <span className='side-bar-icon-text'>
                 Profile
               </span>
             </NavLink>
             : null}
         </li>
-        <div className='side-bar-profile-logout'>
-          <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
-          <div className="user-fullname-username">
-            <div className="recommended-fullname">
-              {user.first_name} {user.last_name}
+        {user ?
+          <div className='side-bar-profile-logout'>
+            <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
+            <div className="user-fullname-username">
+              <div className="recommended-fullname">
+                {user.first_name} {user.last_name}
+              </div>
+              <div className='recommended-username'>
+                @{user.username}
+              </div>
             </div>
-            <div className='recommended-username'>
-              @{user.username}
-            </div>
+            <li>
+              <LogoutButton />
+            </li>
           </div>
-          <li>
-            <LogoutButton />
-          </li>
-        </div>
+          : null}
       </ul>
     </nav >
   );
