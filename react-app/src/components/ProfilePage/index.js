@@ -1,16 +1,24 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getUserTweets } from "../../store/tweet";
 import Follow from "../Follow";
 import "./ProfilePage.css"
+import UserTweets from "./UserTweets";
 
 
 function ProfilePage() {
     const { profileId } = useParams();
+    const dispatch = useDispatch();
 
     const follow = useSelector((state) => state.session.user.following)
     const allUsers = useSelector((state) => state.search);
     const followers = Object.values(allUsers)
     const users = useSelector((state) => state.search[profileId])
+
+    useEffect(() => {
+        dispatch(getUserTweets(profileId));
+    }, [profileId]);
 
     let count = 0
     followers.forEach(user => {
@@ -62,6 +70,12 @@ function ProfilePage() {
                             Followers
                         </span>
                     </span>
+                </div>
+                <div className="profile-tweets-container">
+                    <div className="profile-tweets-header">Tweets</div>
+                    <div>
+                        <UserTweets profileId={profileId} />
+                    </div>
                 </div>
             </div>
         </div >

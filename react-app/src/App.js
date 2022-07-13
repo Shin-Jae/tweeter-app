@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Homepage from './components/Homepage';
@@ -11,6 +9,7 @@ import SingleTweet from './components/SingleTweet';
 import RightColumn from './components/RightColumn';
 import ProfilePage from './components/ProfilePage';
 import SplashPage from './components/SplashPage';
+import ExplorePage from './components/ExplorePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +44,9 @@ function App() {
             </ProtectedRoute>
             <ProtectedRoute path='/profile/:userId/:profileId' exact={true} >
               <ProfilePage />
+            </ProtectedRoute>
+            <ProtectedRoute path='/:userId/explore' exact={true} >
+              <ExplorePage />
             </ProtectedRoute>
           </Switch>
           <RightColumn />

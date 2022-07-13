@@ -3,6 +3,8 @@ const GET_ONE = "tweets/GET_ONE";
 const POST_TWEET = "tweets/POST_TWEET";
 const EDIT_TWEET = "tweets/EDIT_TWEET";
 const DELETE_TWEET = "tweets/DELETE_TWEET";
+const USER_TWEETS = "tweets/USER_TWEETS";
+const EXPLORE_TWEETS = "tweets/EXPLORE_TWEETS";
 
 export const allTweets = (tweets) => ({
     type: ALL_TWEETS,
@@ -12,6 +14,11 @@ export const allTweets = (tweets) => ({
 export const oneTweet = (tweet) => ({
     type: GET_ONE,
     tweet
+})
+
+export const exploreTweets = (tweets) => ({
+    type: EXPLORE_TWEETS,
+    tweets
 })
 
 export const postTweet = (tweet) => ({
@@ -28,12 +35,27 @@ export const deleteTweet = () => ({
     type: DELETE_TWEET
 })
 
+export const userTweets = (tweets) => ({
+    type: USER_TWEETS,
+    tweets
+})
+
 export const getAllTweets = (userId, following) => async dispatch => {
     const response = await fetch(`/api/tweets/${userId}/${following}`);
 
     if (response.ok) {
         let tweets = await response.json();
         dispatch(allTweets(tweets));
+        return tweets;
+    };
+};
+
+export const getExploreTweets = (userId) => async dispatch => {
+    const response = await fetch(`/api/tweets/explore/${userId}`);
+
+    if (response.ok) {
+        let tweets = await response.json();
+        dispatch(exploreTweets(tweets));
         return tweets;
     };
 };
@@ -47,6 +69,16 @@ export const getOneTweet = (tweetId) => async dispatch => {
         return tweet
     };
 };
+
+export const getUserTweets = (profileId) => async dispatch => {
+    const response = await fetch(`/api/tweets/profile/${profileId}`);
+
+    if (response.ok) {
+        let tweets = await response.json();
+        dispatch(userTweets(tweets));
+        return tweets;
+    }
+}
 
 export const postOneTweet = (userId, content) => async dispatch => {
     const response = await fetch(`/api/tweets/${userId}`, {
@@ -99,6 +131,19 @@ const tweetReducer = (state = initialState, action) => {
             const editTweet = { ...state }
             editTweet[action.tweet.id] = action.tweet;
             return editTweet
+        case USER_TWEETS:
+        case ALL_TWEETS:
+            const userTweets = {};
+            for (let tweet of action.tweets.tweets) {
+                userTweets[tweet.id] = tweet;
+            };
+            return { ...userTweets };
+        case EXPLORE_TWEETS:
+            const explore = {};
+            for (let tweet of action.tweets.tweets) {
+                explore[tweet.id] = tweet;
+            };
+            return { ...explore };
         default:
             return state;
     };

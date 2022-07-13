@@ -1,7 +1,7 @@
 import datetime
 from flask import Blueprint, jsonify, request
 from app.forms.tweet_form import TweetForm
-from app.models import db, Tweet
+from app.models import db, Tweet, User
 
 
 tweet_routes = Blueprint('tweets', __name__)
@@ -27,6 +27,18 @@ def tweets(userId, following):
 
     return {'tweets': [tweet.to_dict() for tweet in tweets]}
 
+@tweet_routes.route('/explore/<int:userId>')
+def exploreTweets(userId):
+    user = User.query.get(userId).to_dict()
+
+    ids = [userId]
+    for ele in user['following']:
+        ids.append(int(ele['id']))
+
+    tweets = Tweet.query.filter(Tweet.user_id.not_in(ids)).all()
+
+    return {'tweets': [tweet.to_dict() for tweet in tweets]}
+
 
 @tweet_routes.route('/<int:tweetId>')
 def tweet(tweetId):
@@ -34,6 +46,11 @@ def tweet(tweetId):
 
     return tweet.to_dict()
 
+@tweet_routes.route('/profile/<int:profileId>')
+def userTweets(profileId):
+    tweets = Tweet.query.filter(Tweet.user_id == profileId).all()
+
+    return {'tweets': [tweet.to_dict() for tweet in tweets]}
 
 @tweet_routes.route('/<int:userId>', methods = ['POST'])
 def post_tweet(userId):

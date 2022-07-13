@@ -102,3 +102,15 @@
     margin-right: 30px;
     font-size: 14px;
 }
+
+/* tweets */
+.profile-tweets-container {
+    margin-left: -15px;
+    margin-top: 30px;
+}
+
+.profile-tweets-header {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
