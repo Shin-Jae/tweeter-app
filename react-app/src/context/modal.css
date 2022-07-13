@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     z-index: 10;
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
   #modal-background {

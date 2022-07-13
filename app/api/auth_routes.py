@@ -40,7 +40,9 @@ def login():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        user = User.query.filter(User.email == form.data['email']).first()
+        userEmail = User.query.filter(User.email == form.data['credential']).first()
+        userUsername = User.query.filter(User.username == form.data['credential']).first()
+        user = userEmail or userUsername
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

@@ -2,24 +2,30 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './Auth.css';
 
-const LoginForm = () => {
+const LoginForm = ({ onClose }) => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState('');
+  const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
+    const data = await dispatch(login(credential, password));
     if (data) {
       setErrors(data);
     }
   };
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
+  const demoUser = async (e) => {
+    e.preventDefault();
+    await dispatch(login('demo@aa.io', 'password'))
+  }
+
+  const updateCredential = (e) => {
+    setCredential(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -31,34 +37,57 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className='login-container'>
+      <div className='login-header-container'>
+        <button className='login-close-btn' onClick={() => onClose(false)} type='button'>x</button>
+        <i className="fa-brands fa-twitter fa-2xl twitter-icon"></i>
       </div>
+      <h2 className='login-header-text'>
+        Sign in to Tweeter
+      </h2>
       <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
+        <button
+          className='demo-login-btn demo-user'
+          type='submit'
+          onClick={demoUser}
+        >Continue with Demo User</button>
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
+      <div className='container-content-rule'>
+        <hr className='horizontal-line line-left'></hr>
+        <div className='content-rule-center'> or </div>
+        <hr className='horizontal-line line-right'></hr>
       </div>
-    </form>
+      <form onSubmit={onLogin}>
+        <div className='errors-container'>
+          {errors.map((error, ind) => (
+            <div className='errors' key={ind}>{error}</div>
+          ))}
+        </div>
+        <div>
+          <input
+            name='credentials'
+            className='login-field'
+            type='text'
+            placeholder='Email or username'
+            value={credential}
+            onChange={updateCredential}
+          />
+        </div>
+        <div>
+          <input
+            name='password'
+            className='login-field'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+          />
+          <div className='submit-login-container'>
+            <button className='login-btn' type='submit'>Log in</button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 

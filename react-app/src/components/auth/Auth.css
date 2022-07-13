@@ -1,0 +1,135 @@
+.login-container {
+    height: 520px;
+    max-width: 620px;
+    min-width: 600px;
+    min-height: 520px;
+    text-align: center;
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.login-header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin-left: 10px;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.login-close-btn {
+    border: none;
+    background-color: transparent;
+    font-size: 25px;
+    transition: 0s;
+}
+
+.login-close-btn:hover {
+    background-color: lightgrey;
+    border-radius: 50%;
+}
+
+.login-header-text {
+    font-size: 30px;
+    padding-top: 10px;
+}
+
+.demo-login-btn {
+    border-radius: 9999px;
+    border: 1px solid lightgrey;
+    background-color: transparent;
+    font-size: 15px;
+    color: black;
+    font-weight: 550;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.container-content-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    text-align: center;
+}
+
+.line-left {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.content-rule-center {
+    padding: 0 15px;
+}
+
+.line-right {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.horizontal-line {
+    border: none;
+    border-top: 1px solid lightgrey;
+    max-width: 125px;
+    clear: both;
+}
+
+.login-field {
+    width: 290px;
+    height: 50px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 17px;
+    padding-left: 10px;
+}
+
+.submit-login-container {
+    margin-bottom: 20px;
+}
+
+.login-btn {
+    width: 310px;
+    height: 45px;
+    border-radius: 9999px;
+    font-size: 16px;
+    margin-top: 25px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.errors-container {
+    margin-top: 15px;
+}
+
+.errors {
+    color: rgb(245, 83, 83);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* signup-form */
+
+.signup-container {
+    height: 520px;
+    max-width: 620px;
+    min-width: 600px;
+    min-height: 600px;
+    text-align: center;
+    overflow-x: scroll;
+    overflow-x: hidden;
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.signup-btn {
+    width: 310px;
+    height: 45px;
+    border-radius: 9999px;
+    font-size: 16px;
+    margin-top: 25px;
+    background-color: rgb(29, 155, 240);
+    border: .5px solid white;
+    color: white;
+    font-weight: bold;
+}
