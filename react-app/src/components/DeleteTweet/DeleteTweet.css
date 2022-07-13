@@ -1,0 +1,43 @@
+.delete-modal-container {
+    width: 260px;
+    height: 235px;
+    padding: 32px;
+}
+
+.delete-tweet-header {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.delete-tweet-text {
+    font-size: 15px;
+    color: gray;
+}
+
+.delete-btns {
+    height: 47px;
+    font-size: 15px;
+    font-weight: bold;
+    width: 255px;
+    border-radius: 9999px;
+    transition: .5s;
+    filter: brightness(1);
+}
+
+.delete-btns:hover {
+    filter:brightness(.9);
+}
+
+.btn-delete-yes {
+    background-color: red;
+    border: 1px solid white;
+    color: white;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.btn-delete-no {
+    background-color: white;
+    border: 1px solid lightgrey;
+    color: black;
+}

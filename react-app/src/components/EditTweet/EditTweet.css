@@ -1,0 +1,41 @@
+.edit-tweet-container {
+    height: 250px;
+    width: 600px;
+}
+
+.close-edit-modal {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.edit-form-container {
+    display: inline-flex;
+    height: 100px;
+}
+
+.edit-tweet-input {
+    padding-top: 15px;
+    margin-top: 0;
+    width: 500px;
+    height: 80px;
+}
+
+.submit-edit {
+    border-top: 1px solid lightgray;
+    margin-top: 20px;
+    margin-left: 77px;
+    width: 505px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-submit-btn:disabled {
+    opacity: .4;
+}
+
+.edit-errors {
+    margin-left: 40px;
+    margin-top: -25px;
+    position: absolute;
+}

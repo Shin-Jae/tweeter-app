@@ -20,7 +20,6 @@
 .tweet-submit {
     display: flex;
     justify-content: flex-end;
-    /* margin-right: 15px; */
     margin-left: 78px;
     border-top: 1px solid rgb(239, 243, 244);
     width: 505px;
@@ -40,10 +39,6 @@
     border: 1px solid white;
 }
 
-/* .out-of-range {
-    color: red;
+.submit-tweet-btn:disabled {
+    opacity: .4;
 }
-
-.zero {
-    color: transparent;
-} */

@@ -21,16 +21,16 @@ function DeleteReply({ replyId, onClose }) {
     }
 
     return (
-        <div>
-            <h2>Delete Tweet?</h2>
+        <div className="delete-modal-container">
+            <div className="delete-tweet-header">Delete Tweet?</div>
             <div>
-                <p>This can't be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Twitter search results.</p>
+                <p className="delete-tweet-text">This can't be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Twitter search results.</p>
             </div>
             <div>
-                <button type="button" onClick={handleDelete}>Delete</button>
+                <button className="delete-btns btn-delete-yes" type="button" onClick={handleDelete}>Delete</button>
             </div>
             <div>
-                <button type="button" onClick={handleClose}>Cancel</button>
+                <button className="delete-btns btn-delete-no" type="button" onClick={handleClose}>Cancel</button>
             </div>
         </div>
     )

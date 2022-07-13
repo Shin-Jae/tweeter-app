@@ -45,7 +45,7 @@ function TweetForm() {
                 </div>
                 {errors[0] &&
                     <ul className='error__container'>{errors.map((error) => (
-                        <li className="error_info error__text" key={error}>
+                        <li className="errors" key={error}>
                             {error}
                         </li>))}
                     </ul>}
@@ -70,7 +70,7 @@ function TweetForm() {
                     <button
                         className='submit-tweet-btn'
                         type='submit'
-                        disabled={errors.length}
+                        disabled={content.length > 280 || !content.length}
                     >
                         <span>
                             Tweet

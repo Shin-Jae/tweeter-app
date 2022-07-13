@@ -65,3 +65,7 @@
     /* border: 1px solid black; */
     bottom: 0;
 }
+
+.error__container {
+    list-style: none;
+}
