@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
-import DeleteTweetModal from '../DeleteTweet';
-import EditTweetModal from '../EditTweet';
+import DropdownModal from './DropdownModal';
 import './Tweets.css'
 
 function Tweets() {
@@ -14,6 +13,7 @@ function Tweets() {
 
     const tweets = Object.values(allTweets).reverse();
 
+
     return (
         <div>
             <ul style={{ listStyleType: 'none' }}>
@@ -22,33 +22,26 @@ function Tweets() {
                         <div className='tweet-borders'></div>
                         {tweet.user_id === parseInt(userId) ?
                             <div key={`btn-${tweet.id}`} className="one-tweet-edit-btns">
-                                <span>
-                                    <EditTweetModal tweetId={tweet.id} />
-                                </span>
-                                <span>
-                                    <DeleteTweetModal tweetId={tweet.id} />
-                                </span>
+                                <DropdownModal tweetId={tweet.id} />
                             </div>
                             : null}
                         {users.map(user => {
                             return <span key={`${tweet.id}-${user.id}`}>
-                                {
-                                    tweet.user_id === user.id ?
-                                        <span>
-
-                                            <NavLink to={`/profile/${userId}/${user.id}`} exact={true} className='user-profile' activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} key={user.id}>
-                                                <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
-                                                <div className='user-info'>
-                                                    <div className='user-fullname'>
-                                                        {user.first_name} {user.last_name}
-                                                    </div>
-                                                    <div className='user-username'>
-                                                        @{user.username}
-                                                    </div>
+                                {tweet.user_id === user.id ?
+                                    <span>
+                                        <NavLink to={`/profile/${userId}/${user.id}`} exact={true} className='user-profile' activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} key={user.id}>
+                                            <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
+                                            <div className='user-info'>
+                                                <div className='user-fullname'>
+                                                    {user.first_name} {user.last_name}
                                                 </div>
-                                            </NavLink>
-                                        </span>
-                                        : null
+                                                <div className='user-username'>
+                                                    @{user.username}
+                                                </div>
+                                            </div>
+                                        </NavLink>
+                                    </span>
+                                    : null
                                 }
                             </span>
                         })}

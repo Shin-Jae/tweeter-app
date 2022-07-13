@@ -21,8 +21,8 @@
 
 .one-tweet-edit-btns {
     display: flex;
-    width: 500px;
-    margin-bottom: -15px;
+    width: 570px;
+    margin-bottom: -26px;
     justify-content: flex-end;
 }
 
@@ -60,4 +60,13 @@
 .user-username {
     margin-left: 5px;
     color: rgb(83, 100, 113);
+}
+
+.dropdown-container {
+    /* border: 1px solid black; */
+    position: absolute;
+    margin-top: -105px;
+    width: 150px;
+    height: 100px;
+    box-shadow: rgb(101 119 134 / 20%) 0px 0px 15px, rgb(101 119 134 / 15%) 0px 0px 3px 1px;
 }

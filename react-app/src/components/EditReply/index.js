@@ -10,8 +10,9 @@ const EditReplyModal = ({ replyId }) => {
             <div>
                 <button
                     onClick={() => setShowModal(true)}
+                    className='dropdown-btns'
                 >
-                    <span>Edit</span>
+                    <i className="fa-regular fa-pen-to-square fa-lg dropdown-edit-text"></i> <span className="dropdown-edit-text edit-btn-text">Edit</span>
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>

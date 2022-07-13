@@ -10,8 +10,9 @@ const DeleteTweetModal = ({ tweetId }) => {
             <div>
                 <button
                     onClick={() => setShowModal(true)}
+                    className='dropdown-btns'
                 >
-                    <span>Delete</span>
+                    <i className="fa-regular fa-trash-can fa-lg dropdown-delete-text"></i> <span className="dropdown-delete-text delete-btn-text">Delete</span>
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>

@@ -1,0 +1,16 @@
+.edit-delete-dropdown {
+    border: none;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    font-size: 13px;
+    color: grey;
+    transition: .5s;
+}
+
+.edit-delete-dropdown:hover {
+    background-color: rgb(193, 221, 239);
+    color: rgb(29, 155, 240);
+
+}

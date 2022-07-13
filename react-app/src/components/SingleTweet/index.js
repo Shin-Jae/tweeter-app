@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneTweet } from '../../store/tweet';
-import EditTweetModal from '../EditTweet';
-import DeleteTweetModal from '../DeleteTweet';
 import Replies from '../Replies';
 import { tweetReplies } from '../../store/reply';
 import ReplyForm from '../ReplyForm';
+import DropdownModal from '../Tweets/DropdownModal';
 
 function SingleTweet() {
     const dispatch = useDispatch();
@@ -28,13 +27,8 @@ function SingleTweet() {
         <div className='homepage'>
             <div>
                 {oneTweet.user_id === parseInt(userId) ?
-                    <div className="one-tweet-edit-btns">
-                        <span>
-                            <EditTweetModal tweetId={tweetId} />
-                        </span>
-                        <span>
-                            <DeleteTweetModal tweetId={tweetId} />
-                        </span>
+                    <div key={`btn-${oneTweet.id}`} className="one-tweet-edit-btns">
+                        <DropdownModal tweetId={oneTweet.id} />
                     </div>
                     : null}
                 <div className='user-profile'>

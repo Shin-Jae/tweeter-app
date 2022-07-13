@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import DeleteReplyModal from "../DeleteReply";
-import EditReplyModal from "../EditReply";
 import { useParams } from "react-router-dom";
+import EditDropdown from "./EditDropdown";
 
 
 function Replies() {
@@ -22,12 +21,7 @@ function Replies() {
                         <div className='tweet-borders'></div>
                         {reply.user_id === parseInt(userId) ?
                             <div key={`btn-${reply.id}`} className="one-tweet-edit-btns">
-                                <span>
-                                    <EditReplyModal replyId={reply.id} />
-                                </span>
-                                <span>
-                                    <DeleteReplyModal replyId={reply.id} />
-                                </span>
+                                <EditDropdown replyId={reply.id} />
                             </div>
                             : null}
                         <div>
