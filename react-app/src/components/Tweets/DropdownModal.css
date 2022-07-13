@@ -12,5 +12,28 @@
 .edit-delete-dropdown:hover {
     background-color: rgb(193, 221, 239);
     color: rgb(29, 155, 240);
+}
 
+.logout-pop-up {
+    width: 260px;
+    position: absolute;
+    border-radius: 1em;
+    margin-top: -230px;
+    margin-left: 25px;
+    padding: 20px;
+    height: 120px;
+    background-color: white;
+    box-shadow: rgb(101 119 134 / 20%) 0px 0px 15px, rgb(101 119 134 / 15%) 0px 0px 3px 1px;
+}
+
+.logout-btn-username {
+    border: none;
+    width: 285px;
+    height: 60px;
+    margin-left: -20;
+    text-align: left;
+    background-color: transparent;
+    font-size: 15px;
+    margin-left: 15px;
+    cursor: pointer;
 }

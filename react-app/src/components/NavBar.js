@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
 import birdHouseIcon from '../assets/bird-house.png'
+import LogoutPopUp from './LogoutPopUp';
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
@@ -54,22 +54,9 @@ const NavBar = () => {
             </NavLink>
             : null}
         </li>
-        {user ?
-          <div className='side-bar-profile-logout'>
-            <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
-            <div className="user-fullname-username">
-              <div className="recommended-fullname">
-                {user.first_name} {user.last_name}
-              </div>
-              <div className='recommended-username'>
-                @{user.username}
-              </div>
-            </div>
-            <li>
-              <LogoutButton />
-            </li>
-          </div>
-          : null}
+        <div className="logout-popup">
+          <LogoutPopUp />
+        </div>
       </ul>
     </nav >
   );
