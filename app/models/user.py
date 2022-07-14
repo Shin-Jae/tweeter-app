@@ -11,6 +11,14 @@ follows = db.Table(
         'users.id'))
 )
 
+# likes = db.Table(
+#     'likes',
+#     db.Column('user_id', db.Integer, db.ForeignKey(
+#         'users.id')),
+#     db.Column('liked_id', db.Integer, db.ForeignKey(
+#         'tweets.id'))
+# )
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
