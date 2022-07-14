@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import './Auth.css';
 
@@ -10,11 +10,14 @@ const LoginForm = ({ onClose }) => {
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(credential, password));
-    if (data) {
+    if (data.id) {
+      history.push(`/users/${data.id}`)
+    } else if (data) {
       setErrors(data);
     }
   };
@@ -22,6 +25,7 @@ const LoginForm = ({ onClose }) => {
   const demoUser = async (e) => {
     e.preventDefault();
     await dispatch(login('demo@aa.io', 'password'))
+    history.push(`/users/2`)
   }
 
   const updateCredential = (e) => {
@@ -32,8 +36,9 @@ const LoginForm = ({ onClose }) => {
     setPassword(e.target.value);
   };
 
+  console.log('redidirectedd', user)
   if (user) {
-    return <Redirect to={`/users/${user.id}`} />;
+    return <Redirect to={`/users/${user.id}/`} />;
   }
 
   return (

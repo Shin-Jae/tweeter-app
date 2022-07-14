@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = ({ onClose }) => {
@@ -13,19 +13,32 @@ const SignUpForm = ({ onClose }) => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onSignUp = async (e) => {
     e.preventDefault();
 
     if (password === repeatPassword) {
       const data = await dispatch(signUp(name, username, email, birthday, password));
-      if (data) {
+
+      if (data.id) {
+        history.push(`/users/${data.id}`)
+      } else if (data) {
         setErrors(data)
       }
     }
   };
   // const currDate = new Date().toLocaleDateString();
 
+  const getDate = new Date();
+  let year = getDate.getFullYear();
+  let month = getDate.getMonth();
+
+  if (parseInt(month) < 10) {
+    month = `0${month}`
+  }
+  const date = getDate.getDate();
+  const curDate = `${year}-${month}-${date}`
   useEffect(() => {
     const validationErrors = []
     if (name.length < 3) validationErrors.push("Names should be more than 3 characters");
@@ -38,17 +51,8 @@ const SignUpForm = ({ onClose }) => {
     if (password !== repeatPassword) validationErrors.push("Passwords must match")
     if (password.length < 4) validationErrors.push("Passwords must be greater than 4 characters")
     setErrors(validationErrors)
-  }, [name, username, email, birthday, password, repeatPassword])
+  }, [name, username, email, birthday, curDate, password, repeatPassword])
 
-  const getDate = new Date();
-  let year = getDate.getFullYear();
-  let month = getDate.getMonth();
-
-  if (parseInt(month) < 10) {
-    month = `0${month}`
-  }
-  const date = getDate.getDate();
-  const curDate = `${year}-${month}-${date}`
 
   const updateName = (e) => {
     setName(e.target.value);

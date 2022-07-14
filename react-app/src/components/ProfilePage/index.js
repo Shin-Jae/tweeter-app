@@ -44,9 +44,13 @@ function ProfilePage() {
             <div>
                 <img src={`${users?.profile_img}`} alt='profile-img' className='profile-page-user-img' />
             </div>
-            <div className="profile-follow-btn">
-                <Follow followingId={profileId} />
-            </div>
+            {curUser !== parseInt(profileId)
+                ? <div className="profile-follow-btn">
+                    <Follow followingId={profileId} />
+                </div>
+                : null
+            }
+
             <div className="profile-page-info-container">
                 <div className="full-name-profile-page">
                     {users?.name}

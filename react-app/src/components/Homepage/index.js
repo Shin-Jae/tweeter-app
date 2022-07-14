@@ -17,7 +17,8 @@ function Homepage() {
 
         if (!user) {
             return;
-        } else if (`${curUser}` !== userId) {
+        }
+        if (`${curUser}` !== userId) {
             return history.push(`/error`);
         }
 
@@ -28,8 +29,9 @@ function Homepage() {
         })();
 
         //getallTweets
-        if (!follow.length) return;
-        const following = follow.map(per => {
+        let following;
+        if (!follow.length) return following = [];
+        following = follow.map(per => {
             return per.id;
         })
 
