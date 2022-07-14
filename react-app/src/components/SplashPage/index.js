@@ -46,6 +46,32 @@ function SplashPage() {
                     <LoginModal />
                 </div>
             </div>
+            <div className='footer-container'>
+                <div>
+                    <a href="https://github.com/Shin-Jae/tweeter-app" rel="nof" style={{ textDecoration: 'none', color: 'black' }}>
+                        <i className="fa-brands fa-github fa-xl"></i>
+                        <span className='footer-left footer'>
+                            Tweeter
+                        </span>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://github.com/Shin-Jae" rel="nof" style={{ textDecoration: 'none', color: 'black' }}>
+                        <i className="fa-brands fa-github fa-xl"></i>
+                        <span className='footer-middle footer'>
+                            Jae Shin
+                        </span>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.linkedin.com/in/jae-shin-5b3802128/" rel="nof" style={{ textDecoration: 'none' }}>
+                        <i className="fa-brands fa-linkedin fa-xl linkedin"> </i>
+                        <span className='footer-right footer'>
+                            Jae Shin
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>
     )
 }
