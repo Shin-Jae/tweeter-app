@@ -94,7 +94,7 @@ Welcome to Tweeter, a clone of Twitter!
 * Logged-in users can view tweets they posted on their profile page
 3. Replies
 * Logged-in users can create, edit, and delete replies
-* Logged-in users can view replies the page that individual tweet is on
+* Logged-in users can view replies on the page that individual tweet is on
 4. Follow
 * Users can follow other users using the follow button on the right side-bar
 5. Search
