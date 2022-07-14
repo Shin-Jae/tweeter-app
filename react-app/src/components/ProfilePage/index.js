@@ -18,14 +18,14 @@ function ProfilePage() {
     const followers = Object.values(allUsers)
     const users = useSelector((state) => state.search[profileId])
 
+    let count = 0
     useEffect(() => {
-        if (!users) {
+        if (!profileId) {
             return history.push('/error')
         }
         dispatch(getUserTweets(profileId));
-    }, [profileId]);
+    }, [profileId, follow, followers, count]);
 
-    let count = 0
     followers.forEach(user => {
         if (user.id !== parseInt(profileId)) {
             user.following.forEach(follow => {
@@ -44,12 +44,12 @@ function ProfilePage() {
             <div>
                 <img src={`${users?.profile_img}`} alt='profile-img' className='profile-page-user-img' />
             </div>
-            {curUser !== parseInt(profileId)
+            {/* {curUser !== parseInt(profileId)
                 ? <div className="profile-follow-btn">
                     <Follow followingId={profileId} />
                 </div>
                 : null
-            }
+            } */}
 
             <div className="profile-page-info-container">
                 <div className="full-name-profile-page">
@@ -66,7 +66,7 @@ function ProfilePage() {
                 </div>
                 <div className="follow-display">
                     <span className="following-count">
-                        {follow.length}
+                        {users?.following.length}
                     </span>
                     <span className="following-text">
                         Following

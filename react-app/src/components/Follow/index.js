@@ -19,7 +19,6 @@ function Follow({ followingId }) {
             setFollows(!follows)
             dispatch(getAllUsers())
         }
-
     }
     const handleUnfollow = () => {
         const ok = dispatch(unFollowUser(user.id, followingId))

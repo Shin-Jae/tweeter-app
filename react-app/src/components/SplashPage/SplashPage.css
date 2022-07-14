@@ -50,6 +50,11 @@
     font-weight: 550;
     height: 40px;
     margin-bottom: 20px;
+    transition: .5s;
+}
+
+.demo-splash-btn:hover {
+    cursor: pointer;
 }
 
 .happening-now {
@@ -74,6 +79,11 @@
     border: .5px solid white;
     color: white;
     font-weight: bold;
+    transition: .5s;
+}
+
+.signup-modal-btn:hover {
+    cursor: pointer;
 }
 
 .splash-content-rule {
@@ -90,7 +100,13 @@
     border: 1.5px solid lightgrey;
     background-color: white;
     font-weight: bold;
+    transition: .5s;
 }
+
+.signin-modal-btn:hover {
+    cursor: pointer;
+}
+
 
 .already-have-account {
     margin-top: 130px;
