@@ -31,7 +31,7 @@ function SingleTweet() {
             </div>
             <div>
                 {oneTweet.user_id === parseInt(userId) ?
-                    <div key={`btn-${oneTweet.id}`} className="one-tweet-edit-btns">
+                    <div key={`btn-${oneTweet.id}`} className="one-tweet-edit-btns single-tweet-edit">
                         <DropdownModal tweetId={oneTweet.id} />
                     </div>
                     : null}

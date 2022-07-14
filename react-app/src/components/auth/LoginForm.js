@@ -36,7 +36,6 @@ const LoginForm = ({ onClose }) => {
     setPassword(e.target.value);
   };
 
-  console.log('redidirectedd', user)
   if (user) {
     return <Redirect to={`/users/${user.id}/`} />;
   }

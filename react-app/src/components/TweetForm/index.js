@@ -17,6 +17,7 @@ function TweetForm() {
     useEffect(() => {
         const validationErrors = []
         if (content.length > 280) validationErrors.push("Tweets should be less than 280 characters")
+        if (content.length < 2) validationErrors.push("Tweets should be more than 1 characters")
         setError(validationErrors)
     }, [content])
 
