@@ -10,7 +10,6 @@ function UserTweets({ profileId }) {
     const allTweets = useSelector((state) => state.tweets);
     const tweets = Object.values(allTweets).reverse();
     const profile = useSelector((state) => state.search[profileId])
-    console.log(profile)
 
     return (
         <div>

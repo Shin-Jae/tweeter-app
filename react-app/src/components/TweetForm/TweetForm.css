@@ -43,3 +43,9 @@
 .submit-tweet-btn:disabled {
     opacity: .4;
 }
+
+.create-error {
+    position: absolute;
+    margin-left: 40px;
+    margin-top: -10px;
+}

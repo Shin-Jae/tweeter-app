@@ -10,6 +10,7 @@ import RightColumn from './components/RightColumn';
 import ProfilePage from './components/ProfilePage';
 import SplashPage from './components/SplashPage';
 import ExplorePage from './components/ExplorePage';
+import PageNotFound from './components/auth/PageNotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,6 +53,9 @@ function App() {
           <RightColumn />
         </>
         : null}
+      <Route>
+        <PageNotFound />
+      </Route>
     </BrowserRouter>
   );
 }

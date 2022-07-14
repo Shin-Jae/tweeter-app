@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { getAllTweets } from '../../store/tweet';
 import TweetForm from '../TweetForm';
 import Tweets from '../Tweets';
 
 function Homepage() {
     const [user, setUser] = useState({});
+    const history = useHistory();
     const { userId } = useParams();
     const dispatch = useDispatch();
+    const curUser = useSelector((state) => state.session.user.id)
     const follow = useSelector((state) => state.session.user.following)
 
     useEffect(() => {
-        if (!userId) {
+
+        if (!user) {
             return;
+        } else if (`${curUser}` !== userId) {
+            return history.push(`/error`);
         }
+
         (async () => {
             const response = await fetch(`/api/users/${userId}`);
             const user = await response.json();

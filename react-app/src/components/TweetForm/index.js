@@ -40,15 +40,15 @@ function TweetForm() {
     return (
         <div className='tweet-form-container'>
             <form onSubmit={handleSubmit}>
-                <div className='tweet-form-profile-img'>
-                    <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
-                </div>
                 {errors[0] &&
                     <ul className='error__container'>{errors.map((error) => (
-                        <li className="errors" key={error}>
+                        <li className="errors create-error" key={error}>
                             {error}
                         </li>))}
                     </ul>}
+                <div className='tweet-form-profile-img'>
+                    <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
+                </div>
                 <textarea
                     className='tweet-text-box'
                     type='text'

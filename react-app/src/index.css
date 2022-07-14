@@ -62,11 +62,12 @@
 .side-bar-profile-logout {
     margin-left: 50px;
     margin-right: 5px;
-    margin-top: 520px;
+    margin-top: 400px;
     padding: 10px;
     border-radius: 9999px;
     transition: .5s;
     bottom: 0;
+    cursor: pointer;
 }
 
 .side-bar-profile-logout:hover {

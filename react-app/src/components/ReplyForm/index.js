@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getReplies, postOneReply, tweetReplies } from '../../store/reply';
 import { getOneTweet } from '../../store/tweet';
+import './ReplyForm.css'
 
 
 function ReplyForm({ tweetId }) {
     const { userId } = useParams();
     const dispatch = useDispatch()
     const [content, setContent] = useState('');
+    const [errors, setError] = useState([]);
+
+    const user = useSelector((state) => state.session.user)
+
+    useEffect(() => {
+        const validationErrors = []
+        if (content.length > 280) validationErrors.push("Replies should be less than 280 characters")
+        setError(validationErrors)
+    }, [content])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -26,24 +36,35 @@ function ReplyForm({ tweetId }) {
     };
 
     return (
-        <div>
+        <div className='reply-form-container'>
             <form onSubmit={handleSubmit}>
-                <textarea
-                    className='tweet-text-box'
-                    type='text'
-                    placeholder="Tweet your reply"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                />
-                <button
-                    className='submit-tweet-btn'
-                    type='submit'
-                    disabled={content.length > 280 || !content.length}
-                >
-                    <span>
-                        Reply
-                    </span>
-                </button>
+                {errors[0] &&
+                    <ul className='error__container'>{errors.map((error) => (
+                        <li className="errors create-error" key={error}>
+                            {error}
+                        </li>))}
+                    </ul>}
+                <div className='tweet-form-profile-img'>
+                    <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
+                    <textarea
+                        className='tweet-text-box reply-text-box'
+                        type='text'
+                        placeholder="Tweet your reply"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                    />
+                    <div className='submit-reply'>
+                        <button
+                            className='submit-tweet-btn '
+                            type='submit'
+                            disabled={content.length > 280 || !content.length}
+                        >
+                            <span>
+                                Reply
+                            </span>
+                        </button>
+                    </div>
+                </div>
             </form>
         </div>
     )
