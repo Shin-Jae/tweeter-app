@@ -20,8 +20,7 @@ function SearchBar() {
 
     const handleNoUsers = (e) => {
         const found = users.find(user =>
-            user.first_name.toLowerCase() === query.toLowerCase().trim() ||
-            user.last_name.toLowerCase() === query.toLowerCase().trim()
+            user.name.toLowerCase() === query.toLowerCase().trim()
         )
         setFound(found)
     }
@@ -31,7 +30,7 @@ function SearchBar() {
             return users;
         }
         return users.filter((user) => {
-            const fullName = `${user.first_name.toLowerCase().trim()} ${user.last_name.toLowerCase().trim()}`;
+            const fullName = `${user.name.toLowerCase().trim()}`;
             return fullName.includes(query.toLowerCase().trim());
         })
     }
@@ -66,7 +65,7 @@ function SearchBar() {
                                             </span>
                                             <div className="user-fullname-username">
                                                 <div className="recommended-fullname">
-                                                    {user.first_name} {user.last_name}
+                                                    {user.name}
                                                 </div>
                                                 <div className='recommended-username'>
                                                     @{user.username}

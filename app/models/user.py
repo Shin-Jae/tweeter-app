@@ -15,11 +15,10 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(40), nullable=False)
-    last_name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    birthday = db.Column(db.Date, nullable=False)
+    birthday = db.Column(db.Date)
     bio = db.Column(db.String(280))
     profile_img = db.Column(db.String(2000))
     banner_img = db.Column(db.String(2000))
@@ -63,8 +62,7 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'first_name': self.first_name,
-            'last_name': self.last_name,
+            'name': self.name,
             'email': self.email,
             'username': self.username,
             'birthday': self.birthday,
@@ -77,8 +75,7 @@ class User(db.Model, UserMixin):
     def to_dict_followers(self):
         return {
             'id': self.id,
-            'first_name': self.first_name,
-            'last_name': self.last_name,
+            'name': self.name,
             'email': self.email,
             'username': self.username,
             'birthday': self.birthday,
@@ -89,8 +86,7 @@ class User(db.Model, UserMixin):
     def to_dict_followers(self):
         return {
             'id': self.id,
-            'first_name': self.first_name,
-            'last_name': self.last_name,
+            'name': self.name,
             'email': self.email,
             'username': self.username,
             'birthday': self.birthday,

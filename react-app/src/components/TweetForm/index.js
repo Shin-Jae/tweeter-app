@@ -58,15 +58,6 @@ function TweetForm() {
                     onClick={() => setZero(false)}
                 />
                 <div className='tweet-submit'>
-                    {/* {content.length && content.length < 281 ?
-                        <div className='within-range'>
-                            {content.length}
-                        </div>
-                        :
-                        <div className={zero ? 'zero' : 'out-of-range'}>
-                            {content.length}
-                        </div>
-                    } */}
                     <button
                         className='submit-tweet-btn'
                         type='submit'

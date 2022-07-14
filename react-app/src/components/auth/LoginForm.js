@@ -39,7 +39,9 @@ const LoginForm = ({ onClose }) => {
   return (
     <div className='login-container'>
       <div className='login-header-container'>
-        <button className='login-close-btn' onClick={() => onClose(false)} type='button'>x</button>
+        <button className='login-close-btn' onClick={() => onClose(false)} type='button'>
+          <i className="fa-solid fa-xmark"></i>
+        </button>
         <i className="fa-brands fa-twitter fa-2xl twitter-icon"></i>
       </div>
       <h2 className='login-header-text'>
@@ -69,6 +71,7 @@ const LoginForm = ({ onClose }) => {
             className='login-field'
             type='text'
             placeholder='Email or username'
+            required={true}
             value={credential}
             onChange={updateCredential}
           />
@@ -79,6 +82,7 @@ const LoginForm = ({ onClose }) => {
             className='login-field'
             type='password'
             placeholder='Password'
+            required={true}
             value={password}
             onChange={updatePassword}
           />

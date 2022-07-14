@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = ({ onClose }) => {
   const [errors, setErrors] = useState([]);
-  const [first_name, setFirstName] = useState('');
-  const [last_name, setLastName] = useState('');
+  const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
@@ -17,20 +16,42 @@ const SignUpForm = ({ onClose }) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(first_name, last_name, username, email, birthday, password));
+      const data = await dispatch(signUp(name, username, email, birthday, password));
       if (data) {
         setErrors(data)
       }
     }
   };
+  // const currDate = new Date().toLocaleDateString();
 
-  const updateFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
+  useEffect(() => {
+    const validationErrors = []
+    if (name.length < 3) validationErrors.push("Names should be more than 3 characters");
+    if (name.length > 40) validationErrors.push("Names should be less than 40 characters");
+    if (username.length < 3) validationErrors.push("Usernames should be more than 3 characters");
+    if (username.length > 40) validationErrors.push("Username should be less than 40 characters");
+    if (email.length < 3) validationErrors.push("Emails should be more than 3 characters");
+    if (email.length > 40) validationErrors.push("Emails should be less than 40 characters");
+    if (birthday > curDate) validationErrors.push("Must be valid Date");
+    if (password !== repeatPassword) validationErrors.push("Passwords must match")
+    if (password.length < 4) validationErrors.push("Passwords must be greater than 4 characters")
+    setErrors(validationErrors)
+  }, [name, username, email, birthday, password, repeatPassword])
 
-  const updateLastName = (e) => {
-    setLastName(e.target.value);
+  const getDate = new Date();
+  let year = getDate.getFullYear();
+  let month = getDate.getMonth();
+
+  if (parseInt(month) < 10) {
+    month = `0${month}`
+  }
+  const date = getDate.getDate();
+  const curDate = `${year}-${month}-${date}`
+
+  const updateName = (e) => {
+    setName(e.target.value);
   };
 
   const updateBirthday = (e) => {
@@ -59,45 +80,35 @@ const SignUpForm = ({ onClose }) => {
 
   return (
     <div className='signup-container'>
-      <div>
-        <button className='login-close-btn' onClick={() => onClose(false)} type='button'>x</button>
+      <div className='signup-close-btn'>
+        <button className='login-close-btn' onClick={() => onClose(false)} type='button'>
+          <i className="fa-solid fa-xmark"></i>
+        </button>
       </div>
       <h2 className='login-header-text'>
         Create your account
       </h2>
       <form onSubmit={onSignUp}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
+
         <div>
           <input
             type='text'
-            name='first_name'
+            name='name'
             placeholder='Name'
-            className='login-field'
-            onChange={updateFirstName}
-            value={first_name}
+            className='login-field signup-field'
+            onChange={updateName}
+            value={name}
+            required={true}
           ></input>
         </div>
-        {/* <div>
-          <label>Last Name</label>
-          <input
-            type='text'
-            name='last_lame'
-            // className='login-field'
-            onChange={updateLastName}
-            value={last_name}
-          ></input>
-        </div> */}
         <div>
           <input
             type='text'
             name='username'
             placeholder='Handle ex. @new-User'
-            className='login-field'
+            className='login-field signup-field'
             onChange={updateUsername}
+            required={true}
             value={username}
           ></input>
         </div>
@@ -106,18 +117,19 @@ const SignUpForm = ({ onClose }) => {
             type='text'
             name='email'
             placeholder='Email'
-            className='login-field'
+            className='login-field signup-field'
             onChange={updateEmail}
+            required={true}
             value={email}
           ></input>
         </div>
         <div>
           <div>
-            <div>Date of birth</div>
+            <div className='dob-text'><span style={{ fontWeight: 'bold' }}>Date of birth</span> <span style={{ fontStyle: 'italic', color: 'gray' }}>(optional)</span></div>
             <input
               type='date'
               name='birthday'
-              className='login-field'
+              className='login-field signup-field'
               onChange={updateBirthday}
               value={birthday}
             ></input>
@@ -126,7 +138,8 @@ const SignUpForm = ({ onClose }) => {
             type='password'
             name='password'
             placeholder='Password'
-            className='login-field'
+            required={true}
+            className='login-field signup-field'
             onChange={updatePassword}
             value={password}
           ></input>
@@ -136,11 +149,16 @@ const SignUpForm = ({ onClose }) => {
             type='password'
             name='repeat_password'
             placeholder='Confirm Password'
-            className='login-field'
+            className='login-field signup-field'
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
           ></input>
+        </div>
+        <div className='errors-container'>
+          {errors.map((error, ind) => (
+            <div className='errors' key={ind}>{error}</div>
+          ))}
         </div>
         <div className='submit-login-container'>
           <button type='submit' className='signup-btn'>Sign Up</button>

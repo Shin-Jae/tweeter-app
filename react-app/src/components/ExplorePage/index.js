@@ -37,7 +37,7 @@ function ExplorePage() {
                                                 <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
                                                 <div className='user-info'>
                                                     <div className='user-fullname'>
-                                                        {user.first_name} {user.last_name}
+                                                        {user.name}
                                                     </div>
                                                     <div className='user-username'>
                                                         @{user.username}

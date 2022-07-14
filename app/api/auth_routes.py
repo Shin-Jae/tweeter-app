@@ -1,4 +1,5 @@
-from flask import Blueprint, jsonify, session, request
+from email.policy import default
+from flask import Blueprint, jsonify, session, request, redirect
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
@@ -64,10 +65,10 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
         user = User(
-            first_name=form.data['first_name'],
-            last_name=form.data['last_name'],
+            name=form.data['name'],
             username=form.data['username'],
             email=form.data['email'],
             birthday=form.data['birthday'],

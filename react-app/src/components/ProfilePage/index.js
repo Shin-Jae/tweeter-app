@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getUserTweets } from "../../store/tweet";
 import Follow from "../Follow";
 import "./ProfilePage.css"
@@ -10,13 +10,18 @@ import UserTweets from "./UserTweets";
 function ProfilePage() {
     const { profileId } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
 
+    const curUser = useSelector((state) => state.session.user.id)
     const follow = useSelector((state) => state.session.user.following)
     const allUsers = useSelector((state) => state.search);
     const followers = Object.values(allUsers)
     const users = useSelector((state) => state.search[profileId])
 
     useEffect(() => {
+        if (!users) {
+            return history.push('/error')
+        }
         dispatch(getUserTweets(profileId));
     }, [profileId]);
 
@@ -30,8 +35,8 @@ function ProfilePage() {
     })
     return (
         <div className="profile-page-container">
-            <div className="fullname-header">
-                {users?.first_name} {users?.last_name}
+            <div className=" home-text">
+                {users?.name}
             </div>
             <div className="profile-banner">
                 <img src={`${users?.banner_img}`} alt='banner' className="profile-banner-img" />
@@ -44,7 +49,7 @@ function ProfilePage() {
             </div>
             <div className="profile-page-info-container">
                 <div className="full-name-profile-page">
-                    {users?.first_name} {users?.last_name}
+                    {users?.name}
                 </div>
                 <div className="username-profile-page">
                     @{users?.username}

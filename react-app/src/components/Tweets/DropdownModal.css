@@ -12,6 +12,7 @@
 .edit-delete-dropdown:hover {
     background-color: rgb(193, 221, 239);
     color: rgb(29, 155, 240);
+    cursor: pointer;
 }
 
 .logout-pop-up {

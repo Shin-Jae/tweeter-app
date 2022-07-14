@@ -25,7 +25,7 @@ function UserTweets({ profileId }) {
                                 <img src={`${profile?.profile_img}`} alt='profile-img' className='user-profile-img' />
                                 <div className='user-info'>
                                     <div className='user-fullname'>
-                                        {profile?.first_name} {profile?.last_name}
+                                        {profile?.name}
                                     </div>
                                     <div className='user-username'>
                                         @{profile?.username}

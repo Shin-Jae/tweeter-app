@@ -35,7 +35,7 @@ function SingleTweet() {
                     <img src={`${test?.profile_img}`} alt='profile-img' className='user-profile-img' />
                     <div className='user-info'>
                         <div className='user-fullname'>
-                            {test?.first_name} {test?.last_name}
+                            {test?.name}
                         </div>
                         <div className='user-username'>
                             @{test?.username}

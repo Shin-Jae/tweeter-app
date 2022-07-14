@@ -26,6 +26,7 @@
 .login-close-btn:hover {
     background-color: lightgrey;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .login-header-text {
@@ -43,6 +44,12 @@
     height: 40px;
     width: 300px;
     margin-bottom: 20px;
+    transition: 0s;
+}
+
+.demo-login-btn:hover {
+    cursor: pointer;
+    background-color: lightgrey;
 }
 
 .container-content-rule {
@@ -97,6 +104,12 @@
     background-color: black;
     color: white;
     font-weight: bold;
+    transition: 0s;
+}
+
+.login-btn:hover {
+    cursor: pointer;
+    opacity: .8;
 }
 
 .errors-container {
@@ -122,6 +135,22 @@
     font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+.signup-close-btn {
+    text-align: left;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-bottom: -30px;
+}
+
+.signup-field {
+    margin-bottom: 20px;
+}
+
+.dob-text {
+    width: 450px;
+    margin-bottom: -15px;
+}
+
 .signup-btn {
     width: 310px;
     height: 45px;
@@ -132,6 +161,12 @@
     border: .5px solid white;
     color: white;
     font-weight: bold;
+    transition: .5s;
+}
+
+.signup-btn:hover {
+    cursor: pointer;
+    opacity: .8;
 }
 
 
@@ -160,4 +195,9 @@
     border: .5px solid white;
     color: white;
     font-weight: bold;
+}
+
+.splash-not-found {
+    min-width: 1420px;
+    min-height: 500px;
 }

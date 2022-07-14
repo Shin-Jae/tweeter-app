@@ -22,10 +22,10 @@ const LogoutPopUp = () => {
                     <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
                     <div className="user-fullname-username">
                         <div className="recommended-fullname">
-                            {user.first_name} {user.last_name}
+                            {user?.name}
                         </div>
                         <div className='recommended-username'>
-                            @{user.username}
+                            @{user?.username}
                         </div>
                     </div>
                     <div className="logout-container-dropdown">
@@ -45,7 +45,7 @@ const LogoutPopUp = () => {
                         <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
                         <div className="user-fullname-username">
                             <div className="recommended-fullname">
-                                {user?.first_name} {user?.last_name}
+                                {user?.name}
                             </div>
                             <div className='recommended-username'>
                                 @{user?.username}

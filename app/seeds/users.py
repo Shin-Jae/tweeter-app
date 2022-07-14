@@ -4,8 +4,7 @@ import datetime
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     lebron = User(
-        first_name='LeBron',
-        last_name='James',
+        name='LeBron James',
         username='KingJames',
         email='le@bron.com',
         birthday='1990-03-12',
@@ -17,8 +16,7 @@ def seed_users():
         updated_at=datetime.datetime.now(),
         )
     demo = User(
-        first_name='Demo',
-        last_name='User',
+        name='Demo User',
         username='DemoLiTion',
         email='demo@aa.io',
         birthday='2000-11-22',
@@ -30,8 +28,7 @@ def seed_users():
         updated_at=datetime.datetime.now(),
         )
     elon = User(
-        first_name='Elon',
-        last_name='Musk',
+        name='Elon Musk',
         username='elonmusk',
         email='musk@elon.com',
         birthday='1995-08-06',
@@ -42,83 +39,79 @@ def seed_users():
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
         )
-    jae = User(
-        first_name='Jae',
-        last_name='Shin',
-        username='TheMaker',
-        email='shin@jae.com',
-        birthday='1998-07-30',
-        bio='Hello my name is Jae and I developed "Tweeter", which is a clone of "Twitter". Hope you like it!',
-        profile_img='',
-        banner_img='',
+    jack = User(
+        name='jack',
+        username='jack',
+        email='jack@dors.com',
+        birthday=None,
+        bio='#bitcoin',
+        profile_img='https://pbs.twimg.com/profile_images/1115644092329758721/AFjOr-K8_400x400.jpg',
+        banner_img='https://pbs.twimg.com/profile_banners/12/1584998840/1500x500',
         password='password',
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
         )
     karen = User(
-        first_name='Karen',
-        last_name='Smith',
+        name='Karen Smith',
         username='trueKaren',
         email='true@karen.com',
         birthday='1985-03-06',
         bio='The one true Karen',
-        profile_img='',
-        banner_img='',
+        profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstayhipp.com%2Fwp-content%2Fuploads%2F2019%2F11%2Fkaren.jpg&f=1&nofb=1',
+        banner_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.tUzHBQKX37tw1GYKoY6LoAHaEo%26pid%3DApi&f=1',
         password='password',
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
         )
     chad = User(
-        first_name='Chad',
-        last_name='Giga',
+        name='Chad Giga',
         username='giga-chad',
-        email='alpha@chad.com',
-        birthday='1993-11-26',
+        email='giga@chad.com',
+        birthday='1983-11-26',
         bio='Jersey Shore shaped my life',
-        profile_img='',
-        banner_img='',
+        profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.g97EKfg7T-OC5i4yt2q6CQHaEK%26pid%3DApi&f=1',
+        banner_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.a1IQcN8inZARPPwflhRCqwHaDW%26pid%3DApi&f=1',
         password='password',
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
         )
-    elon = User(
-        first_name='Elon',
-        last_name='Musk',
-        username='elonmusk',
-        email='musk@elon.com',
-        birthday='1995-08-06',
-        bio='',
-        profile_img='',
-        banner_img='',
-        password='password',
-        created_at=datetime.datetime.now(),
-        updated_at=datetime.datetime.now(),
-        )
-    elon = User(
-        first_name='Elon',
-        last_name='Musk',
-        username='elonmusk',
-        email='musk@elon.com',
-        birthday='1995-08-06',
-        bio='',
-        profile_img='',
-        banner_img='',
-        password='password',
-        created_at=datetime.datetime.now(),
-        updated_at=datetime.datetime.now(),
-        )
+    # elon = User(
+    #     name='Elon',
+    #     username='elonmusk',
+    #     email='musk@elon.com',
+    #     birthday='1995-08-06',
+    #     bio='',
+    #     profile_img='',
+    #     banner_img='',
+    #     password='password',
+    #     created_at=datetime.datetime.now(),
+    #     updated_at=datetime.datetime.now(),
+    #     )
+    # elon = User(
+    #     name='Elon',
+    #     username='elonmusk',
+    #     email='musk@elon.com',
+    #     birthday='1995-08-06',
+    #     bio='',
+    #     profile_img='',
+    #     banner_img='',
+    #     password='password',
+    #     created_at=datetime.datetime.now(),
+    #     updated_at=datetime.datetime.now(),
+    #     )
     demo.followers.append(lebron)
     elon.followers.append(lebron)
     elon.followers.append(demo)
-    jae.followers.append(demo)
-    karen.followers.append(jae)
-    chad.followers.append(jae)
+    jack.followers.append(elon)
+    karen.followers.append(elon)
+    karen.followers.append(jack)
+    chad.followers.append(jack)
 
 
     db.session.add(lebron)
     db.session.add(demo)
     db.session.add(elon)
-    db.session.add(jae)
+    db.session.add(jack)
     db.session.add(karen)
     db.session.add(chad)
 

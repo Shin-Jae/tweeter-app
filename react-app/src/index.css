@@ -39,18 +39,45 @@
     margin-bottom: 20px;
 }
 
+/* leftbar */
 .twitter-icon {
     color: rgb(29, 155, 240);
 }
 
+.side-bar-icon-container {
+    margin-top: 80px;
+}
+
+
 .bird-house-icon {
-    height: 25px;
-    width: 25px;
+    height: 27px;
+    width: 28px;
+    position: absolute
+}
+
+.side-bar-home-text {
+    margin-left: 40px;
+    padding-left: 20px;
+    padding-top: 1px;
 }
 
 .side-bar-icon {
     margin-bottom: 40px;
     margin-left: 50px;
+}
+
+.margin-top {
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 20px;
+    margin-left: 40px;
+    width: 130px;
+    border-radius: 9999px;
+    transition: .5s;
+}
+
+.margin-top:hover {
+    background-color: lightgrey;
 }
 
 .side-bar-icon-text {
@@ -62,7 +89,7 @@
 .side-bar-profile-logout {
     margin-left: 50px;
     margin-right: 5px;
-    margin-top: 400px;
+    margin-top: 300px;
     padding: 10px;
     border-radius: 9999px;
     transition: .5s;
@@ -104,4 +131,8 @@
 
 .logout-btn:hover {
     background-color: rgba(219, 223, 224, 0.783);
+}
+
+.profile-icon:active {
+    color: white;
 }

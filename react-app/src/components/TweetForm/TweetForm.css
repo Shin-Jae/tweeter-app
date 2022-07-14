@@ -38,10 +38,12 @@
     color: white;
     background-color: rgb(29, 155, 240);
     border: 1px solid white;
+    cursor: pointer;
 }
 
 .submit-tweet-btn:disabled {
     opacity: .4;
+    cursor: default;
 }
 
 .create-error {

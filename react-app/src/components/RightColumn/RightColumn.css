@@ -32,7 +32,7 @@
     background-color: rgb(239, 243, 244);
     width: 348px;
     border-radius: 16px;
-    min-height: 15rem;
+    min-height: 20rem;
     margin-left: 30px;
     margin-top: 30px;
 }
@@ -46,7 +46,12 @@
 }
 
 .user-recommended-container {
-    margin-left: 20px;
+    padding: 18px;
+    transition: 0.5s;
+}
+
+.user-recommended-container:hover {
+    background-color: lightgray;
 }
 
 .user-fullname-username {
@@ -56,6 +61,11 @@
 
 .recommended-fullname {
     font-weight: 550;
+    transition: .5s;
+}
+
+.recommended-fullname:hover {
+    text-decoration: underline;
 }
 
 .recommended-username {

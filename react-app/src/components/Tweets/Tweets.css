@@ -55,6 +55,11 @@
     margin-left: 13px;
     align-content: flex-start;
     font-weight: 550;
+    transition: .5s;
+}
+
+.user-fullname:hover {
+    text-decoration: underline;
 }
 
 .user-username {
@@ -63,7 +68,6 @@
 }
 
 .dropdown-container {
-    /* border: 1px solid black; */
     position: absolute;
     margin-top: -105px;
     width: 150px;

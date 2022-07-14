@@ -1,6 +1,7 @@
+from wsgiref.validate import validator
 from flask_wtf import FlaskForm
 from wtforms import StringField, DateField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired, ValidationError, Optional
 from app.models import User
 
 
@@ -21,9 +22,8 @@ def username_exists(form, field):
 
 
 class SignUpForm(FlaskForm):
-    first_name = StringField('first name', validators=[DataRequired()])
-    last_name = StringField('last name', validators=[DataRequired()])
+    name = StringField('name', validators=[DataRequired()])
     username = StringField('username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
-    birthday = DateField('birthday', validators=[DataRequired()])
+    birthday = DateField('birthday', validators=[Optional()])
     password = StringField('password', validators=[DataRequired()])

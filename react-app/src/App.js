@@ -11,6 +11,7 @@ import ProfilePage from './components/ProfilePage';
 import SplashPage from './components/SplashPage';
 import ExplorePage from './components/ExplorePage';
 import PageNotFound from './components/auth/PageNotFound';
+import SplashNotFound from './components/auth/SplashError';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,10 +31,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Route path='/' exact={true}>
-        <SplashPage />
-      </Route>
-      {user ?
+      {!user ?
+        <>
+          <Switch>
+            <Route path='/' exact={true}>
+              <SplashPage />
+            </Route>
+            <Route>
+              <SplashNotFound />
+            </Route>
+          </Switch>
+        </>
+        :
         <>
           <NavBar />
           <Switch>
@@ -49,13 +58,15 @@ function App() {
             <ProtectedRoute path='/:userId/explore' exact={true} >
               <ExplorePage />
             </ProtectedRoute>
+            <Route>
+              <PageNotFound />
+            </Route>
           </Switch>
           <RightColumn />
         </>
-        : null}
-      <Route>
-        <PageNotFound />
-      </Route>
+
+
+      }
     </BrowserRouter>
   );
 }

@@ -22,16 +22,16 @@ const NavBar = () => {
           }
         </li >
         {user ?
-          <>
-            <li className='side-bar-icon'>
+          <div className='side-bar-icon-container'>
+            <li className='side-bar-icon bird-house-container margin-top'>
               <NavLink to={`/users/${user.id}`} exact={true} activeStyle={{ textDecoration: 'none', fontWeight: 'bold' }} style={{ textDecoration: 'none' }}>
                 <img src={birdHouseIcon} alt="bird-house" className='bird-house-icon' />
-                <span className='side-bar-icon-text'>
+                <div className='side-bar-icon-text side-bar-home-text'>
                   Home
-                </span>
+                </div>
               </NavLink>
             </li>
-            <li className='side-bar-icon'>
+            <li className='side-bar-icon margin-top'>
               <NavLink to={`/${user.id}/explore`} exact={true} activeStyle={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }} style={{ textDecoration: 'none', color: 'black' }}>
                 <i className="fa-solid fa-hashtag fa-xl profile-icon"></i>
                 <span className='side-bar-icon-text'>
@@ -39,19 +39,19 @@ const NavBar = () => {
                 </span>
               </NavLink>
             </li>
-            <li className='side-bar-icon'>
-              <NavLink to={`/profile/${user.id}/${user.id}`} exact={true} activeStyle={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }} style={{ textDecoration: 'none', color: 'black' }}>
-                <i className="fa-regular fa-user fa-xl profile-icon"></i>
+            <li className='side-bar-icon margin-top'>
+              <NavLink to={`/profile/${user.id}/${user.id}`} activeClassName='active' exact={true} activeStyle={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }} style={{ textDecoration: 'none', color: 'black' }}>
+                <i className="fa-regular fa-user fa-xl profile-icon active" activeClassName='active'></i>
                 <span className='side-bar-icon-text'>
                   Profile
                 </span>
               </NavLink>
             </li>
-          </>
+            <div className="logout-popup">
+              <LogoutPopUp />
+            </div>
+          </div>
           : null}
-        <div className="logout-popup">
-          <LogoutPopUp />
-        </div>
       </ul>
     </nav >
   );
