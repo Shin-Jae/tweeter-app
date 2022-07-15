@@ -35,10 +35,16 @@
 }
 
 .container-tweet-contents {
-    width: 470px;
+    max-width: 470px;
     margin-left: 61px;
     text-decoration: none;
     margin-top: -24px;
+}
+
+.tweet-content-container {
+    max-width: 470px;
+    word-wrap: break-word;
+    min-height: 30px;
 }
 
 .user-profile {

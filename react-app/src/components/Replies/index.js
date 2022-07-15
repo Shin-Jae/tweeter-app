@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import EditDropdown from "./EditDropdown";
 
 
@@ -28,23 +28,26 @@ function Replies() {
                             {users.map(user => {
                                 return <span key={`${reply.id}-${user.id}`}>
                                     {reply.user_id === user.id
-                                        ? <div className="user-profile">
-                                            <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
-                                            <div className='user-info'>
-                                                <div className='user-fullname'>
-                                                    {user.name}
+                                        ?
+                                        <>
+                                            <NavLink to={`/profile/${userId}/${user.id}`} exact={true} className='user-profile' activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} key={user.id}>
+                                                <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
+                                                <div className='user-info'>
+                                                    <div className='user-fullname'>
+                                                        {user.name}
+                                                    </div>
+                                                    <div className='user-username'>
+                                                        @{user.username}
+                                                    </div>
                                                 </div>
-                                                <div className='user-username'>
-                                                    @{user.username}
-                                                </div>
-                                            </div>
-                                        </div>
+                                            </NavLink>
+                                        </>
                                         : null}
                                 </span>
                             })}
                         </div>
                         <div className="container-tweet-contents">
-                            <div>{reply.content}</div>
+                            <div className="tweet-content-container">{reply.content}</div>
                         </div>
                     </div>
                 })}

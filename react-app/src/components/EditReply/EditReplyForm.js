@@ -8,14 +8,16 @@ import '../EditTweet/EditTweet.css'
 function EditReplyForm({ replyId, onClose }) {
     const { tweetId } = useParams();
     const dispatch = useDispatch()
-    const [content, setContent] = useState('');
     const [errors, setError] = useState([])
 
     const user = useSelector((state) => state.session.user)
+    const reply = useSelector((state) => state.replies[replyId])
+    const [content, setContent] = useState(reply.content);
 
     useEffect(() => {
         const validationErrors = []
-        if (content.length > 280 || content.length === 0) validationErrors.push("Replies should be less than 280 characters")
+        if (content.length < 2) validationErrors.push("Tweets should be at lease 2 characters")
+        if (content.length > 280) validationErrors.push("Replies should be less than 280 characters")
         setError(validationErrors)
     }, [content])
 
@@ -31,7 +33,6 @@ function EditReplyForm({ replyId, onClose }) {
 
         if (tweetId && newReply) {
             onClose(false);
-            setContent('');
             await dispatch(getOneTweet(tweetId))
             await dispatch(tweetReplies(tweetId))
         };
