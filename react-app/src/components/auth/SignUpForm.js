@@ -41,17 +41,10 @@ const SignUpForm = ({ onClose }) => {
   const curDate = `${year}-${month}-${date}`
   useEffect(() => {
     const validationErrors = []
-    if (name.length < 3) validationErrors.push("Names should be more than 3 characters");
-    if (name.length > 40) validationErrors.push("Names should be less than 40 characters");
-    if (username.length < 3) validationErrors.push("Usernames should be more than 3 characters");
-    if (username.length > 40) validationErrors.push("Username should be less than 40 characters");
-    if (email.length < 3) validationErrors.push("Emails should be more than 3 characters");
-    if (email.length > 40) validationErrors.push("Emails should be less than 40 characters");
     if (birthday > curDate) validationErrors.push("Must be valid Date");
     if (password !== repeatPassword) validationErrors.push("Passwords must match")
-    if (password.length < 4) validationErrors.push("Passwords must be greater than 4 characters")
     setErrors(validationErrors)
-  }, [name, username, email, birthday, curDate, password, repeatPassword])
+  }, [birthday, curDate, password, repeatPassword])
 
 
   const updateName = (e) => {
@@ -93,8 +86,8 @@ const SignUpForm = ({ onClose }) => {
         Create your account
       </h2>
       <form onSubmit={onSignUp}>
-
         <div>
+          <div className='login-labels'>Name</div>
           <input
             type='text'
             name='name'
@@ -106,10 +99,11 @@ const SignUpForm = ({ onClose }) => {
           ></input>
         </div>
         <div>
+          <div className='login-labels'>Username</div>
           <input
             type='text'
             name='username'
-            placeholder='Handle ex. @new-User'
+            placeholder='Username/Handle'
             className='login-field signup-field'
             onChange={updateUsername}
             required={true}
@@ -117,6 +111,7 @@ const SignUpForm = ({ onClose }) => {
           ></input>
         </div>
         <div>
+          <div className='login-labels'>Email</div>
           <input
             type='text'
             name='email'
@@ -129,7 +124,7 @@ const SignUpForm = ({ onClose }) => {
         </div>
         <div>
           <div>
-            <div className='dob-text'><span style={{ fontWeight: 'bold' }}>Date of birth</span> <span style={{ fontStyle: 'italic', color: 'gray' }}>(optional)</span></div>
+            <div className='login-labels'><span style={{ fontWeight: 'bold' }}>Date of birth</span> <span style={{ fontStyle: 'italic', color: 'gray' }}>(optional)</span></div>
             <input
               type='date'
               name='birthday'
@@ -138,6 +133,7 @@ const SignUpForm = ({ onClose }) => {
               value={birthday}
             ></input>
           </div>
+          <div className='login-labels'>Password</div>
           <input
             type='password'
             name='password'
@@ -149,6 +145,7 @@ const SignUpForm = ({ onClose }) => {
           ></input>
         </div>
         <div>
+          <div className='login-labels'>Confirm Password</div>
           <input
             type='password'
             name='repeat_password'

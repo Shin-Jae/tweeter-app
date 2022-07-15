@@ -27,24 +27,8 @@
     font-size: 15px;
 }
 
-.footer-container {
+.single-tweet-edit {
     position: absolute;
-    display: flex;
-    /* border: 1px solid black; */
-    bottom: 0;
-    width: 1200px;
-    padding: 30px;
-    margin-left: 100px;
-    justify-content: space-between;
-}
-
-.footer {
-    margin-left: 5px;
-    /* font-style: italic; */
-    color: gray;
-    font-size: 14px;
-}
-
-.linkedin {
-    color: #0077b5;
+    padding-top: 30px;
+    margin-top: 20px;
 }

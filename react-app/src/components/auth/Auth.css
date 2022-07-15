@@ -2,7 +2,7 @@
     height: 520px;
     max-width: 620px;
     min-width: 600px;
-    min-height: 520px;
+    min-height: 570px;
     text-align: center;
     font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
@@ -86,9 +86,21 @@
     height: 50px;
     border: 1px solid lightgrey;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-bottom: 10px;
     font-size: 17px;
     padding-left: 10px;
+}
+
+.login-labels {
+    /* border: 1px solid black; */
+    width: 300px;
+    margin-left: 150px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    /* margin-bottom: -10px;s */
 }
 
 .submit-login-container {

@@ -70,6 +70,7 @@ const LoginForm = ({ onClose }) => {
           ))}
         </div>
         <div>
+          <div className='login-labels'>Email or username</div>
           <input
             name='credentials'
             className='login-field'
@@ -81,6 +82,7 @@ const LoginForm = ({ onClose }) => {
           />
         </div>
         <div>
+          <div className='login-labels'>Password</div>
           <input
             name='password'
             className='login-field'
