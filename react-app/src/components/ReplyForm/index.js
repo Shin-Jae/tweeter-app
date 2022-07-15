@@ -27,7 +27,11 @@ function ReplyForm({ tweetId }) {
             content
         }
 
-        const newReply = dispatch(postOneReply(userId, tweetId, payload))
+        const newReply = await dispatch(postOneReply(userId, tweetId, payload))
+        if (Array.isArray(newReply)) {
+            return setError(newReply)
+
+        }
         if (newReply) {
             setContent('');
             await dispatch(getOneTweet(tweetId))
@@ -38,12 +42,11 @@ function ReplyForm({ tweetId }) {
     return (
         <div className='reply-form-container'>
             <form onSubmit={handleSubmit}>
-                {errors[0] &&
-                    <ul className='error__container'>{errors.map((error) => (
-                        <li className="errors create-error" key={error}>
-                            {error}
-                        </li>))}
-                    </ul>}
+                <div className='tweet-errors'>{errors.map((error) => (
+                    <div className="errors create-error" key={error}>
+                        {error}
+                    </div>))}
+                </div>
                 <div className='tweet-form-profile-img'>
                     <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
                     <textarea

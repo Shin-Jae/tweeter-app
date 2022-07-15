@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { editOneTweet, getAllTweets, getOneTweet } from '../../store/tweet';
+import { editOneTweet, getAllTweets, getOneTweet, getUserTweets } from '../../store/tweet';
 import './EditTweet.css'
 
 function EditTweetForm({ editId, onClose }) {
-    const { userId, tweetId } = useParams();
+    const { userId, tweetId, profileId } = useParams();
     const dispatch = useDispatch()
-    const [content, setContent] = useState('');
     const [errors, setError] = useState([])
 
     const follow = useSelector((state) => state.session.user.following)
     const user = useSelector((state) => state.session.user)
+    const tweet = useSelector((state) => state.tweets[editId])
+
+    const [content, setContent] = useState(tweet.content);
 
     useEffect(() => {
         const validationErrors = []
-        if (content.length < 2) validationErrors.push("Tweets should be more than 1 characters")
-        if (content.length > 280) validationErrors.push("Tweets should be less than 280 characters")
+        if (content.length < 2) validationErrors.push("Tweets should be at lease 2 characters")
+        if (content.length > 280) validationErrors.push("Tweets should be within 280 characters")
         setError(validationErrors)
     }, [content])
 
@@ -28,16 +30,17 @@ function EditTweetForm({ editId, onClose }) {
         }
 
         const newTweet = await dispatch(editOneTweet(editId, payload));
-        if (!tweetId && newTweet) {
+        if (profileId) {
+            onClose(false);
+            await dispatch(getUserTweets(profileId));
+        } else if (!tweetId && newTweet) {
             const following = follow.map(per => {
                 return per.id;
             })
             onClose(false);
-            setContent('');
             await dispatch(getAllTweets(userId, following));
         } else if (tweetId && newTweet) {
             onClose(false);
-            setContent('');
             await dispatch(getOneTweet(tweetId))
         };
     };

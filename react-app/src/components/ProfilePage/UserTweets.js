@@ -17,9 +17,10 @@ function UserTweets({ profileId }) {
                 {tweets.map(tweet => {
                     return <div key={tweet?.id} className='one-tweet-container'>
                         <div className='tweet-borders'></div>
-                        <div key={`btn-${tweet?.id}`} className="one-tweet-edit-btns">
-                            <DropdownModal tweetId={tweet?.id} />
-                        </div>
+                        {userId === parseInt(profileId) &&
+                            <div key={`btn-${tweet?.id}`} className="one-tweet-edit-btns">
+                                <DropdownModal tweetId={tweet?.id} />
+                            </div>}
                         <span key={`${tweet?.id}-${profile?.id}`}>
                             <div className='user-profile'>
                                 <img src={`${profile?.profile_img}`} alt='profile-img' className='user-profile-img' />

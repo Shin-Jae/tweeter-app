@@ -42,6 +42,11 @@ export const postOneReply = (userId, tweetId, payload) => async dispatch => {
         let reply = await response.json();
         dispatch(postReply(reply));
         return reply;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
     }
 }
 

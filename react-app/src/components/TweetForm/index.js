@@ -17,7 +17,6 @@ function TweetForm() {
     useEffect(() => {
         const validationErrors = []
         if (content.length > 280) validationErrors.push("Tweets should be less than 280 characters")
-        if (content.length < 2) validationErrors.push("Tweets should be more than 1 characters")
         setError(validationErrors)
     }, [content])
 
@@ -29,24 +28,27 @@ function TweetForm() {
         }
 
         const newTweet = await dispatch(postOneTweet(userId, payload));
+        if (Array.isArray(newTweet)) {
+            return setError(newTweet)
+        }
         if (newTweet) {
             const following = follow.map(per => {
                 return per.id;
             })
             setContent('');
             await dispatch(getAllTweets(userId, following));
-        };
+        }
+
     };
 
     return (
         <div className='tweet-form-container'>
             <form onSubmit={handleSubmit}>
-                {errors[0] &&
-                    <ul className='error__container'>{errors.map((error) => (
-                        <li className="errors create-error" key={error}>
-                            {error}
-                        </li>))}
-                    </ul>}
+                <div className='tweet-errors'>{errors.map((error) => (
+                    <div className="errors create-error" key={error}>
+                        {error}
+                    </div>))}
+                </div>
                 <div className='tweet-form-profile-img'>
                     <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
                 </div>

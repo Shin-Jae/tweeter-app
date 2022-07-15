@@ -87,7 +87,7 @@ const SignUpForm = ({ onClose }) => {
       </h2>
       <form onSubmit={onSignUp}>
         <div>
-          <div className='login-labels'>Name</div>
+          <div className='login-labels signin-labels'>Name</div>
           <input
             type='text'
             name='name'
@@ -99,7 +99,7 @@ const SignUpForm = ({ onClose }) => {
           ></input>
         </div>
         <div>
-          <div className='login-labels'>Username</div>
+          <div className='login-labels  signin-labels'>Username</div>
           <input
             type='text'
             name='username'
@@ -111,7 +111,7 @@ const SignUpForm = ({ onClose }) => {
           ></input>
         </div>
         <div>
-          <div className='login-labels'>Email</div>
+          <div className='login-labels signin-labels'>Email</div>
           <input
             type='text'
             name='email'
@@ -124,7 +124,7 @@ const SignUpForm = ({ onClose }) => {
         </div>
         <div>
           <div>
-            <div className='login-labels'><span style={{ fontWeight: 'bold' }}>Date of birth</span> <span style={{ fontStyle: 'italic', color: 'gray' }}>(optional)</span></div>
+            <div className='login-labels signin-labels'><span style={{ fontWeight: 'bold' }}>Date of birth</span> <span style={{ fontStyle: 'italic', color: 'gray' }}>(optional)</span></div>
             <input
               type='date'
               name='birthday'
@@ -133,7 +133,7 @@ const SignUpForm = ({ onClose }) => {
               value={birthday}
             ></input>
           </div>
-          <div className='login-labels'>Password</div>
+          <div className='login-labels signin-labels'>Password</div>
           <input
             type='password'
             name='password'
@@ -145,7 +145,7 @@ const SignUpForm = ({ onClose }) => {
           ></input>
         </div>
         <div>
-          <div className='login-labels'>Confirm Password</div>
+          <div className='login-labels signin-labels'>Confirm Password</div>
           <input
             type='password'
             name='repeat_password'

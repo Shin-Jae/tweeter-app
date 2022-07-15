@@ -6,7 +6,7 @@ from app.models import db, Tweet, Reply
 
 reply_routes = Blueprint('replies', __name__)
 
-def validation_errors_to_error_tweets(validation_errors):
+def validation_errors_to_error_replies(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list
     """
@@ -39,8 +39,8 @@ def post_reply(userId, tweetId):
         db.session.add(reply)
         db.session.commit()
 
-        return {'replies': [reply.to_dict()]}
-    return {'errors': validation_errors_to_error_tweets(form.errors)}, 401
+        return reply.to_dict()
+    return {'errors': validation_errors_to_error_replies(form.errors)}, 401
 
 
 @reply_routes.route('/<int:replyId>', methods = ['PUT'])

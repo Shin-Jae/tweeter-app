@@ -90,6 +90,11 @@ export const postOneTweet = (userId, content) => async dispatch => {
         let tweet = await response.json();
         dispatch(postTweet(tweet));
         return tweet;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
     };
 };
 
