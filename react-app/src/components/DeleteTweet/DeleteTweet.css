@@ -25,7 +25,8 @@
 }
 
 .delete-btns:hover {
-    filter:brightness(.9);
+    filter:brightness(.85);
+    cursor: pointer;
 }
 
 .btn-delete-yes {

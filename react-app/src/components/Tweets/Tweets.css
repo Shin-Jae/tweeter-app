@@ -68,6 +68,14 @@
     text-decoration: underline;
 }
 
+.user-tweets-fullname {
+    transition: .5s;
+}
+
+.user-tweets-fullname:hover {
+    text-decoration: none;
+}
+
 .user-username {
     margin-left: 5px;
     color: rgb(83, 100, 113);

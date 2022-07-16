@@ -17,24 +17,24 @@ function UserTweets({ profileId }) {
                 {tweets.map(tweet => {
                     return <div key={tweet?.id} className='one-tweet-container'>
                         <div className='tweet-borders'></div>
-                        {userId === parseInt(profileId) &&
-                            <div key={`btn-${tweet?.id}`} className="one-tweet-edit-btns">
-                                <DropdownModal tweetId={tweet?.id} />
-                            </div>}
-                        <span key={`${tweet?.id}-${profile?.id}`}>
-                            <div className='user-profile'>
-                                <img src={`${profile?.profile_img}`} alt='profile-img' className='user-profile-img' />
-                                <div className='user-info'>
-                                    <div className='user-fullname'>
-                                        {profile?.name}
-                                    </div>
-                                    <div className='user-username'>
-                                        @{profile?.username}
+                        <NavLink key={`tweet-${tweet.id}`} exact to={`/${userId}/tweets/${tweet.id}`} style={{ textDecoration: 'none', color: 'black' }} >
+                            {userId === parseInt(profileId) &&
+                                <div key={`btn-${tweet?.id}`} className="one-tweet-edit-btns">
+                                    <DropdownModal tweetId={tweet?.id} />
+                                </div>}
+                            <span key={`${tweet?.id}-${profile?.id}`}>
+                                <div className='user-profile'>
+                                    <img src={`${profile?.profile_img}`} alt='profile-img' className='user-profile-img' />
+                                    <div className='user-info'>
+                                        <div className='user-fullname user-tweets-fullname'>
+                                            {profile?.name}
+                                        </div>
+                                        <div className='user-username'>
+                                            @{profile?.username}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </span>
-                        <NavLink key={`tweet-${tweet.id}`} exact to={`/${userId}/tweets/${tweet.id}`} style={{ textDecoration: 'none', color: 'black' }} >
+                            </span>
                             <div className='container-tweet-contents'>
                                 <li key={`tweet-${tweet.id}`} >
                                     <div>{tweet.content}</div>

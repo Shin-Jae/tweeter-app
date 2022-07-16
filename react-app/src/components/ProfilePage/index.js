@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 import { getUserTweets } from "../../store/tweet";
 import Follow from "../Follow";
+import FollowersModal from "./Followers";
+import FollowingModal from "./Following";
 import "./ProfilePage.css"
 import UserTweets from "./UserTweets";
 
@@ -65,20 +67,8 @@ function ProfilePage() {
                     {users?.birthday}
                 </div>
                 <div className="follow-display">
-                    <span className="following-count">
-                        {users?.following.length}
-                    </span>
-                    <span className="following-text">
-                        Following
-                    </span>
-                    <span>
-                        <span className="follower-count">
-                            {count}
-                        </span>
-                        <span className="followers-text">
-                            Followers
-                        </span>
-                    </span>
+                    <FollowingModal profileId={profileId} />
+                    <FollowersModal profileId={profileId} />
                 </div>
                 <div className="profile-tweets-container">
                     <div className="profile-tweets-header">Tweets</div>
