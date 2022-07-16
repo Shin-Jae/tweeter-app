@@ -116,3 +116,21 @@
     justify-content: center;
     font-weight: bold;
 }
+
+/* birthday */
+.birthday-icon {
+    text-shadow: -1px -1px 0 rgb(93, 92, 92), 1px -1px 0 rgb(93, 92, 92), -1px 1px 0 rgb(93, 92, 92), 1px 1px 0 rgb(93, 92, 92);
+    color: white;
+}
+
+.birthday-text {
+    margin-left: 10px;
+    color: rgb(93, 92, 92);
+}
+
+.date-profile {
+    display: flex;
+    /* border: 1px solid black; */
+    justify-content: space-between;
+    width: 295px;
+}

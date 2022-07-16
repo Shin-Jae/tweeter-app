@@ -77,6 +77,8 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'profile_img': self.profile_img,
             'banner_img': self.banner_img,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
             'following': [follow.to_dict_followers() for follow in self.followers],
         }
 

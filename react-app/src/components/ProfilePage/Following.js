@@ -43,7 +43,7 @@ const FollowingModal = ({ profileId }) => {
                         <div className="following-modal-container">
                             <div className="following-users-container">
                                 <div className="following-header">Following</div>
-                                {!following.length && <div className="no-followers">No followers yet</div>}
+                                {!following.length && <div className="no-followers">Not following anyone</div>}
                                 {following.map(user => {
                                     return <div>
                                         <NavLink to={`/profile/${curUser}/${user.id}`} key={`${user.id}-search-link`} onClick={() => setShowModal(false)} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }}>

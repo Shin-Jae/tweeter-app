@@ -19,6 +19,24 @@ function ProfilePage() {
     const allUsers = useSelector((state) => state.search);
     const followers = Object.values(allUsers)
     const users = useSelector((state) => state.search[profileId])
+    let birthday;
+    if (users?.birthday) {
+        let dob = users.birthday
+        dob = dob.split(' ')
+        birthday = `Born ${dob[2]} ${dob[1]}, ${dob[3]}`
+    }
+    let joined;
+    if (users?.created_at) {
+        let join = users.created_at
+        join = join.split(' ')
+        joined = `Joined ${join[2]} ${join[3]}`
+    }
+    // if (users.birthday) {
+    //     let year = dob.getFullYear();
+    //     let month = dob.getMonth();
+    //     let date = dob.getDate();
+    //     dob = `Born ${month} ${date}, ${year}`
+    // }
 
     let count = 0
     useEffect(() => {
@@ -63,8 +81,19 @@ function ProfilePage() {
                 <div>
                     {users?.bio}
                 </div>
-                <div>
-                    {users?.birthday}
+                <div className="date-profile">
+                    {birthday &&
+                        <div>
+                            <i class="fa-solid fa-cake-candles fa-md birthday-icon"></i>
+                            <span className="birthday-text">{birthday}</span>
+                        </div>
+                    }
+                    {joined &&
+                        <div>
+                            <i class="fa-solid fa-calendar-days birthday-icon"></i>
+                            <span className="birthday-text">{joined}</span>
+                        </div>
+                    }
                 </div>
                 <div className="follow-display">
                     <FollowingModal profileId={profileId} />
