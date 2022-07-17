@@ -12,7 +12,6 @@ function TweetForm() {
     const [errors, setError] = useState([]);
 
     const user = useSelector((state) => state.session.user)
-    const follow = useSelector((state) => state.session.user.following)
 
     useEffect(() => {
         const validationErrors = []
@@ -32,11 +31,8 @@ function TweetForm() {
             return setError(newTweet)
         }
         if (newTweet) {
-            const following = follow.map(per => {
-                return per.id;
-            })
             setContent('');
-            await dispatch(getAllTweets(userId, following));
+            await dispatch(getAllTweets(userId));
         }
 
     };

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { followUser, getAllUsers, unFollowUser } from "../../store/search";
+import { followUser, getAllFollows } from "../../store/follows";
+import { getAllUsers, unFollowUser } from "../../store/search";
 import '../ProfilePage/ProfilePage.css'
 
 
@@ -8,23 +9,22 @@ import '../ProfilePage/ProfilePage.css'
 function Follow({ followingId }) {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user)
-    const curUser = useSelector((state) => state.session.user.following);
-    const following = []
-    curUser.forEach(user => following.push(user.id))
-    const [follows, setFollows] = useState(!following.includes(parseInt(followingId)))
+    const following = useSelector((state) => state.follow);
 
-    const handleFollow = () => {
-        const ok = dispatch(followUser(user.id, followingId))
+    const [follows, setFollows] = useState(!following[followingId])
+
+    const handleFollow = async () => {
+        const ok = await dispatch(followUser(user.id, followingId))
         if (ok) {
+            await dispatch(getAllFollows(user.id))
             setFollows(!follows)
-            dispatch(getAllUsers())
         }
     }
-    const handleUnfollow = () => {
-        const ok = dispatch(unFollowUser(user.id, followingId))
+    const handleUnfollow = async () => {
+        const ok = await dispatch(unFollowUser(user.id, followingId))
         if (ok) {
             setFollows(!follows)
-            dispatch(getAllUsers())
+            await dispatch(getAllFollows(user.id))
         }
     }
 

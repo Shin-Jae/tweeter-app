@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import { getAllFollows } from '../../store/follows';
 import { getAllTweets } from '../../store/tweet';
 import TweetForm from '../TweetForm';
 import Tweets from '../Tweets';
@@ -26,18 +27,13 @@ function Homepage() {
             const response = await fetch(`/api/users/${userId}`);
             const user = await response.json();
             setUser(user);
+            await dispatch(getAllTweets(userId));
+            await dispatch(getAllFollows(userId))
         })();
 
         //getallTweets
-        let following;
-        if (!follow.length) return following = [];
-        following = follow.map(per => {
-            return per.id;
-        })
 
-        dispatch(getAllTweets(userId, following));
-
-    }, [userId, follow, dispatch]);
+    }, [userId, dispatch]);
 
     if (!user) {
         return null;

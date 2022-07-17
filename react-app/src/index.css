@@ -152,11 +152,11 @@
 .footer-container {
     position: absolute;
     display: flex;
-    /* border: 1px solid black; */
-    bottom: 0;
-    width: 1200px;
-    padding: 30px;
-    margin-left: 100px;
+    max-height: 30px;
+    width: 1380px;
+    min-height: 740px;
+    align-items: flex-end;
+    padding: 20px;
     justify-content: space-between;
 }
 

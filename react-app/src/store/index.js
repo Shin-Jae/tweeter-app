@@ -4,12 +4,14 @@ import session from './session';
 import tweetReducer from './tweet';
 import replyReducer from './reply';
 import searchReducer from './search';
+import followReducer from './follows';
 
 const rootReducer = combineReducers({
   session,
   tweets: tweetReducer,
   replies: replyReducer,
   search: searchReducer,
+  follow: followReducer,
 });
 
 

@@ -1,22 +1,27 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { getAllUsers } from "../../store/search";
 import Follow from "../Follow";
 import './RightColumn.css';
 
 
 function WhoToFollow() {
+    const dispatch = useDispatch();
     const allUsers = useSelector((state) => state.search);
     const userId = useSelector((state) => state.session.user.id);
     const curUser = useSelector((state) => state.session.user.following);
 
-
     const following = []
+    // useEffect(() => {
+    //     dispatch(getAllUsers());
+    // }, [curUser])
     curUser.forEach(user => following.push(user.id))
 
     const usersArr = Object.values(allUsers);
     usersArr.sort(() => Math.random() - .5);
     const users = usersArr.filter(user => !following.includes(user.id) && user.id !== userId)
+
 
     return (
         <div className="who-to-follow-container">

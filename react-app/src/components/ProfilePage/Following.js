@@ -1,23 +1,18 @@
 import { Modal } from "../../context/modal";
 import React, { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./ProfilePage.css"
 import "./Follows.css";
 import Follow from "../Follow";
 
 const FollowingModal = ({ profileId }) => {
-    // const dispatch = useDispatch();
-    const history = useHistory();
 
     const curUser = useSelector((state) => state.session.user.id)
-
+    const follows = useSelector((state) => state.follow);
     const users = useSelector((state) => state.search[profileId])
-    let following;
-    if (users) {
-        let follows = users.following
-        following = Object.values(follows);
-    }
+    const following = Object.values(follows);
+
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -31,14 +26,14 @@ const FollowingModal = ({ profileId }) => {
                         className="followers-modal-btn"
                     >
                         <span className="following-count">
-                            {users?.following.length}
+                            {following.length}
                         </span>
                         <span className="following-text">
                             Following
                         </span>
                     </span>
                 }
-                {users && showModal && (
+                {users && following && showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <div className="following-modal-container">
                             <div className="following-users-container">

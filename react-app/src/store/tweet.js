@@ -40,8 +40,8 @@ export const userTweets = (tweets) => ({
     tweets
 })
 
-export const getAllTweets = (userId, following) => async dispatch => {
-    const response = await fetch(`/api/tweets/${userId}/${following}`);
+export const getAllTweets = (userId) => async dispatch => {
+    const response = await fetch(`/api/tweets/${userId}`);
 
     if (response.ok) {
         let tweets = await response.json();

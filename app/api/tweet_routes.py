@@ -16,14 +16,13 @@ def validation_errors_to_error_tweets(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-@tweet_routes.route('/<int:userId>/<following>')
-def tweets(userId, following):
-    if "," in following:
-        following = following.split(",")
-
+@tweet_routes.route('/<int:userId>')
+def tweets(userId):
+    user = User.query.get(userId).to_dict()
     tweets = Tweet.query.filter(Tweet.user_id == userId).all()
-    for ele in following:
-        tweets += (Tweet.query.filter(Tweet.user_id == ele ).all())
+    if user['following']:
+        for ele in user['following']:
+            tweets += (Tweet.query.filter(Tweet.user_id == ele['id'] ).all())
 
     return {'tweets': [tweet.to_dict() for tweet in tweets]}
 

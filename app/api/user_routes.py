@@ -18,17 +18,6 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/<int:userId>/<int:followingId>', methods = ['PUT'])
-def followUser(userId, followingId):
-    user = User.query.get(userId)
-    following = User.query.get(followingId)
-    user.followers.append(following)
-
-    db.session.merge(user)
-    db.session.flush()
-    db.session.commit()
-    return user.to_dict()
-
 @user_routes.route('/<int:userId>/<int:followingId>', methods = ['DELETE'])
 def unFollowUser(userId, followingId):
     user = User.query.get(userId)

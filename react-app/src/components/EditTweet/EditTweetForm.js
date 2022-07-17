@@ -9,7 +9,6 @@ function EditTweetForm({ editId, onClose }) {
     const dispatch = useDispatch()
     const [errors, setError] = useState([])
 
-    const follow = useSelector((state) => state.session.user.following)
     const user = useSelector((state) => state.session.user)
     const tweet = useSelector((state) => state.tweets[editId])
 
@@ -34,11 +33,8 @@ function EditTweetForm({ editId, onClose }) {
             onClose(false);
             await dispatch(getUserTweets(profileId));
         } else if (!tweetId && newTweet) {
-            const following = follow.map(per => {
-                return per.id;
-            })
             onClose(false);
-            await dispatch(getAllTweets(userId, following));
+            await dispatch(getAllTweets(userId));
         } else if (tweetId && newTweet) {
             onClose(false);
             await dispatch(getOneTweet(tweetId))
