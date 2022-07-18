@@ -45,7 +45,7 @@ def seed_tweets():
         updated_at=datetime.datetime.now(),
     )
     tweet8 = Tweet(
-        user_id=5,
+        user_id=6,
         content='not a fan, will be contacting the manager.',
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
@@ -63,7 +63,7 @@ def seed_tweets():
         updated_at=datetime.datetime.now(),
     )
     tweet9 = Tweet(
-        user_id=6,
+        user_id=7,
         content='Great PUMP today!',
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
