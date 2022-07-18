@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getAllFollows } from "../../store/follows";
 import { getUserTweets } from "../../store/tweet";
+import { getUserFollows } from "../../store/userfollows";
 import Follow from "../Follow";
 import FollowersModal from "./Followers";
 import FollowingModal from "./Following";
+import ProfileFollow from "./ProfileFollow";
 import "./ProfilePage.css"
 import UserTweets from "./UserTweets";
 
@@ -16,7 +18,7 @@ function ProfilePage() {
     const history = useHistory();
 
     const curUser = useSelector((state) => state.session.user.id)
-    const follow = useSelector((state) => state.session.user.following)
+    const follow = useSelector((state) => state.useFollow)
     const allUsers = useSelector((state) => state.search);
     const followers = Object.values(allUsers)
     const users = useSelector((state) => state.search[profileId])
@@ -40,6 +42,7 @@ function ProfilePage() {
         (async () => {
             await dispatch(getUserTweets(profileId));
             await dispatch(getAllFollows(profileId));
+            await dispatch(getUserFollows(curUser));
         })()
     }, [profileId, follow, followers]);
 
@@ -56,7 +59,7 @@ function ProfilePage() {
             </div>
             {curUser !== parseInt(profileId)
                 ? <div className="profile-follow-btn">
-                    <Follow followingId={parseInt(profileId)} />
+                    <ProfileFollow followingId={parseInt(profileId)} />
                 </div>
                 : null
             }

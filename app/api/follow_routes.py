@@ -30,3 +30,9 @@ def unFollowUser(userId, followingId):
 
     db.session.commit()
     return user.to_dict()
+
+@follow_routes.route('/user/<int:userId>')
+def user_follows(userId):
+    user = User.query.get(userId).to_dict()
+    follows = user['following']
+    return {'follows': [follow for follow in follows]}

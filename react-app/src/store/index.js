@@ -5,6 +5,7 @@ import tweetReducer from './tweet';
 import replyReducer from './reply';
 import searchReducer from './search';
 import followReducer from './follows';
+import userFollowReducer from './userfollows';
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   replies: replyReducer,
   search: searchReducer,
   follow: followReducer,
+  userFollow: userFollowReducer,
 });
 
 

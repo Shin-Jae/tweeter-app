@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getAllFollows } from '../../store/follows';
 import { getAllTweets } from '../../store/tweet';
+import { getUserFollows } from '../../store/userfollows';
 import TweetForm from '../TweetForm';
 import Tweets from '../Tweets';
 
@@ -27,7 +28,8 @@ function Homepage() {
             const user = await response.json();
             setUser(user);
             await dispatch(getAllTweets(userId));
-            await dispatch(getAllFollows(userId))
+            await dispatch(getAllFollows(userId));
+            await dispatch(getUserFollows(userId));
         })();
 
         //getallTweets
