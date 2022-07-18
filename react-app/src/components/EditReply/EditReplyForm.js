@@ -66,7 +66,7 @@ function EditReplyForm({ replyId, onClose }) {
                     <button
                         className='submit-tweet-btn  edit-submit-btn'
                         type='submit'
-                        disabled={content.length > 280 || !content.length}
+                        disabled={content.length > 280 || content.length < 2}
                     >
                         <span>
                             Tweet

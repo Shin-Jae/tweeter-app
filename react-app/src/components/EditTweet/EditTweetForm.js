@@ -76,7 +76,7 @@ function EditTweetForm({ editId, onClose }) {
                     <button
                         className='submit-tweet-btn edit-submit-btn'
                         type='submit'
-                        disabled={!content.length || content.length > 280}
+                        disabled={content.length < 2 || content.length > 280}
                     >
                         Tweet
                     </button>
