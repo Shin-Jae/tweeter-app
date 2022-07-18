@@ -50,8 +50,8 @@ export const getAllTweets = (userId) => async dispatch => {
     };
 };
 
-export const getExploreTweets = (userId) => async dispatch => {
-    const response = await fetch(`/api/tweets/explore/${userId}`);
+export const getExploreTweets = (exploreId) => async dispatch => {
+    const response = await fetch(`/api/tweets/explore/${exploreId}`);
 
     if (response.ok) {
         let tweets = await response.json();

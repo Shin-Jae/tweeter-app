@@ -26,15 +26,15 @@ def tweets(userId):
 
     return {'tweets': [tweet.to_dict() for tweet in tweets]}
 
-@tweet_routes.route('/explore/<int:userId>')
-def exploreTweets(userId):
-    user = User.query.get(userId).to_dict()
-
-    ids = [userId]
-    for ele in user['following']:
-        ids.append(int(ele['id']))
-
-    tweets = Tweet.query.filter(Tweet.user_id.not_in(ids)).all()
+@tweet_routes.route('/explore/<int:exploreId>')
+def exploreTweets(exploreId):
+    user = User.query.get(exploreId).to_dict()
+    id = [exploreId]
+    if user['following']:
+        for ele in user['following']:
+            id.append(int(ele['id']))
+    print(user['following'])
+    tweets = (Tweet.query.filter(Tweet.user_id.not_in(id)).all())
 
     return {'tweets': [tweet.to_dict() for tweet in tweets]}
 

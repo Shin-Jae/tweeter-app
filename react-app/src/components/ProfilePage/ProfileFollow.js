@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { follow, followUser, getAllFollows } from "../../store/follows";
+import { followUser, getAllFollows } from "../../store/follows";
 import { getAllUsers, unFollowUser } from "../../store/search";
 import { getUserFollows } from "../../store/userfollows";
 import './ProfilePage.css'

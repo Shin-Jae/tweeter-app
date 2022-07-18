@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getReplies, postOneReply, tweetReplies } from '../../store/reply';
+import { postOneReply, tweetReplies } from '../../store/reply';
 import { getOneTweet } from '../../store/tweet';
 import './ReplyForm.css'
 

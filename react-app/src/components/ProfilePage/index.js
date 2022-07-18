@@ -4,7 +4,6 @@ import { useHistory, useParams } from "react-router-dom";
 import { getAllFollows } from "../../store/follows";
 import { getUserTweets } from "../../store/tweet";
 import { getUserFollows } from "../../store/userfollows";
-import Follow from "../Follow";
 import FollowersModal from "./Followers";
 import FollowingModal from "./Following";
 import ProfileFollow from "./ProfileFollow";

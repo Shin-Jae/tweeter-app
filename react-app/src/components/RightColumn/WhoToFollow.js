@@ -5,12 +5,12 @@ import './RightColumn.css';
 
 
 function WhoToFollow() {
+
     const allUsers = useSelector((state) => state.search);
     const userId = useSelector((state) => state.session.user.id);
     const curUser = useSelector((state) => state.userFollow);
     const follows = Object.values(curUser);
     const following = follows.map(user => user.id)
-
 
     const usersArr = Object.values(allUsers);
     usersArr.sort(() => Math.random() - .5);

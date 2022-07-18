@@ -2,7 +2,7 @@ import LoginModal from './LoginModal';
 import SignUpModal from './SignupModal';
 import './SplashPage.css';
 import '../auth/Auth.css'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../../store/session';
 import { useHistory } from 'react-router-dom';
 

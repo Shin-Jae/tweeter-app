@@ -6,7 +6,7 @@ import './ExplorePage.css'
 
 function ExplorePage() {
     const dispatch = useDispatch();
-    const { userId } = useParams();
+    const { exploreId } = useParams();
 
     const allTweets = useSelector((state) => state.tweets);
     const allUsers = useSelector((state) => state.search);
@@ -15,9 +15,9 @@ function ExplorePage() {
     const tweets = Object.values(allTweets).reverse();
 
     useEffect(() => {
-        dispatch(getExploreTweets(userId));
+        dispatch(getExploreTweets(exploreId));
 
-    }, [userId, dispatch]);
+    }, [exploreId, dispatch]);
 
     return (
         <div className="explore-container">
@@ -33,7 +33,7 @@ function ExplorePage() {
                                 return <span key={`${tweet.id}-${user.id}`}>
                                     {tweet.user_id === user.id ?
                                         <span>
-                                            <NavLink to={`/profile/${userId}/${user.id}`} exact={true} className='user-profile' activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} key={user.id}>
+                                            <NavLink to={`/profile/${exploreId}/${user.id}`} exact={true} className='user-profile' activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} key={user.id}>
                                                 <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
                                                 <div className='user-info'>
                                                     <div className='user-fullname'>
@@ -49,7 +49,7 @@ function ExplorePage() {
                                     }
                                 </span>
                             })}
-                            <NavLink key={`tweet-${tweet.id}`} exact to={`/${userId}/tweets/${tweet.id}`} style={{ textDecoration: 'none', color: 'black' }} >
+                            <NavLink key={`tweet-${tweet.id}`} exact to={`/${exploreId}/tweets/${tweet.id}`} style={{ textDecoration: 'none', color: 'black' }} >
                                 <div className='container-tweet-contents'>
                                     <li key={`tweet-${tweet.id}`} >
                                         <div>{tweet.content}</div>

@@ -31,7 +31,7 @@ def seed_users():
         name='Elon Musk',
         username='elonmusk',
         email='musk@elon.com',
-        birthday='1995-08-06',
+        birthday='1980-08-06',
         bio='',
         profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FFTpXU-xX0AABLTK%3Fformat%3Djpg%26name%3Dlarge&f=1&nofb=1',
         banner_img='https://pbs.twimg.com/profile_banners/44196397/1576183471/1500x500',
@@ -56,7 +56,7 @@ def seed_users():
         username='trueKaren',
         email='true@karen.com',
         birthday='1985-03-06',
-        bio='The one true Karen',
+        bio="You know why I'm here",
         profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstayhipp.com%2Fwp-content%2Fuploads%2F2019%2F11%2Fkaren.jpg&f=1&nofb=1',
         banner_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.tUzHBQKX37tw1GYKoY6LoAHaEo%26pid%3DApi&f=1',
         password='password',
@@ -68,25 +68,25 @@ def seed_users():
         username='giga-chad',
         email='giga@chad.com',
         birthday='1983-11-26',
-        bio='Jersey Shore shaped my life',
+        bio='Eat, Sleep, Lift',
         profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.g97EKfg7T-OC5i4yt2q6CQHaEK%26pid%3DApi&f=1',
         banner_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.a1IQcN8inZARPPwflhRCqwHaDW%26pid%3DApi&f=1',
         password='password',
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
         )
-    # elon = User(
-    #     name='Elon',
-    #     username='elonmusk',
-    #     email='musk@elon.com',
-    #     birthday='1995-08-06',
-    #     bio='',
-    #     profile_img='',
-    #     banner_img='',
-    #     password='password',
-    #     created_at=datetime.datetime.now(),
-    #     updated_at=datetime.datetime.now(),
-    #     )
+    mark = User(
+        name='Mark Zuc',
+        username='metaMark',
+        email='metak@make.com',
+        birthday='1955-08-06',
+        bio='',
+        profile_img='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.n1D7DNqXc6tLGKxtKUtRFgHaE7%26pid%3DApi&f=1',
+        banner_img='https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.wallpapersafari.com%2F11%2F64%2FkEgxZh.png&f=1&nofb=1',
+        password='password',
+        created_at=datetime.datetime.now(),
+        updated_at=datetime.datetime.now(),
+        )
     # elon = User(
     #     name='Elon',
     #     username='elonmusk',
@@ -106,6 +106,8 @@ def seed_users():
     karen.followers.append(elon)
     karen.followers.append(jack)
     chad.followers.append(jack)
+    mark.followers.append(chad)
+    mark.followers.append(karen)
 
 
     db.session.add(lebron)
@@ -114,6 +116,7 @@ def seed_users():
     db.session.add(jack)
     db.session.add(karen)
     db.session.add(chad)
+    db.session.add(mark)
 
     db.session.commit()
 

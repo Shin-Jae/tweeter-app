@@ -5,8 +5,6 @@ import { getAllUsers, unFollowUser } from "../../store/search";
 import { getUserFollows } from "../../store/userfollows";
 import '../ProfilePage/ProfilePage.css'
 
-
-
 function Follow({ followingId }) {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user)

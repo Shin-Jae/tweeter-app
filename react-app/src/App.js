@@ -15,6 +15,7 @@ import SplashNotFound from './components/auth/SplashError';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
 
@@ -55,7 +56,7 @@ function App() {
             <ProtectedRoute path='/profile/:userId/:profileId' exact={true} >
               <ProfilePage />
             </ProtectedRoute>
-            <ProtectedRoute path='/:userId/explore' exact={true} >
+            <ProtectedRoute path='/:exploreId/explore' exact={true} >
               <ExplorePage />
             </ProtectedRoute>
             <Route>

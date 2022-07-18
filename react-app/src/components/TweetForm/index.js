@@ -8,7 +8,6 @@ function TweetForm() {
     const { userId } = useParams();
     const dispatch = useDispatch()
     const [content, setContent] = useState('');
-    const [zero, setZero] = useState(true);
     const [errors, setError] = useState([]);
 
     const user = useSelector((state) => state.session.user)
@@ -54,7 +53,6 @@ function TweetForm() {
                     placeholder="What's happening?"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
-                    onClick={() => setZero(false)}
                 />
                 <div className='tweet-submit'>
                     <button
