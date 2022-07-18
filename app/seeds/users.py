@@ -52,7 +52,7 @@ def seed_users():
         updated_at=datetime.datetime.now(),
         )
     karen = User(
-        name='Karen Smith',
+        name='The Karen',
         username='trueKaren',
         email='true@karen.com',
         birthday='1985-03-06',
@@ -87,18 +87,18 @@ def seed_users():
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
         )
-    # elon = User(
-    #     name='Elon',
-    #     username='elonmusk',
-    #     email='musk@elon.com',
-    #     birthday='1995-08-06',
-    #     bio='',
-    #     profile_img='',
-    #     banner_img='',
-    #     password='password',
-    #     created_at=datetime.datetime.now(),
-    #     updated_at=datetime.datetime.now(),
-    #     )
+    funny = User(
+        name='Copy Paste',
+        username='swiper',
+        email='copy@paste.com',
+        birthday='1997-02-18',
+        bio='I steal tweets',
+        profile_img='https://twitter.com/memeadikt/photo',
+        banner_img='https://twitter.com/FreeMemesKids__/header_photo',
+        password='password',
+        created_at=datetime.datetime.now(),
+        updated_at=datetime.datetime.now(),
+        )
     demo.followers.append(lebron)
     elon.followers.append(lebron)
     elon.followers.append(demo)
@@ -108,6 +108,11 @@ def seed_users():
     chad.followers.append(jack)
     mark.followers.append(chad)
     mark.followers.append(karen)
+    funny.followers.append(mark)
+    funny.followers.append(lebron)
+    funny.followers.append(chad)
+    funny.followers.append(karen)
+    funny.followers.append(jack)
 
 
     db.session.add(lebron)
@@ -117,6 +122,7 @@ def seed_users():
     db.session.add(karen)
     db.session.add(chad)
     db.session.add(mark)
+    db.session.add(funny)
 
     db.session.commit()
 

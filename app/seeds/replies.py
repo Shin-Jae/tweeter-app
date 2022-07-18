@@ -44,6 +44,21 @@ def seed_replies():
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
     )
+    reply7 = Reply(
+        user_id=4,
+        tweet_id=3,
+        content='Hello Elon',
+        created_at=datetime.datetime.now(),
+        updated_at=datetime.datetime.now(),
+    )
+    reply8 = Reply(
+        user_id=5,
+        tweet_id=1,
+        content='not if I have anything to say about it',
+        created_at=datetime.datetime.now(),
+        updated_at=datetime.datetime.now(),
+    )
+
 
     db.session.add(reply1)
     db.session.add(reply2)
@@ -51,6 +66,8 @@ def seed_replies():
     db.session.add(reply4)
     db.session.add(reply5)
     db.session.add(reply6)
+    db.session.add(reply7)
+    db.session.add(reply8)
 
     db.session.commit()
 
