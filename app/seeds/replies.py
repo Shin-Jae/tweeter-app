@@ -52,7 +52,7 @@ def seed_replies():
         updated_at=datetime.datetime.now(),
     )
     reply8 = Reply(
-        user_id=5,
+        user_id=6,
         tweet_id=1,
         content='not if I have anything to say about it',
         created_at=datetime.datetime.now(),
