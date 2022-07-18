@@ -13,10 +13,6 @@ function SearchBar() {
     const allUsers = useSelector((state) => state.search)
     const users = Object.values(allUsers)
 
-    const submitSearch = (profileId) => {
-        setQuery("");
-        history.push(`/profile/${userId}/${profileId}`);
-    }
 
     const handleNoUsers = (e) => {
         const found = users.find(user =>
@@ -58,7 +54,7 @@ function SearchBar() {
                                 return <li key={user.id}
                                     className='search__icon--name'
                                 >
-                                    <NavLink to={`/profile/${userId}/${user.id}`} key={`${user.id}-search-link`} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }}>
+                                    <NavLink to={`/profile/${userId}/${user.id}`} key={`${user.id}-search-link`} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} onClick={() => setQuery("")}>
                                         <div key={user.id} className="user-search-container">
                                             <span>
                                                 <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />

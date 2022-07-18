@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import { getAllFollows } from "../../store/follows";
 import { getUserTweets } from "../../store/tweet";
 import Follow from "../Follow";
 import FollowersModal from "./Followers";
@@ -44,6 +45,7 @@ function ProfilePage() {
             return history.push('/error')
         }
         dispatch(getUserTweets(profileId));
+        dispatch(getAllFollows(profileId))
     }, [profileId, follow, followers, count]);
 
     followers.forEach(user => {

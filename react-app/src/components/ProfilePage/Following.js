@@ -10,6 +10,7 @@ const FollowingModal = ({ profileId }) => {
 
     const curUser = useSelector((state) => state.session.user.id)
     const follows = useSelector((state) => state.follow);
+
     const users = useSelector((state) => state.search[profileId])
     const following = Object.values(follows);
 
