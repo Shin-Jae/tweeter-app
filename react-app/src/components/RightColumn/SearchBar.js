@@ -10,6 +10,7 @@ function SearchBar() {
     const [found, setFound] = useState("")
     const userId = useSelector((state) => state.session.user.id)
     const allUsers = useSelector((state) => state.search)
+    const follows = useSelector((state) => state.userFollow)
     const users = Object.values(allUsers)
 
 
@@ -50,11 +51,11 @@ function SearchBar() {
                     <ul className="filtered-list" style={{ listStyleType: 'none' }}>
                         {query ? filteredUsers.map(user => {
                             if (user.id !== userId) {
-                                return <li key={user.id}
-                                    className='search__icon--name'
-                                >
-                                    <div key={user.id} className="user-search-container">
-                                        <NavLink to={`/profile/${userId}/${user.id}`} key={`${user.id}-search-link`} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} onClick={() => setQuery("")}>
+                                return <NavLink to={`/profile/${userId}/${user.id}`} key={`${user.id}-search-link`} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} onClick={() => setQuery("")}>
+                                    <li key={user.id}
+                                        className='search__icon--name'
+                                    >
+                                        <div key={user.id} className="user-search-container">
                                             <span>
                                                 <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
                                             </span>
@@ -66,12 +67,13 @@ function SearchBar() {
                                                     @{user.username}
                                                 </div>
                                             </div>
-                                        </NavLink>
-                                        <div className="recommened-follow-btn">
-                                            <Follow followingId={user.id} />
+                                            {follows[user.id] &&
+                                                <div className="search-following">
+                                                    <span>Following</span>
+                                                </div>}
                                         </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                </NavLink>
                             }
                         }) : null}
                     </ul>
