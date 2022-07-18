@@ -69,7 +69,7 @@ def seed_tweets():
         updated_at=datetime.datetime.now(),
     )
     tweet10 = Tweet(
-        user_id=7,
+        user_id=5,
         content="uh I think I'm in the wrong place",
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now(),
