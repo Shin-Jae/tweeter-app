@@ -39,7 +39,7 @@ def exploreTweets(userId):
     return {'tweets': [tweet.to_dict() for tweet in tweets]}
 
 
-@tweet_routes.route('/<int:tweetId>')
+@tweet_routes.route('/onetweet/<int:tweetId>')
 def tweet(tweetId):
     tweet = Tweet.query.get(tweetId)
 

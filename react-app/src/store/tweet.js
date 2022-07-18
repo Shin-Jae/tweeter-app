@@ -61,7 +61,7 @@ export const getExploreTweets = (userId) => async dispatch => {
 };
 
 export const getOneTweet = (tweetId) => async dispatch => {
-    const response = await fetch(`/api/tweets/${tweetId}`);
+    const response = await fetch(`/api/tweets/onetweet/${tweetId}`);
 
     if (response.ok) {
         let tweet = await response.json();
@@ -137,7 +137,6 @@ const tweetReducer = (state = initialState, action) => {
             editTweet[action.tweet.id] = action.tweet;
             return editTweet
         case USER_TWEETS:
-        case ALL_TWEETS:
             const userTweets = {};
             for (let tweet of action.tweets.tweets) {
                 userTweets[tweet.id] = tweet;

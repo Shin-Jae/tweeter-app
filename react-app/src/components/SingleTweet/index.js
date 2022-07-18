@@ -11,17 +11,15 @@ import './SingleTweet.css';
 function SingleTweet() {
     const dispatch = useDispatch();
     const { userId, tweetId } = useParams();
-
     const oneTweet = useSelector((state) => state.tweets);
 
-    const allUsers = useSelector((state) => state.search);
-    const users = Object.values(allUsers);
-    const user = users.filter(one => one.id === oneTweet.user_id);
-    let test = user[0]
+    const test = useSelector((state) => state.search[oneTweet.user_id]);
 
     useEffect(() => {
-        dispatch(getOneTweet(tweetId));
-        dispatch(tweetReplies(tweetId));
+        (async () => {
+            await dispatch(getOneTweet(tweetId));
+            await dispatch(tweetReplies(tweetId));
+        })();
     }, [tweetId, dispatch])
 
     return (
@@ -32,7 +30,7 @@ function SingleTweet() {
             <div>
                 {oneTweet.user_id === parseInt(userId) ?
                     <div key={`btn-${oneTweet.id}`} className="one-tweet-edit-btns single-tweet-edit">
-                        <DropdownModal tweetId={oneTweet.id} />
+                        <DropdownModal tweetId={tweetId} />
                     </div>
                     : null}
                 <NavLink to={`/profile/${userId}/${test?.id}`} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none' }} exact={true} className='user-profile single-tweet-img'>
@@ -48,7 +46,7 @@ function SingleTweet() {
                 </NavLink>
                 <div className='single-tweet-content'>
                     <div>
-                        {oneTweet.content}
+                        {oneTweet?.content}
                     </div>
                 </div>
             </div>

@@ -8,11 +8,18 @@ function EditTweetForm({ editId, onClose }) {
     const { userId, tweetId, profileId } = useParams();
     const dispatch = useDispatch()
     const [errors, setError] = useState([])
-
     const user = useSelector((state) => state.session.user)
-    const tweet = useSelector((state) => state.tweets[editId])
+    let tweet = useSelector((state) => state.tweets)
 
-    const [content, setContent] = useState(tweet.content);
+    const tweetContent = () => {
+        if (tweet.content) {
+            return tweet.content
+        } else {
+            tweet = tweet[editId]
+            return tweet.content
+        }
+    }
+    const [content, setContent] = useState(tweetContent);
 
     useEffect(() => {
         const validationErrors = []
@@ -69,7 +76,7 @@ function EditTweetForm({ editId, onClose }) {
                     <button
                         className='submit-tweet-btn edit-submit-btn'
                         type='submit'
-                        disabled={content.length > 280 || !content.length}
+                        disabled={!content.length || content.length > 280}
                     >
                         Tweet
                     </button>

@@ -48,6 +48,11 @@
     font-weight: bold;
     font-size: 15px;
     border-radius: 9999px;
+    transition: .5s;
+}
+
+.follow-btn:hover {
+    cursor: pointer;
 }
 
 .following-btn {
