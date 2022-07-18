@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getExploreTweets } from "../../store/tweet";
-
+import './ExplorePage.css'
 
 function ExplorePage() {
     const dispatch = useDispatch();
@@ -20,8 +20,8 @@ function ExplorePage() {
     }, [userId, dispatch]);
 
     return (
-        <div>
-            <div className="home-text">
+        <div className="explore-container">
+            <div className="home-text explore-text">
                 Explore
             </div>
             <div>

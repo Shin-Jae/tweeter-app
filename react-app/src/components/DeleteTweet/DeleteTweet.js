@@ -1,15 +1,20 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { deleteOneTweet, getAllTweets } from "../../store/tweet";
+import { deleteOneTweet, getAllTweets, getUserTweets } from "../../store/tweet";
 import "./DeleteTweet.css"
 
 function DeleteTweet({ onClose, deleteId }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { userId, tweetId } = useParams();
+    const { userId, tweetId, profileId } = useParams();
 
     const handleDelete = async () => {
+        if (profileId) {
+            await dispatch(deleteOneTweet(deleteId))
+            const userPage = await dispatch(getUserTweets(userId))
+            if (userPage) return onClose(false);
+        }
         if (!tweetId) {
             await dispatch(deleteOneTweet(deleteId));
             const getAll = await dispatch(getAllTweets(userId))

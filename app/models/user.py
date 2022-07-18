@@ -117,7 +117,7 @@ class Tweet(db.Model):
 
     user = db.relationship("User", back_populates="tweets")
 
-    replies = db.relationship("Reply", back_populates="tweets", passive_deletes=True, cascade="save-update,delete,delete-orphan")
+    replies = db.relationship("Reply", back_populates="tweets", cascade="all, delete")
 
     def to_dict(self):
         return {
