@@ -42,27 +42,31 @@ const FollowingModal = ({ profileId }) => {
                                 {!following.length && <div className="no-followers">Not following anyone</div>}
                                 {following.map(user => {
                                     return <div>
-                                        <NavLink to={`/profile/${curUser}/${user.id}`} key={`${user.id}-search-link`} onClick={() => setShowModal(false)} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }}>
-                                            <div key={user.id} className="user-search-container following-user">
-                                                <span>
-                                                    <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
-                                                </span>
-                                                <div className="user-fullname-username">
-                                                    <div className="recommended-fullname">
-                                                        {user.name}
-                                                    </div>
-                                                    <div className='recommended-username'>
-                                                        @{user.username}
-                                                    </div>
-                                                    <div className='bio'>
-                                                        {user.bio}
+                                        <div key={user.id} className="user-search-container following-user">
+                                            <NavLink className="to-profile" to={`/profile/${curUser}/${user.id}`} key={`${user.id}-search-link`} onClick={() => setShowModal(false)} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }}>
+                                                <div >
+                                                    <span>
+                                                        <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
+                                                    </span>
+                                                    <div className="user-fullname-username">
+                                                        <div className="recommended-fullname">
+                                                            {user.name}
+                                                        </div>
+                                                        <div className='recommended-username'>
+                                                            @{user.username}
+                                                        </div>
+                                                        <div className='bio'>
+                                                            {user.bio}
+                                                        </div>
                                                     </div>
                                                 </div>
+                                            </NavLink>
+                                            {curUser !== user.id &&
                                                 <div className="recommened-follow-btn">
                                                     <Follow followingId={user.id} />
                                                 </div>
-                                            </div>
-                                        </NavLink>
+                                            }
+                                        </div>
                                     </div>
                                 })}
                             </div>

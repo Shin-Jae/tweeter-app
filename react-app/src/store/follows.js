@@ -1,3 +1,5 @@
+import { authenticate } from "./session";
+
 const ALL_FOLLOWS = "search/ALL_FOLLOWS";
 const FOLLOW_USER = "search/FOLLOW_USER";
 const UNFOLLOW_USER = "search/UNFOLLOW_USER";

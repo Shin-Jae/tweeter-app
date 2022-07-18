@@ -13,26 +13,29 @@ function Follow({ followingId }) {
     const following = useSelector((state) => state.session.user.following);
     const isFollowing = () => {
         const ids = following.map(user => user.id)
+
         return !ids.includes(followingId)
+
     }
     const [follows, setFollows] = useState(isFollowing)
+
 
     const handleFollow = async () => {
         const ok = await dispatch(followUser(user.id, followingId))
         if (ok) {
             setFollows(!follows)
-            await dispatch(getAllFollows(user.id))
             await dispatch(authenticate())
             await dispatch(getAllUsers())
+            await dispatch(getAllFollows(user.id))
         }
     }
     const handleUnfollow = async () => {
         const ok = await dispatch(unFollowUser(user.id, followingId))
         if (ok) {
             setFollows(!follows)
-            await dispatch(getAllFollows(user.id))
             await dispatch(authenticate())
             await dispatch(getAllUsers())
+            await dispatch(getAllFollows(user.id))
         }
     }
 
@@ -51,7 +54,7 @@ function Follow({ followingId }) {
                     className='following-btn'
                     type="button"
                     onClick={handleUnfollow}
-                >Following
+                >
                 </button>
             }
         </span>

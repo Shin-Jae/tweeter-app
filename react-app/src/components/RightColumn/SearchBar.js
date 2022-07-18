@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Follow from "../Follow";
 import './RightColumn.css';
 
 
 function SearchBar() {
-    const history = useHistory();
     const [query, setQuery] = useState("")
     const [found, setFound] = useState("")
     const userId = useSelector((state) => state.session.user.id)
@@ -54,8 +53,8 @@ function SearchBar() {
                                 return <li key={user.id}
                                     className='search__icon--name'
                                 >
-                                    <NavLink to={`/profile/${userId}/${user.id}`} key={`${user.id}-search-link`} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} onClick={() => setQuery("")}>
-                                        <div key={user.id} className="user-search-container">
+                                    <div key={user.id} className="user-search-container">
+                                        <NavLink to={`/profile/${userId}/${user.id}`} key={`${user.id}-search-link`} activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} onClick={() => setQuery("")}>
                                             <span>
                                                 <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
                                             </span>
@@ -67,11 +66,11 @@ function SearchBar() {
                                                     @{user.username}
                                                 </div>
                                             </div>
-                                            <div className="recommened-follow-btn">
-                                                <Follow followingId={user.id} />
-                                            </div>
+                                        </NavLink>
+                                        <div className="recommened-follow-btn">
+                                            <Follow followingId={user.id} />
                                         </div>
-                                    </NavLink>
+                                    </div>
                                 </li>
                             }
                         }) : null}

@@ -12,7 +12,6 @@ function Homepage() {
     const { userId } = useParams();
     const dispatch = useDispatch();
     const curUser = useSelector((state) => state.session.user.id)
-    const follow = useSelector((state) => state.session.user.following)
 
     useEffect(() => {
 

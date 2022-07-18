@@ -68,6 +68,17 @@
     text-decoration: underline;
 }
 
+/* logoutname */
+.logout-name {
+    transition: .0s;
+    text-decoration: none;
+}
+
+.logout-name:hover {
+    text-decoration: none;
+}
+
+
 .recommended-username {
     margin-top: 2px;
     color: rgb(83, 100, 113);
@@ -90,7 +101,12 @@
 }
 
 .user-search-container {
-    /* border: 1px solid black; */
     margin-bottom: 25px;
     margin-left: -20px;
+}
+
+.no__users--text {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 20px;
 }

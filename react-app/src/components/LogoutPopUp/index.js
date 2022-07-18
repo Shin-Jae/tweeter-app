@@ -21,7 +21,7 @@ const LogoutPopUp = () => {
                 <div className='side-bar-profile-logout' onClick={handleOpen}>
                     <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
                     <div className="user-fullname-username">
-                        <div className="recommended-fullname">
+                        <div className="recommended-fullname logout-name">
                             {user?.name}
                         </div>
                         <div className='recommended-username'>
@@ -44,7 +44,7 @@ const LogoutPopUp = () => {
                     <div className='logout-pop-up'>
                         <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
                         <div className="user-fullname-username">
-                            <div className="recommended-fullname">
+                            <div className="recommended-fullname logout-name">
                                 {user?.name}
                             </div>
                             <div className='recommended-username'>

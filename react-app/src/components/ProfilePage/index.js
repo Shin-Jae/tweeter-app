@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getAllFollows } from "../../store/follows";
 import { getUserTweets } from "../../store/tweet";
 import Follow from "../Follow";
@@ -32,32 +32,20 @@ function ProfilePage() {
         join = join.split(' ')
         joined = `Joined ${join[2]} ${join[3]}`
     }
-    // if (users.birthday) {
-    //     let year = dob.getFullYear();
-    //     let month = dob.getMonth();
-    //     let date = dob.getDate();
-    //     dob = `Born ${month} ${date}, ${year}`
-    // }
 
-    let count = 0
     useEffect(() => {
         if (!profileId) {
             return history.push('/error')
         }
-        dispatch(getUserTweets(profileId));
-        dispatch(getAllFollows(profileId))
-    }, [profileId, follow, followers, count]);
+        (async () => {
+            await dispatch(getUserTweets(profileId));
+            await dispatch(getAllFollows(profileId));
+        })()
+    }, [profileId, follow, followers]);
 
-    followers.forEach(user => {
-        if (user.id !== parseInt(profileId)) {
-            user.following.forEach(follow => {
-                if (follow.id === parseInt(profileId)) count += 1;
-            })
-        }
-    })
     return (
         <div className="profile-page-container">
-            <div className=" home-text">
+            <div className=" home-text home-text-margin">
                 {users?.name}
             </div>
             <div className="profile-banner">
@@ -66,13 +54,12 @@ function ProfilePage() {
             <div>
                 <img src={`${users?.profile_img}`} alt='profile-img' className='profile-page-user-img' />
             </div>
-            {/* {curUser !== parseInt(profileId)
+            {curUser !== parseInt(profileId)
                 ? <div className="profile-follow-btn">
-                    <Follow followingId={profileId} />
+                    <Follow followingId={parseInt(profileId)} />
                 </div>
                 : null
-            } */}
-
+            }
             <div className="profile-page-info-container">
                 <div className="full-name-profile-page">
                     {users?.name}
@@ -80,9 +67,10 @@ function ProfilePage() {
                 <div className="username-profile-page">
                     @{users?.username}
                 </div>
-                <div>
-                    {users?.bio}
-                </div>
+                {users?.bio &&
+                    <div className="user-bio">
+                        {users?.bio}
+                    </div>}
                 <div className="date-profile">
                     {birthday &&
                         <div>

@@ -7,6 +7,10 @@
     z-index: .5;
 }
 
+.home-text-margin {
+    margin-bottom: 0;
+}
+
 .fullname-header {
     font-size: 20px;
     font-weight: bold;
@@ -53,6 +57,7 @@
 
 .follow-btn:hover {
     cursor: pointer;
+    opacity: .8;
 }
 
 .following-btn {
@@ -66,7 +71,23 @@
     border: 1px solid rgb(207, 217, 222);
     box-shadow: none;
     border-radius: 9999px;
+    transition: 1s;
 }
+
+.following-btn::before {
+    content: "Following";
+}
+
+.following-btn:hover {
+    background-color: rgb(250, 170, 170);
+    cursor: pointer;
+}
+
+.following-btn:hover::before {
+    color: red;
+    content: "Unfollow";
+}
+
 
 .profile-page-info-container {
     margin-left: 15px;
@@ -108,6 +129,10 @@
     color:rgb(83, 100, 113);
     margin-right: 30px;
     font-size: 14px;
+}
+
+.user-bio {
+    margin-bottom: 20px;
 }
 
 /* tweets */
