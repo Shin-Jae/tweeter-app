@@ -77,7 +77,7 @@ function ProfilePage() {
                     {users?.name}
                 </div>
                 <div className="username-profile-page">
-                    @{users?.username} <span className="doesFollow">{doesFollow && 'Follows you'}</span>
+                    @{users?.username} {doesFollow && <span className="doesFollow">'Follows you'</span>}
                 </div>
                 {users?.bio &&
                     <div className="user-bio">
