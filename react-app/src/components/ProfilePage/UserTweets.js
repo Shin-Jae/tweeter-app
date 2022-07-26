@@ -37,7 +37,7 @@ function UserTweets({ profileId }) {
                             </span>
                             <div className='container-tweet-contents'>
                                 <li key={`tweet-${tweet.id}`} >
-                                    <div>{tweet.content}</div>
+                                    <div className='tweet-content-container'>{tweet.content}</div>
                                 </li>
                             </div>
                         </NavLink>

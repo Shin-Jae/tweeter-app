@@ -45,7 +45,7 @@ function SingleTweet() {
                     </div>
                 </NavLink>
                 <div className='single-tweet-content'>
-                    <div>
+                    <div className='tweet-content-container'>
                         {oneTweet?.content}
                     </div>
                 </div>

@@ -52,7 +52,7 @@ function ExplorePage() {
                             <NavLink key={`tweet-${tweet.id}`} exact to={`/${exploreId}/tweets/${tweet.id}`} style={{ textDecoration: 'none', color: 'black' }} >
                                 <div className='container-tweet-contents'>
                                     <li key={`tweet-${tweet.id}`} >
-                                        <div>{tweet.content}</div>
+                                        <div className='tweet-content-container'>{tweet.content}</div>
                                     </li>
                                 </div>
                             </NavLink>
