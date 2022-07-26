@@ -135,6 +135,15 @@
     margin-bottom: 20px;
 }
 
+.doesFollow {
+    margin-left: 5px;
+    font-size: 10px;
+    background-color: rgba(219, 223, 224, 0.783);
+    padding: 2px 4px 2px 4px;
+    font-weight: 600;
+    border-radius: 1em;
+}
+
 /* tweets */
 .profile-tweets-container {
     margin-left: -15px;

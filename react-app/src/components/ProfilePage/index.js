@@ -34,6 +34,16 @@ function ProfilePage() {
         joined = `Joined ${join[2]} ${join[3]}`
     }
 
+    let doesFollow = false
+    followers.forEach(user => {
+        if (user.id === parseInt(profileId)) {
+            user.following.forEach(follow => {
+                if (follow.id === curUser) return doesFollow = true
+            })
+        }
+    })
+    console.log('doesfollow', doesFollow)
+
     useEffect(() => {
         if (!profileId) {
             return history.push('/error')
@@ -67,7 +77,7 @@ function ProfilePage() {
                     {users?.name}
                 </div>
                 <div className="username-profile-page">
-                    @{users?.username}
+                    @{users?.username} <span className="doesFollow">{doesFollow && 'Follows you'}</span>
                 </div>
                 {users?.bio &&
                     <div className="user-bio">
