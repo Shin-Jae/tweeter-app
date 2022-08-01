@@ -149,17 +149,6 @@
 
 /* footer */
 
-.footer-container {
-    position: absolute;
-    display: flex;
-    max-height: 30px;
-    width: 1380px;
-    min-height: 740px;
-    align-items: flex-end;
-    padding: 20px;
-    justify-content: space-between;
-}
-
 .footer {
     margin-left: 5px;
     color: gray;

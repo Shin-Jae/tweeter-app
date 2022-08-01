@@ -47,29 +47,58 @@ function SplashPage() {
                 </div>
             </div>
             <div className='footer-container'>
-                <div>
-                    <a href="https://github.com/Shin-Jae/tweeter-app" rel="nof" style={{ textDecoration: 'none', color: 'black' }}>
-                        <i className="fa-brands fa-github fa-xl"></i>
-                        <span className='footer-left footer'>
-                            Tweeter
-                        </span>
-                    </a>
+                <div className='footer-tech'>
+                    <div>
+                        React
+                    </div>
+                    <div>
+                        Redux
+                    </div>
+                    <div>
+                        JavaScript
+                    </div>
+                    <div>
+                        Flask
+                    </div>
+                    <div>
+                        Python
+                    </div>
+                    <div>
+                        HTML
+                    </div>
+                    <div>
+                        CSS
+                    </div>
+                    <div>
+                        PostgreSQL
+                    </div>
+                    <div>
+                        SQLAlchemy
+                    </div>
+                    <div>
+                        Docker
+                    </div>
+                    <div>
+                        Heroku
+                    </div>
                 </div>
-                <div>
-                    <a href="https://github.com/Shin-Jae" rel="nof" style={{ textDecoration: 'none', color: 'black' }}>
-                        <i className="fa-brands fa-github fa-xl"></i>
-                        <span className='footer-middle footer'>
-                            Jae Shin
-                        </span>
-                    </a>
-                </div>
-                <div>
-                    <a href="https://www.linkedin.com/in/jae-shin-5b3802128/" rel="nof" style={{ textDecoration: 'none' }}>
-                        <i className="fa-brands fa-linkedin fa-xl linkedin"> </i>
-                        <span className='footer-right footer'>
-                            Jae Shin
-                        </span>
-                    </a>
+                <div className='copyright'>
+                    <div className='github'>
+                        <a href="https://github.com/Shin-Jae/tweeter-app" target="_blank" rel="noreferrer noopener" style={{ textDecoration: 'none', color: 'black' }}>
+                            <i className="fa-brands fa-github fa-xl"></i>
+                        </a>
+                    </div>
+                    {/* <div>
+                        <a href="https://github.com/Shin-Jae" target="_blank" rel="noreferrer noopener" style={{ textDecoration: 'none', color: 'black' }}>
+                            <i className="fa-brands fa-github fa-xl"></i>
+                        </a>
+                    </div> */}
+                    <div className='linkedin'>
+                        <a href="https://www.linkedin.com/in/jae-shin-5b3802128/" target="_blank" rel="noreferrer noopener" style={{ textDecoration: 'none' }}>
+                            <i className="fa-brands fa-linkedin fa-xl linkedin"> </i>
+                        </a>
+                    </div>
+                    © 2022 Jae Shin.
                 </div>
             </div>
         </div>
