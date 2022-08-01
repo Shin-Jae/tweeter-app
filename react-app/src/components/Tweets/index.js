@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
+import TimeDisplay from '../TimeDisplay';
 import DropdownModal from './DropdownModal';
 import './Tweets.css'
 
@@ -38,6 +39,9 @@ function Tweets() {
                                                 <div className='user-username'>
                                                     @{user.username}
                                                 </div>
+                                                {/* <div>
+                                                    <TimeDisplay tweet={tweet} />
+                                                </div> */}
                                             </div>
                                         </NavLink>
                                     </span>

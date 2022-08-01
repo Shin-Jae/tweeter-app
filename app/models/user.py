@@ -11,6 +11,22 @@ follows = db.Table(
         'users.id'))
 )
 
+tweet_likes = db.Table(
+    'tweet_likes',
+    db.Column('users', db.Integer, db.ForeignKey(
+        'users.id')),
+    db.Column('tweets', db.Integer, db.ForeignKey(
+        'tweets.id'), primary_key=True)
+)
+
+reply_likes = db.Table(
+    'reply_likes',
+    db.Column('users', db.Integer, db.ForeignKey(
+        'users.id')),
+    db.Column('replies', db.Integer, db.ForeignKey(
+        'replies.id'), primary_key=True)
+)
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -38,6 +54,18 @@ class User(db.Model, UserMixin):
         secondaryjoin=(follows.c.followed_id == id),
         backref=db.backref("following", lazy="dynamic"),
         lazy="dynamic"
+    )
+
+    user_tweet_likes = db.relationship(
+        "Tweet",
+        secondary=tweet_likes,
+        back_populates="like_tweet",
+    )
+
+    user_reply_likes = db.relationship(
+        "Reply",
+        secondary=reply_likes,
+        back_populates="like_reply",
     )
 
     def follow(self, follow):
@@ -112,6 +140,12 @@ class Tweet(db.Model):
 
     replies = db.relationship("Reply", back_populates="tweets", cascade="all, delete")
 
+    like_tweet = db.relationship(
+        "User",
+        secondary=tweet_likes,
+        back_populates="user_tweet_likes",
+    )
+
     def to_dict(self):
         return {
             "id": self.id,
@@ -135,6 +169,12 @@ class Reply(db.Model):
     user = db.relationship("User", back_populates="replies")
 
     tweets = db.relationship("Tweet", back_populates="replies")
+
+    like_reply = db.relationship(
+        "User",
+        secondary=reply_likes,
+        back_populates="user_reply_likes",
+    )
 
     def to_dict(self):
         return {
