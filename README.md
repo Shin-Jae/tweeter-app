@@ -112,7 +112,7 @@ Welcome to Tweeter, a clone of Twitter!
 <img width="1364" alt="Screen Shot 2022-08-01 at 5 04 14 PM" src="https://user-images.githubusercontent.com/95829246/182246448-cac6bd57-54e5-46eb-94c1-1cf98cffd771.png">
 
 5. Search
-* All logged-in users can search other users
+* Logged-in users can search other users
 
 <img width="442" alt="Screen Shot 2022-08-01 at 5 04 45 PM" src="https://user-images.githubusercontent.com/95829246/182246461-3a9a664c-6f74-409b-a72e-b74b906c564c.png">
 
