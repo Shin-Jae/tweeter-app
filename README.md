@@ -87,30 +87,32 @@ Welcome to Tweeter, a clone of Twitter!
 * User can sign up as a new user
 * User can view profile pages.
 * User can also choose to log in as a demo user.
+
+<img width="1440" alt="Screen Shot 2022-07-20 at 7 55 29 PM" src="https://user-images.githubusercontent.com/95829246/182245362-da040c0f-675c-4f51-b09b-4498219e74ed.png">
+
 2. Tweets
 * Logged-in users can create, edit, and delete tweets
 * Logged-in users can view tweets of their following on the home page
 * Logged-in users can view tweets of user they don't follow on the explore page
 * Logged-in users can view tweets they posted on their profile page
+
+<img width="1440" alt="Screen Shot 2022-08-01 at 5 00 51 PM" src="https://user-images.githubusercontent.com/95829246/182245887-6546641f-a5b6-471b-b59e-7d5bde9679df.png">
+
 3. Replies
 * Logged-in users can create, edit, and delete replies
 * Logged-in users can view replies on the page that individual tweet is on
+
+<img width="1440" alt="Screen Shot 2022-08-01 at 5 01 51 PM" src="https://user-images.githubusercontent.com/95829246/182246012-6289ed2b-dd1e-4b79-bfc7-b78f7de42f59.png">
+
 4. Follow
 * Users can follow other users using the follow button on the right side-bar
+
+<img width="1364" alt="Screen Shot 2022-08-01 at 5 04 14 PM" src="https://user-images.githubusercontent.com/95829246/182246448-cac6bd57-54e5-46eb-94c1-1cf98cffd771.png">
+
 5. Search
 * All logged-in users can search other users
 
-## Splash Page
-
-## Homepage
-
-## Profile Page
-
-## Single Tweet Page with Replies
-
-## Explore Page
-
-## Search
+<img width="442" alt="Screen Shot 2022-08-01 at 5 04 45 PM" src="https://user-images.githubusercontent.com/95829246/182246461-3a9a664c-6f74-409b-a72e-b74b906c564c.png">
 
 ## Future Implementations
 1. Likes
