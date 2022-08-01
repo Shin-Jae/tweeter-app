@@ -26,8 +26,8 @@ function TimeDisplay({ tweet }) {
     let subSeconds = currentSeconds - createdSeconds;
 
     let timePassed;
-    console.log('date', createdAt, 'dasds', now, 'years', subYear, subMonth, subDate, subHour, 'hour', currentHour, createdHour)
-    console.log('tiem', timePassed, 'hjhgjkhkj', subTime)
+    // console.log('date', createdAt, 'dasds', now, 'years', subYear, subMonth, subDate, subHour, 'hour', currentHour, createdHour)
+    // console.log('tiem', timePassed, 'hjhgjkhkj', subTime)
 
     if (subYear === 0 && subMonth === 0 && subDate === 0 && subHour > 1) {
         timePassed = `${subTime} minutes ago`

@@ -42,7 +42,6 @@ function ProfilePage() {
             })
         }
     })
-    console.log('doesfollow', doesFollow)
 
     useEffect(() => {
         if (!profileId) {
