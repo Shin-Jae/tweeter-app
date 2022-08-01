@@ -106,6 +106,8 @@ Welcome to Tweeter, a clone of Twitter!
 
 4. Follow
 * Users can follow other users using the follow button on the right side-bar
+* Users can follow other users by using the follow button on the desired user's profile page
+* Users can view followers and following on desired user's profile page by clicking said text
 
 <img width="1364" alt="Screen Shot 2022-08-01 at 5 04 14 PM" src="https://user-images.githubusercontent.com/95829246/182246448-cac6bd57-54e5-46eb-94c1-1cf98cffd771.png">
 
