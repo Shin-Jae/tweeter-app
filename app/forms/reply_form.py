@@ -10,3 +10,4 @@ def content_length(form, field):
 
 class ReplyForm(FlaskForm):
     content = StringField('content', validators=[DataRequired(), content_length])
+    image = StringField('image')
