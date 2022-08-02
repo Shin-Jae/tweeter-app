@@ -50,10 +50,15 @@ function Tweets() {
                             </span>
                         })}
                         <NavLink key={`tweet-${tweet.id}`} exact to={`/${userId}/tweets/${tweet.id}`} style={{ textDecoration: 'none', color: 'black' }} >
-                            <div className='container-tweet-contents'>
-                                <li key={`tweet-${tweet.id}`} >
+                            <div className='container-tweet-contents' key={`tweet-${tweet.id}`}>
+                                <li  >
                                     <div className='tweet-content-container'>{tweet.content}</div>
                                 </li>
+                                {tweet.image &&
+                                    <li>
+                                        <div className='tweet-image-container'><img className='tweet-image' src={tweet.image} alt='' /></div>
+                                    </li>
+                                }
                             </div>
                         </NavLink>
                     </div>

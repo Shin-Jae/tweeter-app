@@ -39,6 +39,11 @@ function UserTweets({ profileId }) {
                                 <li key={`tweet-${tweet.id}`} >
                                     <div className='tweet-content-container'>{tweet.content}</div>
                                 </li>
+                                {tweet.image &&
+                                    <li>
+                                        <div className='tweet-image-container'><img className='tweet-image' src={tweet.image} alt='' /></div>
+                                    </li>
+                                }
                             </div>
                         </NavLink>
                     </div>

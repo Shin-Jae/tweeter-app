@@ -32,3 +32,10 @@
     padding-top: 30px;
     margin-top: 20px;
 }
+
+.single-tweet-image {
+    max-width: 565px;
+    margin-top: 20px;
+    width: 565px;
+    max-height: 400px;
+}

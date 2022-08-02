@@ -48,6 +48,9 @@ function SingleTweet() {
                     <div className='tweet-content-container'>
                         {oneTweet?.content}
                     </div>
+                    {oneTweet?.image &&
+                        <div className='tweet-image-container single-tweet-image'><img className='tweet-image' src={oneTweet?.image} alt='' /></div>
+                    }
                 </div>
             </div>
             <div>
