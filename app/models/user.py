@@ -165,6 +165,7 @@ class Reply(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     tweet_id = db.Column(db.Integer, db.ForeignKey('tweets.id'), nullable=False)
     content = db.Column(db.String(280), nullable=False)
+    image = db.Column(db.String(2000))
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
@@ -184,5 +185,6 @@ class Reply(db.Model):
             "user_id": self.user_id,
             "tweet_id": self.tweet_id,
             "content": self.content,
+            "image": self.image,
             "created_at": self.created_at,
         }

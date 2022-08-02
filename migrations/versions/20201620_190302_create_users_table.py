@@ -49,6 +49,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('tweet_id', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(length=280), nullable=False),
+    sa.Column('image', sa.String(length=2000)),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id']),
