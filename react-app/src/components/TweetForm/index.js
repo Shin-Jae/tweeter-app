@@ -93,7 +93,7 @@ function TweetForm() {
                             </div>
                         }
                     </label>
-                    {(imageLoading) && <p>Loading Image...</p>}
+                    {(imageLoading) && image && <p>Loading Image...</p>}
                     <button
                         className='submit-tweet-btn'
                         type='submit'
