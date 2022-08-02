@@ -8,8 +8,8 @@ function TweetForm() {
     const { userId } = useParams();
     const dispatch = useDispatch()
     const [content, setContent] = useState('');
-    const [image, setImage] = useState('');
     const [errors, setError] = useState([]);
+    const [image, setImage] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
     const [choseImage, setChoseImage] = useState(false);
 
@@ -28,6 +28,7 @@ function TweetForm() {
         //     content,
         //     image
         // }
+        console.log('imageonsubmit', image)
         const formData = new FormData();
         formData.append("image", image);
         formData.append("content", content);

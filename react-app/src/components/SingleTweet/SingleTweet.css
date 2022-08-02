@@ -39,3 +39,10 @@
     width: 565px;
     max-height: 400px;
 }
+
+.reply-image {
+    max-width: 470px;
+    width: 470px;
+    max-height: 400px;
+    border-radius: 5%;
+}
