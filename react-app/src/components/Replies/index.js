@@ -48,6 +48,9 @@ function Replies() {
                         </div>
                         <div className="container-tweet-contents">
                             <div className="tweet-content-container">{reply.content}</div>
+                            {reply?.image &&
+                                <div className='reply-image'><img className='reply-image' src={reply?.image} alt='' /></div>
+                            }
                         </div>
                     </div>
                 })}

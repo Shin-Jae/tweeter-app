@@ -32,11 +32,11 @@ export const tweetReplies = (tweetId) => async dispatch => {
     };
 };
 
-export const postOneReply = (userId, tweetId, payload) => async dispatch => {
+export const postOneReply = (userId, tweetId, formData) => async dispatch => {
     const response = await fetch(`/api/replies/${userId}/${parseInt(tweetId)}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        // headers: { 'Content-Type': 'application/json' },
+        body: formData
     });
     if (response.ok) {
         let reply = await response.json();
