@@ -21,23 +21,23 @@ function Tweets() {
                 {tweets.map(tweet => {
                     return <div key={tweet.id} className='one-tweet-container'>
                         <div className='tweet-borders'></div>
-                        {tweet.user_id === parseInt(userId) ?
+                        {tweet?.user_id === parseInt(userId) ?
                             <div key={`btn-${tweet.id}`} className="one-tweet-edit-btns">
                                 <DropdownModal tweetId={tweet.id} />
                             </div>
                             : null}
                         {users.map(user => {
                             return <span key={`${tweet.id}-${user.id}`}>
-                                {tweet.user_id === user.id ?
+                                {tweet?.user_id === user.id ?
                                     <span>
                                         <NavLink to={`/profile/${userId}/${user.id}`} exact={true} className='user-profile' activeStyle={{ textDecoration: 'none' }} style={{ textDecoration: 'none', color: 'black' }} key={user.id}>
-                                            <img src={`${user.profile_img}`} alt='profile-img' className='user-profile-img' />
+                                            <img src={`${user?.profile_img}`} alt='profile-img' className='user-profile-img' />
                                             <div className='user-info'>
                                                 <div className='user-fullname'>
-                                                    {user.name}
+                                                    {user?.name}
                                                 </div>
                                                 <div className='user-username'>
-                                                    @{user.username}
+                                                    @{user?.username}
                                                 </div>
                                                 {/* <div>
                                                     <TimeDisplay tweet={tweet} />
@@ -52,11 +52,11 @@ function Tweets() {
                         <NavLink key={`tweet-${tweet.id}`} exact to={`/${userId}/tweets/${tweet.id}`} style={{ textDecoration: 'none', color: 'black' }} >
                             <div className='container-tweet-contents' key={`tweet-${tweet.id}`}>
                                 <li  >
-                                    <div className='tweet-content-container'>{tweet.content}</div>
+                                    <div className='tweet-content-container'>{tweet?.content}</div>
                                 </li>
-                                {tweet.image &&
+                                {tweet?.image &&
                                     <li>
-                                        <div className='tweet-image-container'><img className='tweet-image' src={tweet.image} alt='' /></div>
+                                        <div className='tweet-image-container'><img className='tweet-image' src={tweet?.image} alt='' /></div>
                                     </li>
                                 }
                             </div>
