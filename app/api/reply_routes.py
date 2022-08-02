@@ -29,7 +29,7 @@ def replies(tweetId):
 def post_reply(userId, tweetId):
     form = ReplyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('first--------fffffffffff', request.files["image"])
+    print('first--------fffffffffff')
 
     if "image" in request.files:
         image = request.files["image"]

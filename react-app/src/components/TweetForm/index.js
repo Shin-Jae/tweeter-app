@@ -12,7 +12,9 @@ function TweetForm() {
     const [image, setImage] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
     const [choseImage, setChoseImage] = useState(false);
-
+    useEffect(() => {
+        console.log('useEffect', image)
+    }, [image])
     const user = useSelector((state) => state.session.user)
 
     useEffect(() => {
