@@ -2,7 +2,8 @@ import datetime
 from flask import Blueprint, jsonify, request
 from app.forms.tweet_form import TweetForm
 from app.models import db, Tweet, User
-
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 tweet_routes = Blueprint('tweets', __name__)
 
@@ -33,7 +34,7 @@ def exploreTweets(exploreId):
     if user['following']:
         for ele in user['following']:
             id.append(int(ele['id']))
-    print(user['following'])
+
     tweets = (Tweet.query.filter(Tweet.user_id.not_in(id)).all())
 
     return {'tweets': [tweet.to_dict() for tweet in tweets]}
@@ -56,10 +57,36 @@ def post_tweet(userId):
     form = TweetForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    if "image" in request.files:
+        image = request.files["image"]
+        # image = form.data['image']
+        # if not image:
+        #     image = None
+
+
+        if not allowed_file(image.filename):
+            return {"errors": "file type not permitted"}, 400
+
+
+        image.filename = get_unique_filename(image.filename)
+
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            # if the dictionary doesn't have a url key
+            # it means that there was an error when we tried to upload
+            # so we send back that error message
+            return upload, 400
+
+        url = upload["url"]
+    else:
+        url = None
+
     if form.validate_on_submit():
         tweet = Tweet(
             user_id=userId,
             content=form.data['content'],
+            image=url,
             created_at=datetime.datetime.now(),
             updated_at=datetime.datetime.now(),
         )

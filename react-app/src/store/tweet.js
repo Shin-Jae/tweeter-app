@@ -80,11 +80,11 @@ export const getUserTweets = (profileId) => async dispatch => {
     }
 }
 
-export const postOneTweet = (userId, content) => async dispatch => {
+export const postOneTweet = (userId, formData) => async dispatch => {
     const response = await fetch(`/api/tweets/${userId}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(content)
+        // headers: { 'Content-Type': 'application/json' },
+        body: formData
     });
     if (response.ok) {
         let tweet = await response.json();

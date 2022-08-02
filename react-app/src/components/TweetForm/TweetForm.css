@@ -21,7 +21,7 @@
 
 .tweet-submit {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-left: 78px;
     border-top: 1px solid rgb(239, 243, 244);
     width: 505px;
@@ -55,4 +55,41 @@
 
 .tweet-errors {
     margin-left: 35px;
+}
+
+.choose-image {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-shadow: 0 0 1.9px rgb(29, 155, 240), 0 0 1.9px rgb(29, 155, 240), 0 0 1.9px rgb(29, 155, 240), 0 0 1.9px rgb(29, 155, 240);
+    transition: .5s;
+    padding: 7px;
+    margin-top: 10px;
+    border-radius: 50%;
+    height: 20px;
+}
+
+.image-icon {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    padding: 7px;
+    transition: .5s;
+}
+
+.image-icon:hover {
+    cursor: pointer;
+    background-color: rgb(29, 155, 240);
+}
+
+.chosen-image {
+    display: flex;
+}
+
+.check-image {
+    margin-left: 10px;
+    display: flex;
+    text-shadow: none;
+    color: rgb(29, 155, 240);
 }

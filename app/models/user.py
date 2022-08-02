@@ -133,6 +133,7 @@ class Tweet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     content = db.Column(db.String(280), nullable=False)
+    image = db.Column(db.String(2000))
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
@@ -151,6 +152,7 @@ class Tweet(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "content": self.content,
+            "image": self.image,
             "user": self.user.to_dict(),
             "created_at": self.created_at,
         }
