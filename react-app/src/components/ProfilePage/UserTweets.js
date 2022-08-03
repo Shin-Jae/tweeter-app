@@ -21,7 +21,7 @@ function UserTweets({ profileId }) {
                             <div key={`btn-${tweet?.id}`} className="one-tweet-edit-btns">
                                 <DropdownModal tweetId={tweet?.id} />
                             </div>}
-                        <NavLink key={`tweet-${tweet.id}`} exact to={`/${userId}/tweets/${tweet.id}`} style={{ textDecoration: 'none', color: 'black' }} >
+                        <NavLink key={`tweet-${tweet?.id}`} exact to={`/${userId}/tweets/${tweet?.id}`} style={{ textDecoration: 'none', color: 'black' }} >
                             <span key={`${tweet?.id}-${profile?.id}`}>
                                 <div className='user-profile'>
                                     <img src={`${profile?.profile_img}`} alt='profile-img' className='user-profile-img' />
@@ -36,12 +36,12 @@ function UserTweets({ profileId }) {
                                 </div>
                             </span>
                             <div className='container-tweet-contents'>
-                                <li key={`tweet-${tweet.id}`} >
-                                    <div className='tweet-content-container'>{tweet.content}</div>
+                                <li key={`tweet-${tweet?.id}`} >
+                                    <div className='tweet-content-container'>{tweet?.content}</div>
                                 </li>
-                                {tweet.image &&
+                                {tweet?.image &&
                                     <li>
-                                        <div className='tweet-image-container'><img className='tweet-image' src={tweet.image} alt='' /></div>
+                                        <div className='tweet-image-container'><img className='tweet-image' src={tweet?.image} alt='' /></div>
                                     </li>
                                 }
                             </div>

@@ -56,34 +56,27 @@ def userTweets(profileId):
 def post_tweet(userId):
     form = TweetForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('first--------fffffffffff')
 
     if "image" in request.files:
         image = request.files["image"]
         # image = form.data['image']
         # if not image:
         #     image = None
-        print('requestfiles--------cxzcxzcxzcxz', image)
 
         if not allowed_file(image.filename):
             return {"errors": "file type not permitted"}, 400
-        print('allowed_fillessss------ddsdsdssdsds')
 
         image.filename = get_unique_filename(image.filename)
 
         upload = upload_file_to_s3(image)
-        print('upload------dd----uuuuuuuu', upload)
 
         if "url" not in upload:
             # if the dictionary doesn't have a url key
             # it means that there was an error when we tried to upload
             # so we send back that error message
             return upload, 400
-        print('ater=upload------dd----uuuuuuuu', 'url' not in upload)
 
         url = upload["url"]
-
-    print('url----url---,', url)
 
     if form.validate_on_submit() and url:
         tweet = Tweet(
