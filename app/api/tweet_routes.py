@@ -72,23 +72,36 @@ def post_tweet(userId):
         image.filename = get_unique_filename(image.filename)
 
         upload = upload_file_to_s3(image)
+        print('upload------dd----uuuuuuuu', upload)
 
         if "url" not in upload:
             # if the dictionary doesn't have a url key
             # it means that there was an error when we tried to upload
             # so we send back that error message
             return upload, 400
+        print('ater=upload------dd----uuuuuuuu', 'url' not in upload)
 
         url = upload["url"]
-    else:
-        url = None
+
     print('url----url---,', url)
 
-    if form.validate_on_submit():
+    if form.validate_on_submit() and url:
         tweet = Tweet(
             user_id=userId,
             content=form.data['content'],
             image=url,
+            created_at=datetime.datetime.now(),
+            updated_at=datetime.datetime.now(),
+        )
+        db.session.add(tweet)
+        db.session.commit()
+
+        return tweet.to_dict()
+    else:
+        tweet = Tweet(
+            user_id=userId,
+            content=form.data['content'],
+            image=None,
             created_at=datetime.datetime.now(),
             updated_at=datetime.datetime.now(),
         )
