@@ -12,9 +12,7 @@ function TweetForm() {
     const [image, setImage] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
     const [choseImage, setChoseImage] = useState(false);
-    useEffect(() => {
-        console.log('useEffect', image)
-    }, [image])
+
     const user = useSelector((state) => state.session.user)
 
     useEffect(() => {
@@ -30,7 +28,7 @@ function TweetForm() {
         //     content,
         //     image
         // }
-        console.log('imageonsubmit', image)
+
         const formData = new FormData();
         formData.append("image", image);
         formData.append("content", content);

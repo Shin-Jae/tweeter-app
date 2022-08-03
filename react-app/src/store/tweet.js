@@ -81,7 +81,6 @@ export const getUserTweets = (profileId) => async dispatch => {
 }
 
 export const postOneTweet = (userId, formData) => async dispatch => {
-    console.log('formdataTHunk', formData)
     const response = await fetch(`/api/tweets/${userId}`, {
         method: 'POST',
         // headers: { 'Content-Type': 'application/json' },
