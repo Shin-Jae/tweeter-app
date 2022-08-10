@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { getAllFollows } from "../../store/follows";
 import { getUserTweets } from "../../store/tweet";
 import { getUserFollows } from "../../store/userfollows";
+import EditUserModal from "./EditUserModal";
 import FollowersModal from "./Followers";
 import FollowingModal from "./Following";
 import ProfileFollow from "./ProfileFollow";
@@ -69,7 +70,10 @@ function ProfilePage() {
                 ? <div className="profile-follow-btn">
                     <ProfileFollow followingId={parseInt(profileId)} />
                 </div>
-                : null
+                :
+                <div className="profile-follow-btn">
+                    <EditUserModal />
+                </div>
             }
             <div className="profile-page-info-container">
                 <div className="full-name-profile-page">
