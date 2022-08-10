@@ -29,19 +29,15 @@ def replies(tweetId):
 def post_reply(userId, tweetId):
     form = ReplyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('first--------fffffffffff')
 
     if "image" in request.files:
         image = request.files["image"]
         # image = form.data['image']
         # if not image:
         #     image = None
-        print('requestfiles--------cxzcxzcxzcxz', image)
 
         if not allowed_file(image.filename):
             return {"errors": "file type not permitted"}, 400
-
-        print('allowed_fillessss------ddsdsdssdsds')
 
         image.filename = get_unique_filename(image.filename)
 
@@ -56,7 +52,7 @@ def post_reply(userId, tweetId):
         url = upload["url"]
     else:
         url = None
-    print('url----url---,', url)
+
     if form.validate_on_submit():
         reply = Reply(
             user_id=userId,

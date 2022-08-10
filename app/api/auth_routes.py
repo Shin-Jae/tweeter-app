@@ -2,9 +2,11 @@ from email.policy import default
 from flask import Blueprint, jsonify, session, request, redirect
 from app.models import User, db
 from app.forms import LoginForm
-from app.forms import SignUpForm
+from app.forms import SignUpForm, EditUserForm
 from flask_login import current_user, login_user, logout_user, login_required
 import datetime
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -84,6 +86,76 @@ def sign_up():
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@auth_routes.route('/edit/<int:userId>', methods=['PUT'])
+def edit_user(userId):
+    user = User.query.get(userId)
+    form = EditUserForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if "profile_img" in request.files:
+        profile_img = request.files["profile_img"]
+        # image = form.data['image']
+        # if not image:
+        #     image = None
+
+        if not allowed_file(profile_img.filename):
+            return {"errors": "file type not permitted"}, 400
+
+        profile_img.filename = get_unique_filename(profile_img.filename)
+
+        upload = upload_file_to_s3(profile_img)
+
+        if "url" not in upload:
+            # if the dictionary doesn't have a url key
+            # it means that there was an error when we tried to upload
+            # so we send back that error message
+            return upload, 400
+
+        profile_pic = upload["url"]
+
+    if "banner_img" in request.files:
+        banner_img = request.files["banner_img"]
+        # image = form.data['image']
+        # if not image:
+        #     image = None
+
+        if not allowed_file(banner_img.filename):
+            return {"errors": "file type not permitted"}, 400
+
+        banner_img.filename = get_unique_filename(banner_img.filename)
+
+        upload = upload_file_to_s3(banner_img)
+
+        if "url" not in upload:
+            # if the dictionary doesn't have a url key
+            # it means that there was an error when we tried to upload
+            # so we send back that error message
+            return upload, 400
+
+        banner_pic = upload["url"]
+
+    if form.validate_on_submit():
+        user.name=form.data['name']
+        user.username=form.data['username']
+        user.email=form.data['email']
+        user.birthday=form.data['birthday']
+        user.bio=form.data['bio']
+        if profile_pic:
+            user.profile_img=profile_pic,
+        if banner_pic:
+            user.banner_img=banner_pic
+        user.password=form.data['password']
+        user.created_at=datetime.datetime.now()
+        user.updated_at=datetime.datetime.now()
+
+        db.session.merge(user)
+        db.session.flush()
+        db.session.commit()
+        login_user(user)
+        return user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 
 @auth_routes.route('/unauthorized')
