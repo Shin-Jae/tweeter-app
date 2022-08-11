@@ -93,6 +93,9 @@ def edit_user(userId):
     form = EditUserForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    profile_pic = None
+    banner_pic = None
+
     if "profile_img" in request.files:
         profile_img = request.files["profile_img"]
         # image = form.data['image']
@@ -138,15 +141,11 @@ def edit_user(userId):
     if form.validate_on_submit():
         user.name=form.data['name']
         user.username=form.data['username']
-        user.email=form.data['email']
-        user.birthday=form.data['birthday']
         user.bio=form.data['bio']
         if profile_pic:
             user.profile_img=profile_pic,
         if banner_pic:
             user.banner_img=banner_pic
-        user.password=form.data['password']
-        user.created_at=datetime.datetime.now()
         user.updated_at=datetime.datetime.now()
 
         db.session.merge(user)
