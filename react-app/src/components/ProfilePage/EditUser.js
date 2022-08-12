@@ -74,99 +74,97 @@ const EditUser = ({ onClose }) => {
     };
     return (
         <div className='signup-container'>
-            <div className='signup-close-btn'>
-                <button className='login-close-btn' onClick={() => onClose(false)} type='button'>
-                    <i className="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <h2 className='login-header-text'>
-                Edit User
-            </h2>
             <form onSubmit={onEdit}>
-                <div className='tweet-submit'>
-                    <label className='choose-image'>
-                        <div className=''>
+                <div className="edit-user-header">
+                    <div className="left-edit-header">
+                        <div className='signup-clse-btn'>
+                            <button className='login-close-btn' onClick={() => onClose(false)} type='button'>
+                                <i className="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <h2 className='edit-user-header-text'>
+                            Edit profile
+                        </h2>
+                    </div>
+                    <div className='submit-login-container'>
+                        <button type='submit' className='submit-edit-user submit-tweet-btn' disabled={errors.length}>Save</button>
+                    </div>
+                </div>
+                <div className="edit-user-img-label">
+                    <div>Upload profile image</div>
+                    <div>Upload banner</div>
+                </div>
+                <div className='edit-user-imgs'>
+                    <label className='user-edit-icon-container'>
+                        <div >
                             <input
                                 type="file"
                                 accept="image/*"
-
-                                onChange={updateBannerImg}
+                                onChange={updateProfileImg}
                                 hidden
                             /></div>
-                        <i className="fa-solid fa-image fa-lg image-icon"></i>
-                        {/* <div className="profile-banner">
-                            <img src={`${user?.banner_img}`} alt='banner' className="profile-banner-img" />
-                        </div> */}
-                        {choseBanner &&
-                            <div className='check-image'>
+                        <i class="fa-solid fa-image-portrait fa-xl edit-user-icons"></i>
+                        {choseProfileImg &&
+                            <div className='check-image edit-check-image'>
                                 <i className="fa-solid fa-circle-check fa-md"></i>
                             </div>
                         }
                     </label>
-                </div>
-                <div className='tweet-submit'>
-                    <label className='choose-image'>
-                        <div className=''>
+                    <label className='user-edit-icon-container'>
+                        <div >
                             <input
                                 type="file"
                                 accept="image/*"
-
-                                onChange={updateProfileImg}
+                                onChange={updateBannerImg}
                                 hidden
                             /></div>
-                        <i className="fa-solid fa-image fa-lg image-icon">profile</i>
-                        {/* <div>
-                            <img src={`${user?.profile_img}`} alt='profile-img' className='profile-page-user-img' />
-                        </div> */}
-                        {choseProfileImg &&
-                            <div className='check-image'>
+                        <i className="fa-solid fa-image fa-lg edit-user-icons"></i>
+                        {choseBanner &&
+                            <div className='check-image edit-check-image'>
                                 <i className="fa-solid fa-circle-check fa-md"></i>
                             </div>
                         }
                     </label>
                 </div>
                 {(imageLoading) && (profile_img || banner_img) && <p>Loading Image...</p>}
+                <div className='errors-container'>
+                    {errors.map((error, ind) => (
+                        <div className='errors' key={ind}>{error}</div>
+                    ))}
+                </div>
                 <div>
-                    <div className='login-labels signin-labels'>Name</div>
+                    <div className='signin-labels edit-user-labels' style={{ fontWeight: 'bold' }}>Name</div>
                     <input
                         type='text'
                         name='name'
                         placeholder='Name'
-                        className='login-field signup-field'
+                        className='login-field signup-field edit-user-field'
                         onChange={updateName}
                         value={name}
                         required={true}
                     ></input>
                 </div>
                 <div>
-                    <div className='login-labels  signin-labels'>Username</div>
+                    <div className='  signin-labels edit-user-labels' style={{ fontWeight: 'bold' }}>Username</div>
                     <input
                         type='text'
                         name='username'
                         placeholder='Username/Handle'
-                        className='login-field signup-field'
+                        className='login-field signup-field edit-user-field'
                         onChange={updateUsername}
                         required={true}
                         value={username}
                     ></input>
                 </div>
                 <div>
-                    <div className='login-labels signin-labels'><span style={{ fontWeight: 'bold' }}>Bio</span></div>
+                    <div className='signin-labels edit-user-labels'><span style={{ fontWeight: 'bold' }}>Bio</span></div>
                     <textarea
                         type='date'
                         name='bio'
-                        className='login-field signup-field'
+                        className='login-field signup-field edit-user-field edit-user-bio'
                         onChange={updateBio}
                         value={bio}
                     />
-                </div>
-                <div className='errors-container'>
-                    {errors.map((error, ind) => (
-                        <div className='errors' key={ind}>{error}</div>
-                    ))}
-                </div>
-                <div className='submit-login-container'>
-                    <button type='submit' className='submit-tweet-btn' disabled={bio.length > 160}>Save</button>
                 </div>
             </form>
         </div>

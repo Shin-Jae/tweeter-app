@@ -10,8 +10,9 @@ const EditUserModal = () => {
             <div>
                 <button
                     onClick={() => setShowModal(true)}
+                    className='edit-user-btn'
                 >
-                    Edit
+                    Edit profile
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
