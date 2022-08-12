@@ -124,3 +124,31 @@
     padding-top: 10px;
     font-size: 20px;
 }
+
+/* footer  */
+
+.right-footer-container {
+    max-width: 450px;
+    margin-top: 160px;
+    text-align: center;
+}
+
+.right-footer-tech {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: grey;
+}
+
+.footer-indiv-text {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.right-copyright {
+    color: grey;
+    font-size: 13px;
+}

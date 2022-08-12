@@ -76,6 +76,9 @@ function SplashPage() {
                         SQLAlchemy
                     </div>
                     <div>
+                        AWS
+                    </div>
+                    <div>
                         Docker
                     </div>
                     <div>

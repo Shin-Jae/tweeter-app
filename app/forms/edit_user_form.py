@@ -1,6 +1,6 @@
 from wsgiref.validate import validator
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateField
+from wtforms import StringField, DateField, TextAreaField, IntegerField
 from wtforms.validators import DataRequired, ValidationError, Optional
 from app.models import User
 import re
@@ -29,8 +29,10 @@ def valid_email(form, field):
 def username_exists(form, field):
     # Checking if username is already in use
     username = field.data
+    id = form.data['id']
     user = User.query.filter(User.username == username).first()
-    if user:
+
+    if user and user.id != id:
         raise ValidationError('Username is already in use.')
 
 def username_length(form, field):
@@ -47,16 +49,11 @@ def name_check(form, field):
     if len(name) > 40:
         raise ValidationError('should be within 40 characters')
 
-def password_length(form, field):
-    password = field.data
-    if len(password) < 4:
-        raise ValidationError('must be at least 4 characters')
 
 class EditUserForm(FlaskForm):
+    id = IntegerField('id')
     name = StringField('name', validators=[DataRequired(), name_check])
     username = StringField('username', validators=[DataRequired(), username_exists, username_length])
-    email = StringField('email', validators=[DataRequired(), user_exists, email_length, valid_email])
-    birthday = DateField('birthday', validators=[Optional()])
+    bio = TextAreaField('bio')
     profile_img = StringField('profile_img')
     banner_img = StringField('banner_img')
-    password = StringField('password', validators=[DataRequired(), password_length])
