@@ -102,6 +102,8 @@ class User(db.Model, UserMixin):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'following': [follow.to_dict_followers() for follow in self.followers],
+            'tweet_likes': [tweet.to_dict_likes() for tweet in self.user_tweet_likes],
+            'reply_likes': [reply.to_dict_likes() for reply in self.user_reply_likes],
         }
 
     def to_dict_followers(self):
@@ -155,8 +157,16 @@ class Tweet(db.Model):
             "image": self.image,
             "user": self.user.to_dict(),
             "created_at": self.created_at,
+            'tweet_likes': [like.to_dict() for like in self.like_tweet],
         }
 
+    def to_dict_likes(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "content": self.content,
+            "image": self.image,
+        }
 
 class Reply(db.Model):
     __tablename__ = 'replies'
@@ -187,4 +197,14 @@ class Reply(db.Model):
             "content": self.content,
             "image": self.image,
             "created_at": self.created_at,
+            'reply_likes': [like.to_dict() for like in self.like_reply],
+        }
+
+    def to_dict_likes(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "tweet_id": self.tweet_id,
+            "content": self.content,
+            "image": self.image,
         }

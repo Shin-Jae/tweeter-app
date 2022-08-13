@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
+import Likes from '../Likes';
 import TimeDisplay from '../TimeDisplay';
 import DropdownModal from './DropdownModal';
 import './Tweets.css'
@@ -61,6 +62,13 @@ function Tweets() {
                                 }
                             </div>
                         </NavLink>
+                        <div className='likes-container'>
+                            <div>
+                                <Likes count={tweet?.tweet_likes} tweetId={tweet?.id} />
+                            </div>
+                            <div className='tweet-likes-count'>
+                            </div>
+                        </div>
                     </div>
                 })}
             </ul>

@@ -1,0 +1,42 @@
+.tweet-likes-container {
+    display: flex;
+    transition: 1s;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .tweet-likes-container:hover {
+    cursor: pointer;
+    color: red;
+} */
+
+.unlike {
+    transition: 1s;
+    color: grey;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 50%;
+}
+
+.like {
+    transition: 1s;
+    color: rgb(238, 30, 92);
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 50%;
+}
+
+.unlike:hover {
+    cursor: pointer;
+    background-color: rgba(241, 169, 160);
+    color: red;
+}
+
+.like:hover {
+    cursor: pointer;
+    background-color: rgba(241, 169, 160);
+}
