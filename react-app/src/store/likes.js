@@ -23,7 +23,6 @@ export const likeTweet = (tweetId, userId) => async dispatch => {
 
     if (response.ok) {
         let liked = await response.json();
-        dispatch(allLikes(liked))
         return liked;
     }
 }
@@ -34,7 +33,6 @@ export const unLike = (tweetId, userId) => async dispatch => {
     });
     if (response.ok) {
         const unliked = await response.json();
-        dispatch(unLike(unliked));
         return unliked;
     }
 }
@@ -47,12 +45,12 @@ const likesReducer = (state = initialState, action) => {
             const tweetLikes = {};
             const replyLikes = {}
             for (let tweet of action.tweets.tweetLikes) {
-                tweetLikes[tweet] = tweet;
+                tweetLikes[tweet.id] = tweet;
             };
             for (let reply of action.tweets.replyLikes) {
-                replyLikes[reply] = reply
+                replyLikes[reply.id] = reply
             }
-            return { likesTweet: tweetLikes, likesReply: replyLikes };
+            return { likedTweets: { ...tweetLikes }, likeReplies: { ...replyLikes } };
         default:
             return state;
     };

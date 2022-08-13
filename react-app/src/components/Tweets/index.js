@@ -64,7 +64,7 @@ function Tweets() {
                         </NavLink>
                         <div className='likes-container'>
                             <div>
-                                <Likes count={tweet?.tweet_likes} />
+                                <Likes count={tweet?.tweet_likes} tweetId={tweet?.id} />
                             </div>
                             <div className='tweet-likes-count'>
                             </div>

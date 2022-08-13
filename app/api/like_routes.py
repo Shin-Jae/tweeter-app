@@ -12,8 +12,8 @@ def user_likes(userId):
     tweet_likes = user['tweet_likes']
     reply_likes = user['reply_likes']
 
-    # print('fsdf----------------', tweet_likes, reply_likes)
-    return {'tweetLikes': [tweet.id for tweet in tweet_likes], 'replyLikes': [reply.id for reply in reply_likes]}
+    print('fsdf----------------', {'tweetLikes': [tweet for tweet in tweet_likes], 'replyLikes': [reply for reply in reply_likes]})
+    return {'tweetLikes': [tweet for tweet in tweet_likes], 'replyLikes': [reply for reply in reply_likes]}
 
 @like_routes.route('/<int:tweetId>/<int:userId>', methods = ['POST'])
 def like_tweet(tweetId, userId):

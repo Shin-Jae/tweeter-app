@@ -111,7 +111,7 @@
 }
 
 .tweet-likes-count {
-    margin-left: 3px;
+    margin-left: 5px;
     padding-bottom: 1px;
     color: grey;
     transition: 1s;
@@ -119,5 +119,4 @@
 
 .tweet-likes-count:hover {
     color: red
-
 }

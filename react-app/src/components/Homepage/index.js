@@ -29,9 +29,9 @@ function Homepage() {
             const user = await response.json();
             setUser(user);
             await dispatch(getAllTweets(userId));
+            await dispatch(getUserLikes(userId));
             await dispatch(getAllFollows(userId));
             await dispatch(getUserFollows(userId));
-            await dispatch(getUserLikes(userId));
         })();
 
         //getallTweets
