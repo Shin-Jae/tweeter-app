@@ -102,6 +102,8 @@ class User(db.Model, UserMixin):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'following': [follow.to_dict_followers() for follow in self.followers],
+            'tweet_likes': [tweet.to_dict_tweet() for tweet in self.user_tweet_likes],
+            'reply_likes': [reply.to_dict_reply() for reply in self.user_reply_likes],
         }
 
     def to_dict_followers(self):
@@ -125,6 +127,26 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'profile_img': self.profile_img,
             'banner_img': self.banner_img,
+        }
+
+    def to_dict_tweet(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "content": self.content,
+            "image": self.image,
+            "user": self.user.to_dict(),
+            "created_at": self.created_at,
+        }
+
+    def to_dict_reply(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "tweet_id": self.tweet_id,
+            "content": self.content,
+            "image": self.image,
+            "created_at": self.created_at,
         }
 
 class Tweet(db.Model):
@@ -155,6 +177,19 @@ class Tweet(db.Model):
             "image": self.image,
             "user": self.user.to_dict(),
             "created_at": self.created_at,
+            'tweet_likes': [like.to_dict_user_tweet_likes() for like in self.like_tweet],
+        }
+
+    def to_dict_user_tweet_likes(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'email': self.email,
+            'username': self.username,
+            'birthday': self.birthday,
+            'bio': self.bio,
+            'profile_img': self.profile_img,
+            'banner_img': self.banner_img,
         }
 
 
@@ -187,4 +222,17 @@ class Reply(db.Model):
             "content": self.content,
             "image": self.image,
             "created_at": self.created_at,
+            'reply_likes': [like.to_dict_user_reply_likes() for like in self.like_reply],
+        }
+
+    def to_dict_user_reply_likes(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'email': self.email,
+            'username': self.username,
+            'birthday': self.birthday,
+            'bio': self.bio,
+            'profile_img': self.profile_img,
+            'banner_img': self.banner_img,
         }

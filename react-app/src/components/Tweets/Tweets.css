@@ -103,3 +103,21 @@
     border-radius: 5%;
     max-height: 400px;
 }
+
+.likes-container {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -15px;
+}
+
+.tweet-likes-count {
+    margin-left: 3px;
+    padding-bottom: 1px;
+    color: grey;
+    transition: 1s;
+}
+
+.tweet-likes-count:hover {
+    color: red
+
+}

@@ -60,6 +60,15 @@ export const getExploreTweets = (exploreId) => async dispatch => {
     };
 };
 
+// export const likeTweet = (tweetId, userId) => async dispatch => {
+//     const response = await fetch(`/api/tweets/likes/${tweetId}/${userId}`)
+
+//     if (response.ok) {
+//         let liked = await response.json();
+//         return liked;
+//     }
+// }
+
 export const getOneTweet = (tweetId) => async dispatch => {
     const response = await fetch(`/api/tweets/onetweet/${tweetId}`);
 

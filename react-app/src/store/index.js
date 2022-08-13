@@ -6,6 +6,7 @@ import replyReducer from './reply';
 import searchReducer from './search';
 import followReducer from './follows';
 import userFollowReducer from './userfollows';
+import likesReducer from './likes';
 
 const rootReducer = combineReducers({
   session,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   search: searchReducer,
   follow: followReducer,
   userFollow: userFollowReducer,
+  userLikes: likesReducer,
 });
 
 

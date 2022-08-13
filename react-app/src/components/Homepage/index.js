@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getAllFollows } from '../../store/follows';
+import { getUserLikes } from '../../store/likes';
 import { getAllTweets } from '../../store/tweet';
 import { getUserFollows } from '../../store/userfollows';
 import TweetForm from '../TweetForm';
@@ -30,6 +31,7 @@ function Homepage() {
             await dispatch(getAllTweets(userId));
             await dispatch(getAllFollows(userId));
             await dispatch(getUserFollows(userId));
+            await dispatch(getUserLikes(userId));
         })();
 
         //getallTweets

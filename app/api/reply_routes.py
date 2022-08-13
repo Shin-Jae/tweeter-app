@@ -2,7 +2,7 @@ import datetime
 from flask import Blueprint, jsonify, request
 from app.forms.reply_form import ReplyForm
 from app.forms.tweet_form import TweetForm
-from app.models import db, Tweet, Reply
+from app.models import db, Tweet, Reply, User
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
