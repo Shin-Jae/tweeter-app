@@ -1,33 +1,40 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { likeTweet } from "../../store/likes";
+import { getUserLikes, likeTweet, unLike } from "../../store/likes";
 import './Likes.css'
 
 
 function Likes({ count, tweetId }) {
     const dispatch = useDispatch();
-    // tweets.likes
-    const user = useSelector((state) => state.session.user)
-    const userLiked = useSelector((state) => state.userLikes?.likedTweets)
-    // console.log('test', userLiked, count)
-    const [like, setLike] = useState(userLiked ? true : false);
 
+    const user = useSelector((state) => state.session.user)
+    const userLiked = useSelector((state) => state.userLikes)
+
+    const [like, setLike] = useState(userLiked[tweetId]);
 
     const handleLike = async () => {
         const ok = await dispatch(likeTweet(tweetId, user.id))
         if (ok) {
-            // await dispatch(getUserLikes(user.id))
-            setLike(!like)
+            await dispatch(getUserLikes(user.id))
+            setLike(true)
+        }
+    }
+
+    const handleUnLike = async () => {
+        const ok = await dispatch(unLike(tweetId, user.id))
+        if (ok) {
+            await dispatch(getUserLikes(user.id))
+            setLike(false)
         }
     }
 
     return (
         <div className="tweet-likes-container">
-            <div className="unlike-container" onClick={handleLike}>
-                <i className={!like ? "fa-regular fa-heart fa-lg unlike" : "fa-solid fa-heart fa-lg like"}></i>
+            <div className="unlike-container" onClick={like ? handleUnLike : handleLike}>
+                <i className={like ? "fa-solid fa-heart fa-lg like" : "fa-regular fa-heart fa-lg unlike"}></i>
             </div>
             <div className={!like ? "tweet-likes-count" : "tweet-liked-count"}>
-                {count.length}
+                {count?.length}
             </div>
             {/* <i class="fa-solid fa-heart"></i> */}
         </div>
