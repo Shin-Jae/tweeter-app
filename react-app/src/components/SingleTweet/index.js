@@ -7,6 +7,7 @@ import { tweetReplies } from '../../store/reply';
 import ReplyForm from '../ReplyForm';
 import DropdownModal from '../Tweets/DropdownModal';
 import './SingleTweet.css';
+import Likes from '../Likes';
 
 function SingleTweet() {
     const dispatch = useDispatch();
@@ -51,6 +52,11 @@ function SingleTweet() {
                     {oneTweet?.image &&
                         <div className='tweet-image-container single-tweet-image'><img className='tweet-image' src={oneTweet?.image} alt='' /></div>
                     }
+                </div>
+                <div className='likes-container single-tweet-likes'>
+                    <div>
+                        <Likes count={oneTweet?.tweet_likes} tweetId={oneTweet?.id} />
+                    </div>
                 </div>
             </div>
             <div>

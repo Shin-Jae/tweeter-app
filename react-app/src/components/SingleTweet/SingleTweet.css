@@ -46,3 +46,7 @@
     max-height: 400px;
     border-radius: 5%;
 }
+
+.single-tweet-likes {
+    margin-top: 40px;
+}
