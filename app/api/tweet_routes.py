@@ -56,7 +56,7 @@ def userTweets(profileId):
 def post_tweet(userId):
     form = TweetForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    url = None
     if "image" in request.files:
         image = request.files["image"]
         # image = form.data['image']
@@ -78,23 +78,15 @@ def post_tweet(userId):
 
         url = upload["url"]
 
-    if form.validate_on_submit() and url:
-        tweet = Tweet(
-            user_id=userId,
-            content=form.data['content'],
-            image=url,
-            created_at=datetime.datetime.now(),
-            updated_at=datetime.datetime.now(),
-        )
-        db.session.add(tweet)
-        db.session.commit()
+    new_image = None
+    if form.validate_on_submit():
+        if url:
+            new_image = url
 
-        return tweet.to_dict()
-    else:
         tweet = Tweet(
             user_id=userId,
             content=form.data['content'],
-            image=None,
+            image=new_image,
             created_at=datetime.datetime.now(),
             updated_at=datetime.datetime.now(),
         )

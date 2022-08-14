@@ -43,14 +43,10 @@ const likesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ALL_LIKES:
             const tweetLikes = {};
-            const replyLikes = {}
             for (let tweet of action.tweets.tweetLikes) {
                 tweetLikes[tweet.id] = tweet;
             };
-            for (let reply of action.tweets.replyLikes) {
-                replyLikes[reply.id] = reply
-            }
-            return { likedTweets: { ...tweetLikes }, likeReplies: { ...replyLikes } };
+            return { ...tweetLikes }
         default:
             return state;
     };
