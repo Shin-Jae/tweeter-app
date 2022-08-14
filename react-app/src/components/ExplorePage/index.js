@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getExploreTweets } from "../../store/tweet";
+import Likes from "../Likes";
 import './ExplorePage.css'
 
 function ExplorePage() {
@@ -61,6 +62,11 @@ function ExplorePage() {
                                     }
                                 </div>
                             </NavLink>
+                            <div className='likes-container'>
+                                <div>
+                                    <Likes count={tweet?.tweet_likes} tweetId={tweet?.id} />
+                                </div>
+                            </div>
                         </div>
                     })}
                 </ul>
